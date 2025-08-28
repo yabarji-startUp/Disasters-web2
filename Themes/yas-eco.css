@@ -1,0 +1,669 @@
+/* @theme yas-eco */
+/* Author: Custom theme combining Gaia and yas-eco-red styles */
+/* Based on Gaia theme by Yuki Hattori and yas-eco-red */
+/* Optimized for multiple aspect ratios */
+
+/* @theme yas-eco */
+/* @size 4:3 960px 720px */
+/* @size 16:9 1280px 720px */
+/* @size 4K 3840px 2160px */
+
+@charset "UTF-8";
+@import 'gaia';
+@import url('https://fonts.googleapis.com/css?family=Lato:400,900|Roboto+Mono:400,700&display=swap');
+@import '~highlight.js/styles/sunburst';
+
+:root {
+    padding: 50px 35px;
+    background-color: #f8f9fa !important;
+    --background-color: #2e7d32; /* Vert éco-responsable */
+    --accent-color: #d5103b; /* Rouge de yas.css */
+    --secondary-color: #4caf50; /* Vert accent */
+    --text-color: #2c3e50;
+    --light-bg: #e8f5e8;
+    --border-color: #81c784;
+    --red-light: #ffebee; /* Rouge clair pour les backgrounds */
+    --red-accent: #f44336; /* Rouge accent plus vif */
+}
+
+/* Override Gaia's default colors with yas-eco-red palette */
+section {
+    --color-background: var(--light-bg);
+    --color-foreground: var(--text-color);
+    --color-highlight: var(--accent-color);
+    --color-dimmed: var(--border-color);
+    --color-background-stripe: rgba(46, 125, 50, 0.1);
+}
+
+section, section p, section h1, section h2, section h3 {
+    color: var(--text-color) !important;
+    font-family: 'Lato', sans-serif;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Header styling from yas-eco-red */
+section header {
+    width: 100%;
+    height: 50px;
+    background-image: linear-gradient(to right, var(--background-color), var(--accent-color));
+    padding: 10px 0 10px 15px;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 30px;
+    color: #fff;
+    z-index: 100;
+    border-radius: 0 0 8px 8px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+/* Header image styling for View Transitions API */
+section header img {
+    height: 14px;
+    width: 14px;
+    margin-right: 8px;
+    display: inline-block;
+    contain: layout; /* Required for View Transitions API */
+}
+
+/* View Transitions API for header images */
+section header img[src*="numeric-1-circle"] {
+    view-transition-name: one;
+}
+
+section header img[src*="numeric-2-circle"] {
+    view-transition-name: two;
+}
+
+section header img[src*="numeric-3-circle"] {
+    view-transition-name: three;
+}
+
+section header img[src*="numeric-4-circle"] {
+    view-transition-name: four;
+}
+
+section header img[src*="numeric-5-circle"] {
+    view-transition-name: five;
+}
+
+section header img[src*="numeric-6-circle"] {
+    view-transition-name: six;
+}
+
+/* View Transitions API for lead images */
+section img[alt="1"] {
+    view-transition-name: one;
+    contain: layout;
+}
+
+section img[alt="2"] {
+    view-transition-name: two;
+    contain: layout;
+}
+
+section img[alt="3"] {
+    view-transition-name: three;
+    contain: layout;
+}
+
+section img[alt="4"] {
+    view-transition-name: four;
+    contain: layout;
+}
+
+section img[alt="5"] {
+    view-transition-name: five;
+    contain: layout;
+}
+
+section img[alt="6"] {
+    view-transition-name: six;
+    contain: layout;
+}
+
+/* Footer styling from yas-eco-red */
+section footer {
+    width: 100%;
+    height: 45px;
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    background-image: linear-gradient(to right, var(--background-color), var(--accent-color));
+    padding: 8px 0 8px 15px;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 28px;
+    color: #fff;
+    z-index: 100;
+    border-radius: 8px 8px 0 0;
+}
+
+/* Footer date span styling */
+section footer span {
+    color: white;
+    font-weight: bold;
+    box-sizing: border-box;
+    border: 2px solid var(--accent-color);
+    background-color: var(--accent-color);
+    margin-left: 200px;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    line-height: 16px;
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    z-index: 101;
+}
+
+/* School logo in footer span */
+section footer span img {
+    height: 18px;
+    vertical-align: middle;
+    margin-left: 8px;
+    display: inline-block;
+}
+
+/* Pagination styling from yas-eco-red */
+section::after {
+    position: absolute;
+    bottom: 55px;
+    right: 15px;
+    color: var(--accent-color);
+    padding: 0;
+    height: 18px;
+    font-size: 14px;
+    line-height: 18px;
+}
+
+/* Heading styles with yas-eco-red colors */
+section h1 {
+    margin: 12px 0 10px 0;
+    line-height: 1.1;
+    font-size: 26px;
+    color: var(--background-color);
+    font-weight: 700;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+section h2 {
+    font-size: 20px;
+    color: var(--accent-color);
+    margin: 10px 0 8px 0;
+    line-height: 1.2;
+}
+
+section h3 {
+    font-size: 16px;
+    color: var(--text-color);
+    margin: 8px 0 6px 0;
+    line-height: 1.3;
+}
+
+section h1 strong, 
+section h2 strong, 
+section h3 strong {
+    color: var(--accent-color);
+    font-weight: 800;
+}
+
+/* Code styling */
+section h1 code, 
+section h2 code {
+    font-size: inherit;
+    font-family: inherit;
+    background-color: var(--accent-color);
+    color: #fff;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+/* Paragraph and list styling */
+section p {
+    margin: 8px 0;
+    line-height: 1.4;
+    font-size: 14px;
+}
+
+section ul, 
+section ol {
+    margin: 8px 0;
+    padding-left: 20px;
+    line-height: 1.4;
+    font-size: 14px;
+}
+
+section li {
+    margin: 4px 0;
+    line-height: 1.4;
+}
+
+/* Blockquote styling */
+section blockquote {
+    margin: 10px 0;
+    padding: 8px 10px;
+    border-left: var(--accent-color) 3px solid;
+    background: var(--red-light);
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 13px;
+}
+
+blockquote::before, 
+blockquote::after {
+    content: '';
+}
+
+/* Cover page styling */
+section.cover {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--light-bg) 0%, var(--red-light) 100%);
+    padding: 30px 25px;
+}
+
+section.cover h1, 
+section.cover h2, 
+section.cover h3, 
+section.cover p {
+    text-align: center;
+    color: var(--text-color);
+}
+
+section.cover h1 {
+    font-size: 36px;
+    margin-bottom: 15px;
+    color: var(--background-color);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    line-height: 1.1;
+}
+
+section.cover h2 {
+    font-size: 22px;
+    margin-bottom: 12px;
+    color: var(--accent-color);
+    line-height: 1.2;
+}
+
+section.cover h3 {
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: var(--text-color);
+    line-height: 1.3;
+}
+
+section.cover h6 {
+    line-height: 25px;
+}
+
+/* Metric and KPI styling */
+.metric {
+    background: linear-gradient(135deg, var(--light-bg) 0%, var(--red-light) 100%);
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    padding: 10px;
+    margin: 6px 0;
+    text-align: center;
+}
+
+.metric-value {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--background-color);
+    margin: 4px 0;
+    line-height: 1;
+}
+
+.metric-label {
+    font-size: 12px;
+    color: var(--text-color);
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0;
+    background: #fff;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    font-size: 11px;
+}
+
+th {
+    background: linear-gradient(135deg, var(--background-color) 0%, var(--accent-color) 100%);
+    color: #fff;
+    padding: 6px 8px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 11px;
+}
+
+td {
+    padding: 5px 8px;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 10px;
+    line-height: 1.2;
+}
+
+tr:nth-child(even) {
+    background-color: var(--light-bg);
+}
+
+tr:nth-child(odd) {
+    background-color: var(--red-light);
+}
+
+/* Badge styling */
+.badge {
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 10px;
+    font-size: 10px;
+    font-weight: 600;
+    margin: 1px;
+}
+
+.badge-success {
+    background-color: var(--secondary-color);
+    color: #fff;
+}
+
+.badge-warning {
+    background-color: var(--accent-color);
+    color: #fff;
+}
+
+.badge-info {
+    background-color: var(--background-color);
+    color: #fff;
+}
+
+/* Column layout */
+.two-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin: 8px 0;
+}
+
+.three-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin: 8px 0;
+}
+
+/* Icon styling */
+.icon {
+    font-size: 16px;
+    margin-right: 6px;
+    vertical-align: middle;
+}
+
+/* Timeline styling */
+.timeline {
+    position: relative;
+    padding-left: 18px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--background-color), var(--accent-color));
+}
+
+.timeline-item {
+    position: relative;
+    margin: 10px 0;
+    padding-left: 12px;
+    font-size: 12px;
+    line-height: 1.3;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -5px;
+    top: 5px;
+    width: 10px;
+    height: 10px;
+    background: linear-gradient(135deg, var(--background-color), var(--accent-color));
+    border-radius: 50%;
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 1px var(--border-color);
+}
+
+/* Chart container */
+.chart-container {
+    background: #fff;
+    border-radius: 6px;
+    padding: 10px;
+    margin: 8px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border: 1px solid var(--border-color);
+}
+
+/* Quote highlight */
+.quote-highlight {
+    background: linear-gradient(135deg, var(--background-color) 0%, var(--accent-color) 100%);
+    color: #fff;
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 12px 0;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    line-height: 1.3;
+}
+
+/* Objective styling */
+.objective {
+    background: var(--light-bg);
+    border-left: 4px solid var(--background-color);
+    padding: 10px;
+    margin: 6px 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 12px;
+    line-height: 1.3;
+}
+
+.objective-title {
+    font-weight: 700;
+    color: var(--background-color);
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+/* Result styling */
+.result {
+    background: linear-gradient(135deg, var(--light-bg) 0%, var(--red-light) 100%);
+    border: 2px solid var(--accent-color);
+    border-radius: 6px;
+    padding: 10px;
+    margin: 6px 0;
+    text-align: center;
+}
+
+.result-value {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin: 4px 0;
+    line-height: 1.2;
+}
+
+/* Responsive design for different aspect ratios */
+/* 4:3 Aspect Ratio (960px x 720px) */
+@media (aspect-ratio: 4/3) {
+    section {
+        font-size: 28px;
+        padding: 60px;
+    }
+    
+    section h1 { font-size: 22px; }
+    section h2 { font-size: 18px; }
+    section h3 { font-size: 14px; }
+    section p { font-size: 12px; }
+    section ul, section ol { font-size: 12px; }
+    
+    .metric-value { font-size: 22px; }
+    .metric-label { font-size: 10px; }
+    
+    section header {
+        height: 40px;
+        font-size: 18px;
+        line-height: 24px;
+    }
+    
+    section footer {
+        height: 16px;
+        font-size: 10px;
+        line-height: 16px;
+    }
+    
+    section::after {
+        font-size: 12px;
+        line-height: 16px;
+    }
+}
+
+/* 16:9 Aspect Ratio (1280px x 720px) - Default */
+@media (aspect-ratio: 16/9) {
+    section {
+        font-size: 35px;
+        padding: 70px;
+    }
+    
+    section h1 { font-size: 26px; }
+    section h2 { font-size: 20px; }
+    section h3 { font-size: 16px; }
+    section p { font-size: 14px; }
+    section ul, section ol { font-size: 14px; }
+    
+    .metric-value { font-size: 26px; }
+    .metric-label { font-size: 12px; }
+    
+    section header {
+        height: 45px;
+        font-size: 20px;
+        line-height: 28px;
+    }
+    
+    section footer {
+        height: 18px;
+        font-size: 11px;
+        line-height: 18px;
+    }
+    
+    section::after {
+        font-size: 14px;
+        line-height: 18px;
+    }
+}
+
+/* 4K Aspect Ratio (3840px x 2160px) */
+@media (min-width: 3840px) {
+    section {
+        font-size: 105px;
+        padding: 210px;
+    }
+    
+    section h1 { font-size: 78px; }
+    section h2 { font-size: 60px; }
+    section h3 { font-size: 48px; }
+    section p { font-size: 42px; }
+    section ul, section ol { font-size: 42px; }
+    
+    .metric-value { font-size: 78px; }
+    .metric-label { font-size: 36px; }
+    
+    section header {
+        height: 135px;
+        font-size: 60px;
+        line-height: 84px;
+        padding: 24px 0 24px 45px;
+    }
+    
+    section footer {
+        height: 54px;
+        font-size: 33px;
+        line-height: 54px;
+        padding: 0 0 0 45px;
+    }
+    
+    section::after {
+        font-size: 42px;
+        line-height: 54px;
+        right: 45px;
+        height: 54px;
+    }
+    
+    /* Adjust spacing for 4K */
+    section h1 { margin: 36px 0 30px 0; }
+    section h2 { margin: 30px 0 24px 0; }
+    section h3 { margin: 24px 0 18px 0; }
+    section p { margin: 24px 0; }
+    section ul, section ol { margin: 24px 0; padding-left: 60px; }
+    section li { margin: 12px 0; }
+    
+    .metric { padding: 30px; margin: 18px 0; border-radius: 24px; }
+    .badge { padding: 6px 18px; border-radius: 30px; font-size: 30px; }
+    .timeline { padding-left: 54px; }
+    .timeline::before { left: 24px; width: 6px; }
+    .timeline-item { padding-left: 36px; font-size: 36px; margin: 30px 0; }
+    .timeline-item::before { left: -15px; top: 15px; width: 30px; height: 30px; }
+    
+    .two-columns { gap: 45px; margin: 24px 0; }
+    .three-columns { gap: 36px; margin: 24px 0; }
+    
+    .chart-container { padding: 30px; margin: 24px 0; border-radius: 18px; }
+    .quote-highlight { padding: 36px; margin: 36px 0; border-radius: 24px; font-size: 48px; }
+    .objective { padding: 30px; margin: 18px 0; border-radius: 0 18px 18px 0; font-size: 36px; }
+    .objective-title { font-size: 42px; margin-bottom: 15px; }
+    .result { padding: 30px; margin: 18px 0; border-radius: 18px; }
+    .result-value { font-size: 60px; margin: 12px 0; }
+    
+    table { margin: 24px 0; border-radius: 18px; font-size: 33px; }
+    th { padding: 18px 24px; font-size: 33px; }
+    td { padding: 15px 24px; font-size: 30px; }
+    
+    blockquote { margin: 30px 0; padding: 24px 30px; border-radius: 0 24px 24px 0; font-size: 39px; }
+}
+
+/* Fallback responsive design for smaller screens */
+@media (max-width: 1200px) {
+    section h1 { font-size: 24px; }
+    section h2 { font-size: 18px; }
+    section h3 { font-size: 16px; }
+    section p { font-size: 13px; }
+    section ul, section ol { font-size: 13px; }
+    .metric-value { font-size: 24px; }
+    .metric-label { font-size: 11px; }
+}
+
+@media (max-width: 768px) {
+    section h1 { font-size: 20px; }
+    section h2 { font-size: 16px; }
+    section h3 { font-size: 14px; }
+    section p { font-size: 12px; }
+    section ul, section ol { font-size: 12px; }
+    .metric-value { font-size: 20px; }
+    .metric-label { font-size: 10px; }
+    .two-columns, .three-columns {
+        grid-template-columns: 1fr;
+    }
+} 

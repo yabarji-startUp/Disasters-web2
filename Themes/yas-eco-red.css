@@ -1,0 +1,411 @@
+/* @theme yas-eco-red*/
+
+@charset "UTF-8";
+@import 'gaia';
+@import url('https://fonts.googleapis.com/css?family=Lato:400,900|Roboto+Mono:400,700&display=swap');
+@import '~highlight.js/styles/sunburst';
+
+:root {
+    padding: 50px 35px; /* Réduit pour éviter les débordements */
+    background-color: #f8f9fa !important;
+    --background-color: #2e7d32; /* Vert éco-responsable */
+    --accent-color: #d5103b; /* Rouge de yas.css */
+    --secondary-color: #4caf50; /* Vert accent */
+    --text-color: #2c3e50;
+    --light-bg: #e8f5e8;
+    --border-color: #81c784;
+    --red-light: #ffebee; /* Rouge clair pour les backgrounds */
+    --red-accent: #f44336; /* Rouge accent plus vif */
+}
+
+section, section p, section h1, section h2, section h3 {
+    color: var(--text-color) !important;
+    font-family: 'Lato', sans-serif;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+section header {
+    width: 100%;
+    height: 45px; /* Réduit */
+    background-image: linear-gradient(to right, var(--background-color), var(--accent-color));
+    padding: 8px 0 8px 15px; /* Réduit */
+    font-size: 20px; /* Réduit */
+    font-weight: 600;
+    line-height: 28px; /* Réduit */
+    color: #fff;
+    z-index: 100;
+    border-radius: 0 0 8px 8px;
+}
+
+section footer {
+    width: 100%;
+    height: 18px; /* Réduit */
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    background-image: linear-gradient(to right, var(--accent-color), transparent);
+    padding: 0 0 0 15px; /* Réduit */
+    font-size: 11px; /* Réduit */
+    line-height: 18px; /* Réduit */
+    color: #fff;
+    z-index: 100;
+}
+
+section::after {
+    position: absolute;
+    bottom: 0;
+    right: 15px; /* Réduit */
+    color: var(--accent-color);
+    padding: 0;
+    height: 18px; /* Réduit */
+    font-size: 14px; /* Réduit */
+    line-height: 18px; /* Réduit */
+}
+
+section h1 {
+    margin: 12px 0 10px 0; /* Réduit les marges */
+    line-height: 1.1; /* Réduit l'interligne */
+    font-size: 26px; /* Réduit la taille */
+    color: var(--background-color);
+    font-weight: 700;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+section h2 {
+    font-size: 20px; /* Réduit */
+    color: var(--accent-color);
+    margin: 10px 0 8px 0; /* Réduit */
+    line-height: 1.2; /* Réduit */
+}
+
+section h3 {
+    font-size: 16px; /* Réduit */
+    color: var(--text-color);
+    margin: 8px 0 6px 0; /* Réduit */
+    line-height: 1.3; /* Réduit */
+}
+
+section h1 strong, 
+section h2 strong, 
+section h3 strong {
+    color: var(--accent-color);
+    font-weight: 800;
+}
+
+section h1 code, 
+section h2 code {
+    font-size: inherit;
+    font-family: inherit;
+    background-color: var(--accent-color);
+    color: #fff;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+section p {
+    margin: 8px 0; /* Réduit */
+    line-height: 1.4; /* Réduit */
+    font-size: 14px; /* Réduit */
+}
+
+section ul, 
+section ol {
+    margin: 8px 0; /* Réduit */
+    padding-left: 20px; /* Réduit */
+    line-height: 1.4; /* Réduit */
+    font-size: 14px; /* Réduit */
+}
+
+section li {
+    margin: 4px 0; /* Réduit */
+    line-height: 1.4; /* Réduit */
+}
+
+section blockquote {
+    margin: 10px 0; /* Réduit */
+    padding: 8px 10px; /* Réduit */
+    border-left: var(--accent-color) 3px solid;
+    background: var(--red-light);
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 13px; /* Réduit */
+}
+
+blockquote::before, 
+blockquote::after {
+    content: '';
+}
+
+/* Page de couverture */
+section.cover {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--light-bg) 0%, var(--red-light) 100%);
+    padding: 30px 25px; /* Réduit */
+}
+
+section.cover h1, 
+section.cover h2, 
+section.cover h3, 
+section.cover p {
+    text-align: center;
+    color: var(--text-color);
+}
+
+section.cover h1 {
+    font-size: 36px; /* Réduit */
+    margin-bottom: 15px; /* Réduit */
+    color: var(--background-color);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    line-height: 1.1;
+}
+
+section.cover h2 {
+    font-size: 22px; /* Réduit */
+    margin-bottom: 12px; /* Réduit */
+    color: var(--accent-color);
+    line-height: 1.2;
+}
+
+section.cover h3 {
+    font-size: 16px; /* Réduit */
+    margin-bottom: 8px; /* Réduit */
+    color: var(--text-color);
+    line-height: 1.3;
+}
+
+section.cover h6 {
+    line-height: 25px; /* Réduit */
+}
+
+/* Styles pour les métriques et KPIs */
+.metric {
+    background: linear-gradient(135deg, var(--light-bg) 0%, var(--red-light) 100%);
+    border: 2px solid var(--border-color);
+    border-radius: 8px; /* Réduit */
+    padding: 10px; /* Réduit */
+    margin: 6px 0; /* Réduit */
+    text-align: center;
+}
+
+.metric-value {
+    font-size: 26px; /* Réduit */
+    font-weight: 700;
+    color: var(--background-color);
+    margin: 4px 0; /* Réduit */
+    line-height: 1;
+}
+
+.metric-label {
+    font-size: 12px; /* Réduit */
+    color: var(--text-color);
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+/* Styles pour les tableaux */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8px 0; /* Réduit */
+    background: #fff;
+    border-radius: 6px; /* Réduit */
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    font-size: 11px; /* Réduit */
+}
+
+th {
+    background: linear-gradient(135deg, var(--background-color) 0%, var(--accent-color) 100%);
+    color: #fff;
+    padding: 6px 8px; /* Réduit */
+    text-align: left;
+    font-weight: 600;
+    font-size: 11px; /* Réduit */
+}
+
+td {
+    padding: 5px 8px; /* Réduit */
+    border-bottom: 1px solid var(--border-color);
+    font-size: 10px; /* Réduit */
+    line-height: 1.2;
+}
+
+tr:nth-child(even) {
+    background-color: var(--light-bg);
+}
+
+tr:nth-child(odd) {
+    background-color: var(--red-light);
+}
+
+/* Styles pour les badges et étiquettes */
+.badge {
+    display: inline-block;
+    padding: 2px 6px; /* Réduit */
+    border-radius: 10px; /* Réduit */
+    font-size: 10px; /* Réduit */
+    font-weight: 600;
+    margin: 1px;
+}
+
+.badge-success {
+    background-color: var(--secondary-color);
+    color: #fff;
+}
+
+.badge-warning {
+    background-color: var(--accent-color);
+    color: #fff;
+}
+
+.badge-info {
+    background-color: var(--background-color);
+    color: #fff;
+}
+
+/* Styles pour les colonnes */
+.two-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px; /* Réduit */
+    margin: 8px 0; /* Réduit */
+}
+
+.three-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px; /* Réduit */
+    margin: 8px 0; /* Réduit */
+}
+
+/* Styles pour les icônes */
+.icon {
+    font-size: 16px; /* Réduit */
+    margin-right: 6px; /* Réduit */
+    vertical-align: middle;
+}
+
+/* Styles pour les étapes de timeline */
+.timeline {
+    position: relative;
+    padding-left: 18px; /* Réduit */
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px; /* Réduit */
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--background-color), var(--accent-color));
+}
+
+.timeline-item {
+    position: relative;
+    margin: 10px 0; /* Réduit */
+    padding-left: 12px; /* Réduit */
+    font-size: 12px; /* Réduit */
+    line-height: 1.3;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -5px; /* Réduit */
+    top: 5px; /* Réduit */
+    width: 10px; /* Réduit */
+    height: 10px; /* Réduit */
+    background: linear-gradient(135deg, var(--background-color), var(--accent-color));
+    border-radius: 50%;
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 1px var(--border-color);
+}
+
+/* Styles pour les graphiques et visualisations */
+.chart-container {
+    background: #fff;
+    border-radius: 6px; /* Réduit */
+    padding: 10px; /* Réduit */
+    margin: 8px 0; /* Réduit */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border: 1px solid var(--border-color);
+}
+
+/* Styles pour les citations importantes */
+.quote-highlight {
+    background: linear-gradient(135deg, var(--background-color) 0%, var(--accent-color) 100%);
+    color: #fff;
+    padding: 12px; /* Réduit */
+    border-radius: 8px; /* Réduit */
+    text-align: center;
+    font-size: 16px; /* Réduit */
+    font-weight: 600;
+    margin: 12px 0; /* Réduit */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    line-height: 1.3;
+}
+
+/* Styles pour les objectifs */
+.objective {
+    background: var(--light-bg);
+    border-left: 4px solid var(--background-color);
+    padding: 10px; /* Réduit */
+    margin: 6px 0; /* Réduit */
+    border-radius: 0 6px 6px 0; /* Réduit */
+    font-size: 12px; /* Réduit */
+    line-height: 1.3;
+}
+
+.objective-title {
+    font-weight: 700;
+    color: var(--background-color);
+    margin-bottom: 5px; /* Réduit */
+    font-size: 14px; /* Réduit */
+}
+
+/* Styles pour les résultats */
+.result {
+    background: linear-gradient(135deg, var(--light-bg) 0%, var(--red-light) 100%);
+    border: 2px solid var(--accent-color);
+    border-radius: 6px; /* Réduit */
+    padding: 10px; /* Réduit */
+    margin: 6px 0; /* Réduit */
+    text-align: center;
+}
+
+.result-value {
+    font-size: 20px; /* Réduit */
+    font-weight: 700;
+    color: var(--accent-color);
+    margin: 4px 0; /* Réduit */
+    line-height: 1.2;
+}
+
+/* Responsive design pour différentes tailles d'écran */
+@media (max-width: 1200px) {
+    section h1 { font-size: 24px; }
+    section h2 { font-size: 18px; }
+    section h3 { font-size: 16px; }
+    section p { font-size: 13px; }
+    section ul, section ol { font-size: 13px; }
+    .metric-value { font-size: 24px; }
+    .metric-label { font-size: 11px; }
+}
+
+@media (max-width: 768px) {
+    section h1 { font-size: 20px; }
+    section h2 { font-size: 16px; }
+    section h3 { font-size: 14px; }
+    section p { font-size: 11px; }
+    section ul, section ol { font-size: 11px; }
+    .two-columns, .three-columns {
+        grid-template-columns: 1fr;
+    }
+    .metric-value { font-size: 20px; }
+    .metric-label { font-size: 10px; }
+} 
