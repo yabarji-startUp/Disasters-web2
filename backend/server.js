@@ -44,7 +44,7 @@ app.use(compression({
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-// --- Static assets avec CORS et COEP ---
+// --- Static assets avec CORS, COEP et cache intelligent ---
 app.use(
   '/static',
   (req, res, next) => {
@@ -52,11 +52,28 @@ app.use(
     res.set('Cross-Origin-Resource-Policy', 'cross-origin')
     res.set('Cross-Origin-Opener-Policy', 'same-origin')
     res.set('Cross-Origin-Embedder-Policy', 'require-corp')
+    
+    // Cache intelligent basé sur le type de fichier
+    const filePath = req.path
+    if (filePath.endsWith('.webp') || filePath.endsWith('.jpg') || filePath.endsWith('.png')) {
+      res.setHeader('Cache-Control', 'public, max-age=86400, immutable') // 24h pour images
+    } else if (filePath.endsWith('.css') || filePath.endsWith('.js')) {
+      res.setHeader('Cache-Control', 'public, max-age=3600, must-revalidate') // 1h pour assets
+    } else {
+      res.setHeader('Cache-Control', 'public, max-age=300, must-revalidate') // 5min pour autres
+    }
+    
+    // Headers de compression et validation
+    res.setHeader('Vary', 'Accept-Encoding')
+    res.setHeader('ETag', `"${Date.now()}-${filePath}"`)
+    
     next()
   },
   express.static(path.join(__dirname, 'static'), {
     extensions: ['js', 'css', 'jpg', 'webp'],
-    maxAge: 86400000 // 24 heures de cache
+    maxAge: 86400000, // 24 heures de cache
+    etag: true,
+    lastModified: true
   })
 )
 

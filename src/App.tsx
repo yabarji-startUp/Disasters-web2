@@ -13,10 +13,9 @@ import {
   Image,
   Cloud
 } from 'lucide-react'
-import * as THREE from 'three'
-import { throttle } from 'lodash-es'
 import { OptimizedImage } from './components/OptimizedImage'
 import { OptimizedThreeJS } from './components/OptimizedThreeJS'
+import { CacheManager, useCacheStats } from './components/CacheManager'
 
 type Stat = {
   bundle: number
@@ -56,7 +55,7 @@ const color = (v: number, [g, y]: number[], inv = false) =>
     ? 'border-yellow-500/30 bg-yellow-500/20'
     : 'border-red-500/30 bg-red-500/20'
 
-export default function App() {
+function AppContent() {
   const [stats, setStats] = useState<Stat>({
     bundle: 0,
     weight: 0,
@@ -75,6 +74,9 @@ export default function App() {
 
   const injectedRef = useRef(false)
   const intervalRef = useRef<number>()
+  
+  // Statistiques du cache intelligent
+  const cacheStats = useCacheStats()
 
   // Three.js optimisé géré par le composant OptimizedThreeJS
 
@@ -220,6 +222,13 @@ export default function App() {
             EcoTraining Platform
           </h1>
           <p className="text-xl text-slate-300 max-w-3xl mx-auto">Plateforme d'entraînement avancée pour l'optimisation web et l'éco-conception</p>
+          <div className="mt-4 p-4 bg-green-900/30 border border-green-500/30 rounded-lg">
+            <p className="text-sm text-green-300">
+              🚀 Cache Intelligent C2 : Hit Rate {cacheStats.hitRate}% | 
+              Requêtes {cacheStats.totalRequests} | 
+              Taille Cache {cacheStats.cacheSize}
+            </p>
+          </div>
         </header>
         <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-16">
           <Card icon={<Database className="w-8 h-8 text-purple-400" />} title="Poids HTML" value={`${(stats.bundle / 1_024).toFixed(0)} kB`} tone={color(stats.bundle, limits.weight)} tip="transferSize du document" />
@@ -251,6 +260,15 @@ export default function App() {
         </section>
       </div>
     </div>
+  )
+}
+
+// Wrapper principal avec CacheManager
+export default function App() {
+  return (
+    <CacheManager>
+      <AppContent />
+    </CacheManager>
   )
 }
 

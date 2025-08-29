@@ -110,6 +110,16 @@ jobs:
           package-lock.json
         retention-days: 7
 
+    - name: Upload Lighthouse Reports
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: lighthouse-reports-${{ github.run_number }}
+        path: |
+          UF-Zoom/metrics/lighthouse/
+          scripts/lighthouse-audit.js
+        retention-days: 30
+
   eco-validation:
     runs-on: ubuntu-latest
     name: Eco Validation & RGESN Compliance
@@ -154,27 +164,22 @@ jobs:
         echo "========================="
         node scripts/rgesn-compliance.js || echo "⚠️ RGESN compliance check failed"
     
-    - name: Lighthouse audit
+    - name: Lighthouse Audit & EcoIndex
       run: |
-        echo "💡 Lighthouse audit"
-        echo "=================="
+        echo "💡 Lighthouse audit with EcoIndex calculation"
+        echo "============================================="
         
-        # Install Lighthouse
-        npm install -g lighthouse
+        # Run our custom Lighthouse audit script
+        npm run lighthouse || echo "⚠️ Lighthouse audit failed"
         
-        # Run Lighthouse audit
-        lighthouse http://localhost:3000 \
-          --output=json \
-          --output-path=./UF-Zoom/metrics/lighthouse-ci.json \
-          --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage" \
-          --only-categories=performance,accessibility,best-practices,seo || echo "⚠️ Lighthouse audit failed"
-        
-        # Extract and display key metrics
-        if [ -f "./UF-Zoom/metrics/lighthouse-ci.json" ]; then
-          echo "📊 Lighthouse Results:"
-          cat ./UF-Zoom/metrics/lighthouse-ci.json | jq -r '.categories.performance.score * 100 | "Performance: \(.)%"' || echo "Performance: N/A"
-          cat ./UF-Zoom/metrics/lighthouse-ci.json | jq -r '.categories.accessibility.score * 100 | "Accessibility: \(.)%"' || echo "Accessibility: N/A"
-          cat ./UF-Zoom/metrics/lighthouse-ci.json | jq -r '.categories["best-practices"].score * 100 | "Best Practices: \(.)%"' || echo "Best Practices: N/A"
+        # Display results
+        if [ -f "./UF-Zoom/metrics/lighthouse/lighthouse-summary-*.json" ]; then
+          echo "📊 Latest Lighthouse Results:"
+          LATEST_SUMMARY=$(ls -t ./UF-Zoom/metrics/lighthouse/lighthouse-summary-*.json | head -1)
+          cat "$LATEST_SUMMARY" | jq -r '.ecoIndex.score | "EcoIndex: \(.)/100"' || echo "EcoIndex: N/A"
+          cat "$LATEST_SUMMARY" | jq -r '.lighthouse.performance | "Performance: \(.)/100"' || echo "Performance: N/A"
+          cat "$LATEST_SUMMARY" | jq -r '.lighthouse.accessibility | "Accessibility: \(.)/100"' || echo "Accessibility: N/A"
+          cat "$LATEST_SUMMARY" | jq -r '.lighthouse["best-practices"] | "Best Practices: \(.)/100"' || echo "Best Practices: N/A"
         fi
     
     - name: EcoIndex simulation

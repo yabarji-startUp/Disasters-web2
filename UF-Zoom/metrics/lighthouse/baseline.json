@@ -1,0 +1,31 @@
+{
+  "timestamp": "2025-08-29T02:32:13.520Z",
+  "url": "http://localhost:3000",
+  "ecoIndex": {
+    "score": 0,
+    "grade": "G",
+    "metrics": {
+      "totalByteWeight": 12.7,
+      "domSize": 176,
+      "requests": 1471,
+      "performance": 25,
+      "accessibility": 95,
+      "bestPractices": 96,
+      "seo": 83
+    }
+  },
+  "lighthouse": {
+    "performance": 25,
+    "accessibility": 95,
+    "bestPractices": 96,
+    "seo": 83
+  },
+  "metrics": {
+    "firstContentfulPaint": 42981.70225000033,
+    "largestContentfulPaint": 84099.37570000056,
+    "totalBlockingTime": 11298.16744999999,
+    "cumulativeLayoutShift": 0.0014183930556642343,
+    "speedIndex": 62698.8882620002,
+    "interactive": 84099.37570000056
+  }
+}

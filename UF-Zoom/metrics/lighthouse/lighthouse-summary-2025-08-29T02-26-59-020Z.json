@@ -1,0 +1,23 @@
+{
+  "timestamp": "2025-08-29T02:26:59.053Z",
+  "url": "http://localhost:3000",
+  "ecoIndex": {
+    "score": null,
+    "grade": "A",
+    "metrics": {
+      "totalByteWeight": null,
+      "requests": 0,
+      "performance": 0,
+      "accessibility": 0,
+      "bestPractices": 0,
+      "seo": 0
+    }
+  },
+  "lighthouse": {
+    "performance": 0,
+    "accessibility": 0,
+    "bestPractices": 0,
+    "seo": 0
+  },
+  "metrics": {}
+}
