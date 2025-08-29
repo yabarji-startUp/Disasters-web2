@@ -30,7 +30,16 @@ app.use((_, res, next) => {
 
 app.use(helmet({ contentSecurityPolicy: false }))
 app.use(cors())
-app.use(compression())
+app.use(compression({
+  level: 6,
+  threshold: 1024,
+  filter: (req, res) => {
+    if (req.headers['x-no-compression']) {
+      return false
+    }
+    return compression.filter(req, res)
+  }
+}))
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -47,7 +56,7 @@ app.use(
   },
   express.static(path.join(__dirname, 'static'), {
     extensions: ['js', 'css', 'jpg', 'webp'],
-    maxAge: 0
+    maxAge: 86400000 // 24 heures de cache
   })
 )
 

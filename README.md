@@ -1,281 +1,320 @@
-# 🌱 Disaster-web2 - Plateforme d'Éco-conception
+# 🌱 Disaster Web 2 - Projet Éco-conception
 
-> **🎯 Mission: Du diagnostic à l'impact - Optimiser, Mesurer, Décider**  
-> Projet de formation à l'éco-conception web avec implémentation pratique sur disaster-web2 et cadrage théorique pour Zoom.
+## 📋 Présentation du Projet
 
-## 📋 Contexte du Projet
+**Disaster Web 2** est un projet de laboratoire pour l'éco-conception numérique, servant de support pratique pour l'optimisation et la mesure d'impact environnemental. Ce projet s'inscrit dans le cadre d'une certification en éco-conception avec une approche duale :
 
-### **Unité Fonctionnelle (UF)**
-**"Participer à une visioconférence avec Zoom"**
+- **UF Zoom** : Unité Fonctionnelle "Participer à une visioconférence avec Zoom" (analyse théorique)
+- **Disaster Web 2** : Projet pratique pour implémentation et mesure des optimisations
 
-### **Approche Dual**
-- **Zoom** : Cadrage théorique et préconisations (code source non accessible)
-- **Disaster-web2** : Implémentation pratique et mesures concrètes
+## 🎯 Objectifs du Projet
 
-### **Objectifs**
-- Conduire une ACV simplifiée d'un service numérique
-- Cadrer un projet d'éco-conception avec budget environnemental
-- Appliquer le référentiel RGESN
-- Implémenter des optimisations concrètes
-- Mesurer et analyser les gains obtenus
+### 🌍 **Objectif Principal**
+Conduire une éco-optimisation complète : diagnostic → cadrage → implémentation → mesure → impact, avec une synthèse livrée sous forme de dossier PDF et support de décision.
 
----
-
-## 🚀 Démarrage Rapide
-
-### Prérequis
-- Node.js ≥ 18
-- npm ≥ 9
-- Git (pour le workflow GitFlow)
-
-### Installation & Lancement
-
-```bash
-# Installation des dépendances
-npm install
-
-# Démarrage de l'application complète
-npm run dev
-```
-
-L'application sera disponible sur :
-- Frontend: http://localhost:3000 (ou 3001 si port occupé)
-- Backend: http://localhost:5001
-
-### Scripts Disponibles
-
-- `npm run dev` - Lance frontend et backend simultanément
-- `npm run frontend` - Lance uniquement le frontend (Vite)
-- `npm run backend` - Lance uniquement le backend (Express)
-- `npm run build` - Build de production
-- `npm run lint` - Analyse du code
-
----
-
-## 📊 Métriques en Temps Réel
-
-La plateforme affiche en continu :
-
-### **Performance Frontend**
-- **Taille du bundle** : Poids total des ressources chargées
-- **Poids page** : Poids total de la page (toutes ressources confondues)
-- **Objets DOM** : Complexité de la page (nombre de nœuds)
-- **Ressources** : Nombre de ressources chargées
-- **JS** : Poids total des fichiers JavaScript
-- **CSS** : Poids total des fichiers CSS
-- **Images** : Poids total des images chargées
-- **Cache hit** : Taux d'utilisation du cache navigateur
-
-### **Performance Backend**
-- **Utilisation mémoire** : Consommation RAM côté serveur
-- **CPU** : Charge processeur du serveur
-- **Requêtes/seconde** : Fréquence des appels API (RPS)
-- **Temps de rendu** : Performance d'affichage (temps de chargement)
-
----
+### 📊 **Objectifs Spécifiques**
+- **ACV Simplifiée** : Identifier et prioriser les impacts environnementaux
+- **Cadrage & Budget** : Définir objectifs et contraintes environnementales
+- **Référentiel Projet** : Adapter les bonnes pratiques RGESN
+- **Implémentations** : Optimiser le service sur disaster-web2
+- **Mesure & Analyse** : Quantifier les gains avant/après
 
 ## 🎓 Compétences Évaluées (C1-C5)
 
-### **C1 - ACV Simplifiée** ✅ COMPLÉTÉE
-- **Méthodologie** : UF définie, phases analysées, hotspots identifiés
-- **Mesures** : Lighthouse Performance 25/100 (baseline)
-- **Impact** : 0.44 gCO2e par session estimé
-- **Objectifs** : Performance 25→85, CO2 -75%, bande passante -75%
-- **Documents** : `UF-Zoom/docs/C1-ACV-methodologie.md`, `UF-Zoom/docs/C1-ACV-analyse.md`
-- **Présentation** : `UF-Zoom/Slide-Oral.md` (Section 2)
+### **✅ C1 - ACV Simplifiée** COMPLÉTÉE
+**Statut** : ✅ **FINALISÉE** - Hotspots identifiés et optimisations prioritaires implémentées
 
-### **C2 - Cadrage et Budget Environnemental** 🔄 EN COURS
-- **Budget CO2** : Objectifs chiffrés par phase
-- **Arbitrages** : Gains vs efforts vs contraintes
-- **Accompagnement** : Plan de mise en œuvre
-- **Documents** : À créer dans `UF-Zoom/docs/`
-- **Présentation** : `UF-Zoom/Slide-Oral.md` (Section 3)
+**Optimisations C1 implémentées** :
+- **PR #001 - Images** : WebP conversion (7.2MB → 3.0MB, -59%), OptimizedImage component avec lazy loading
+- **PR #002 - Three.js** : 20 → 5 cubes, animations conditionnelles, optimisations GPU (antialias: false, pixel ratio limité)
+- **PR #003 - Bundle** : Tree-shaking lodash (import spécifique), compression Brotli niveau 6, cache 24h
+- **PR #004 - Polling** : intervalle 1s → 5s, réduction requêtes simultanées (2 → 1)
 
-### **C3 - Référentiel RGESN** 📋 PLANIFIÉ
-- **Bonnes pratiques** : Adaptation au contexte disaster-web2
-- **Conditions de succès** : Critères de validation
-- **Moyens de test** : Protocoles de vérification
-- **Documents** : À créer dans `UF-Zoom/docs/`
-- **Présentation** : `UF-Zoom/Slide-Oral.md` (Section 4)
+**Résultats mesurés** :
+- **Poids total** : 16.7MB → 12.7MB (-24%)
+- **Bytes gaspillés formats modernes** : 0MB (élimination complète)
+- **Performance Lighthouse** : 25/100 (baseline maintenue pour C2-C5)
 
-### **C4 - Implémentations Réalisées** 🛠️ PLANIFIÉ
-- **Optimisations** : 2-3 nouvelles implémentations
-- **Pull Requests** : Traçabilité technique
-- **Tests** : Avant/après validation
-- **Documents** : À créer dans `UF-Zoom/docs/`
-- **Présentation** : `UF-Zoom/Slide-Oral.md` (Section 4)
+**RGESN BP implémentées** : Images responsives & WebP/AVIF, Nettoyage scripts tiers, Cache intelligent
+**GreenScore intégré** : DE02/DE03 (Cache intelligent), AR01 (Event Driven Architecture)
 
-### **C5 - Mesure et Analyse** 📈 PLANIFIÉ
-- **Protocole** : Outils, environnement, UF, parcours utilisateur
-- **Gains quantifiés** : Mesures réelles avant/après
-- **Analyse** : Interprétation approfondie des résultats
-- **Documents** : À créer dans `UF-Zoom/docs/`
-- **Présentation** : `UF-Zoom/Slide-Oral.md` (Section 5)
-- **Mesures** : `UF-Zoom/metrics/` (baseline et après optimisations)
+**Note** : Les optimisations fines Three.js (frame rate 30 FPS, pixel ratio limité, réduction 5→3 cubes) seront implémentées dans **C4 - Optimisation Service Numérique**.
 
----
+### **🔄 C2 - Cadrage et Budget Environnemental** EN COURS
+**Statut** : 🔄 **À IMPLÉMENTER**
 
-## 📁 Structure du Projet
+**Objectifs** :
+- Définir objectifs quantifiés CO2/énergie pour Zoom (basé sur disaster-web2)
+- Documenter arbitrages gains/efforts/contraintes pour Zoom
+- Proposer plan d'accompagnement pour Zoom
+
+### **🔄 C3 - Référentiel Projet** EN COURS
+**Statut** : 🔄 **À IMPLÉMENTER**
+
+**Objectifs** :
+- Adapter bonnes pratiques RGESN spécifiquement pour Zoom (basé sur disaster-web2)
+- Définir conditions de réussite spécifiques pour optimisations Zoom
+- Établir moyens de test pour valider optimisations sur Zoom
+- Esquisser stratégie de conformité pour Zoom
+- **Nouveau** : Implémenter cache headers intelligents et monitoring (RGESN 3.1, 4.1)
+
+### **🔄 C4 - Implémentations Réalisées** EN COURS
+**Statut** : 🔄 **À IMPLÉMENTER**
+
+**Objectifs** :
+- Implémenter 2-3 optimisations supplémentaires (API pagination, lazy loading avancé, service worker désactivation)
+- Créer PR traçables (#005-#007) pour ces implémentations
+- Conduire et documenter tests avant/après pour ces nouvelles optimisations
+- Documenter blocages ou adaptations lors de l'implémentation
+- **Nouveau** : Optimisations fines Three.js (frame rate 30 FPS, pixel ratio limité, 3 cubes)
+
+### **🔄 C5 - Mesure et Analyse** EN COURS
+**Statut** : 🔄 **À IMPLÉMENTER**
+
+**Objectifs** :
+- Documenter protocole de mesure détaillé (outils, environnement, UF, parcours utilisateur, déclencheurs CI)
+- Quantifier gains avant/après pour disaster-web2 basé sur mesures réelles
+- Fournir exports réels d'EcoIndex (via extension navigateur/site web), Lighthouse, et Green-IT
+- Conduire analyse approfondie et interprétation des résultats mesurés
+- **Nouveau** : Implémenter monitoring RPS (fenêtre glissante) et calcul stable cache hit
+
+## 🏗️ Architecture du Projet
 
 ```
-├── src/                    # Application React + TypeScript
-├── backend/               # Serveur Express.js
-├── data/                  # Fichiers de données volumineux
-├── UF-Zoom/              # Documentation Zoom UF (approche dual)
-│   ├── README.md         # Architecture et documentation du dossier
-│   ├── slide.md          # Présentation originale
-│   ├── Slide-Oral.md     # Présentation finale C1-C5
-│   ├── note-Modif-Slide-Oral.md # Notes des modifications
-│   ├── generate-slide.sh # Script de génération des présentations
-│   ├── docs/             # Documentation des compétences C1-C5
-│   │   ├── C1-ACV-methodologie.md
-│   │   ├── C1-ACV-analyse.md
-│   │   └── template-dossier-projet.md
-│   ├── metrics/          # Résultats de mesure et analyse
-│   │   ├── README.md     # Protocole et structure des métriques
-│   │   ├── lighthouse-before.json
-│   │   └── lighthouse-after.json
-│   └── output/           # Présentations générées (HTML/PDF/PPTX)
-├── .yassen/              # Documents de cadrage
-└── README.md             # Ce fichier
+Disasters-web2/
+├── 📁 backend/                 # Serveur Express.js
+│   ├── server.js              # API avec middleware RPS
+│   └── static/                # Assets statiques optimisés
+├── 📁 src/                    # Frontend React
+│   ├── App.tsx               # Dashboard principal
+│   └── components/           # Composants optimisés
+├── 📁 UF-Zoom/               # Documentation UF Zoom
+│   ├── docs/                 # Documentation C1-C5
+│   ├── metrics/              # Résultats de mesure
+│   └── Slide-Oral.md         # Présentation orale
+├── 📁 .github/workflows/     # Workflows CI/CD automatisés
+│   ├── eco-budget.yml        # Eco Budget & RGESN Compliance
+│   ├── deploy-render.yml     # Deploy avec EPCT & Eco-Validation
+│   └── feature-complete.yml  # Build automatique des features
+├── 📁 .yassen/               # Ressources pédagogiques
+│   └── PRD-Build-Automatique.md # PRD pour build automatique
+├── 📁 .note/                 # Notes de développement (ignoré par Git)
+└── 📄 README.md              # Ce fichier
 ```
 
----
-
-## 🛠️ Outils et Technologies
+## 🚀 Technologies Utilisées
 
 ### **Frontend**
-- **React 18** + **TypeScript**
-- **Vite** (build tool)
-- **Tailwind CSS** (styling)
-- **Three.js** (animations 3D)
-- **Lucide React** (icônes)
-- **Recharts/Victory** (graphiques)
+- **React 18** avec TypeScript
+- **Vite** pour le build optimisé
+- **Tailwind CSS** pour le styling
+- **Three.js** pour les visualisations 3D
+- **Lucide React** pour les icônes
+- **Recharts/Victory** pour les graphiques
 
 ### **Backend**
-- **Express.js** (serveur)
-- **Compression** (gzip)
-- **Helmet** (sécurité)
-- **RPS middleware** (monitoring)
+- **Express.js** avec middleware de monitoring
+- **Compression** Brotli/Gzip
+- **Helmet** pour la sécurité
+- **Middleware RPS** pour calcul des requêtes par seconde
 
-### **Mesure et Analyse**
-- **Lighthouse** (audit performance)
-- **Chrome DevTools** (développement)
-- **EcoIndex** (impact environnemental)
-- **GreenIT Analysis** (bonnes pratiques)
+### **Outils de Mesure**
+- **Lighthouse** pour audit performance
+- **EcoIndex** (extension navigateur/site web)
+- **Green-IT** pour métriques environnementales
+- **Chrome DevTools** pour profiling
 
----
+### **CI/CD & Workflows**
+- **GitHub Actions** avec workflows automatisés
+- **EPCT Workflow** : Explore, Plan, Code, Test
+- **RGESN Compliance** : Validation automatique des bonnes pratiques
+- **Build Automatique** : Déclenchement à la fin de chaque feature
 
-## 📈 Métriques Actuelles (Baseline)
+## 📊 Métriques Actuelles
 
-### **Lighthouse Scores**
-- **Performance** : 25/100 ❌ (Critique)
-- **Accessibility** : 79/100 ✅ (Bon)
-- **Best Practices** : 100/100 ✅ (Excellent)
-- **SEO** : 75/100 ✅ (Bon)
-
-### **Hotspots Identifiés**
-- **Images non optimisées** : 6,830 KiB d'économies possibles
-- **Bundle JavaScript** : Volumineux, nécessite optimisation
-- **DOM complexe** : 174 éléments, TBT 950ms
-- **Cache non optimisé** : Rechargement systématique
+### **Performance (Lighthouse)**
+- **Score global** : 25/100
+- **First Contentful Paint** : 2.8s
+- **Largest Contentful Paint** : 8.2s
+- **Total Blocking Time** : 1.2s
 
 ### **Impact Environnemental**
-- **CO2 par session** : 0.44 gCO2e (estimé)
-- **Bande passante** : 8,830 KiB par session
-- **EcoIndex** : Estimé C/D (à améliorer)
+- **Poids total de la page** : 12.7MB (-24% vs baseline)
+- **Images** : 0MB (optimisées WebP)
+- **JavaScript** : 3.2MB
+- **CSS** : 4.3KB
 
----
+### **Optimisations Appliquées**
+- ✅ **Images WebP** : Conversion et lazy loading
+- ✅ **Three.js optimisé** : 5 cubes avec animations conditionnelles
+- ✅ **Bundle tree-shaking** : Import lodash-es spécifique
+- ✅ **Cache intelligent** : Headers 24h pour assets statiques
+- ✅ **Polling optimisé** : Intervalle 5s, requêtes réduites
 
-## 🎯 Objectifs d'Optimisation
-
-### **Objectifs Chiffrés**
-- **Performance Lighthouse** : 25 → 85 (+240%)
-- **Taille images** : 6,830 → 1,366 KiB (-80%)
-- **Bundle JavaScript** : ~2MB → 800KB (-60%)
-- **Impact CO2** : 0.44 → 0.11 gCO2e (-75%)
-
-### **Indicateurs de Succès**
-- **EcoIndex** : C/D → A/B (+2 grades)
-- **Temps de chargement** : Réduction significative
-- **Bande passante** : -75% de consommation
-- **Expérience utilisateur** : Amélioration perçue
-
----
-
-## 🔄 Workflow Git
+## 🔄 Workflow Git & CI/CD
 
 ### **Branches**
-- `main` : Code de production
-- `develop` : Branche de développement principale
-- `feature/C1-ACV-simplifiee` : Compétence C1 ✅
-- `feature/C2-cadrage-budget` : Compétence C2 🔄
-- `feature/C3-referentiel-rgesn` : Compétence C3 📋
-- `feature/C4-implementations` : Compétence C4 🛠️
-- `feature/C5-mesure-analyse` : Compétence C5 📈
+- **`main`** : Code de production stable
+- **`develop`** : Branche de développement principale
+- **`feature/C1-ACV-simplifiee`** : Optimisations C1 (ACTUELLE)
+- **`feature/C2-cadrage-budget`** : Cadrage et budget (À CRÉER)
+- **`feature/C3-referentiel`** : Référentiel projet (À CRÉER)
+- **`feature/C4-implementations`** : Implémentations avancées (À CRÉER)
+- **`feature/C5-mesure-analyse`** : Mesure et analyse (À CRÉER)
+
+### **Tags**
+- **`v0.1-baseline`** : État initial avant optimisations
+- **`v0.2-cadrage`** : Cadrage et méthodologie
+- **`v1.0-impact`** : Optimisations complètes (À CRÉER)
 
 ### **Pull Requests**
-- Une PR par compétence après validation
-- Tests et build obligatoires
-- Documentation complète
+- **PR #001** : Optimisation images WebP
+- **PR #002** : Optimisation Three.js
+- **PR #003** : Optimisation bundle et cache
+- **PR #004** : Optimisation polling réseau
+- **PR #005-#007** : Optimisations C4 (À CRÉER)
+
+### **Workflows GitHub Actions**
+
+#### **🔄 eco-budget.yml**
+- **Déclencheurs** : Push sur `main`, `develop`, `feature/*` | PR vers `main`, `develop`
+- **Fonctionnalités** :
+  - EPCT Workflow complet (Explore, Plan, Code, Test)
+  - Validation RGESN automatique
+  - Lighthouse audit et EcoIndex simulation
+  - Feature validation spécifique
+  - Rapports détaillés et artifacts
+
+#### **🚀 deploy-render.yml**
+- **Déclencheurs** : Push sur `main`, `develop` | PR vers `main`
+- **Fonctionnalités** :
+  - EPCT Pre-deploy validation
+  - Eco-validation pre/post-deploy
+  - Déploiement automatique sur Render
+  - Métriques comparatives pre/post-deploy
+  - RGESN Compliance intégrée
+
+#### **🎯 feature-complete.yml**
+- **Déclencheurs** : Push sur `feature/*` | PR vers `develop`, `main`
+- **Fonctionnalités** :
+  - Build automatique à la fin de chaque feature
+  - Workflow EPCT complet
+  - Validation éco-conception
+  - Rapports par feature
+  - Résumé automatique pour merge
+
+## 📋 Livrables
+
+### **1. Dossier Projet (PDF)**
+- **Structure** : Résumé exécutif, contexte, méthode ACV, cadrage, référentiel, optimisations, mesure & analyse
+- **Statut** : 🔄 En cours de finalisation
+- **Fichier** : `UF-Zoom/docs/Dossier-Projet.md`
+
+### **2. Support de Décision (Deck)**
+- **Structure** : 15-30 slides max, problème → UF & impacts → objectifs → BP clés → résultats → décisions
+- **Statut** : 🔄 En cours de finalisation
+- **Fichier** : `UF-Zoom/Slide-Oral.md`
+
+### **3. Traçabilité Technique**
+- **Repo Git** : Tags jalons, PR documentées, notes de tests
+- **Backlog v2** : 5-8 user stories priorisées (À CRÉER)
+- **Roadmap v2** : Jalons atteints et re-priorisation (À CRÉER)
+
+## 🛠️ Installation et Lancement
+
+### **Prérequis**
+```bash
+Node.js >= 18
+npm >= 9
+```
+
+### **Installation**
+```bash
+git clone <repository-url>
+cd Disasters-web2
+npm install
+```
+
+### **Lancement**
+```bash
+# Développement
+npm run dev
+
+# Production
+npm run build
+npm start
+```
+
+### **Mesures**
+```bash
+# Lighthouse
+npx lighthouse http://localhost:3000 --output=json --output-path=./UF-Zoom/metrics/
+
+# EcoIndex (via extension navigateur)
+# Visiter https://www.ecoindex.fr/ et analyser l'URL
+```
+
+### **Workflows Automatisés**
+```bash
+# Build automatique à la fin d'une feature
+npm run workflow:feature-complete
+
+# Workflow EPCT complet
+npm run epct:complete
+
+# Validation RGESN
+node scripts/rgesn-compliance.js
+```
+
+## 📚 Documentation
+
+### **UF Zoom**
+- **README** : `UF-Zoom/README.md`
+- **Présentation** : `UF-Zoom/Slide-Oral.md`
+- **Dossier Projet** : `UF-Zoom/docs/Dossier-Projet.md`
+
+### **Métriques**
+- **README** : `UF-Zoom/metrics/README.md`
+- **Baseline** : `UF-Zoom/metrics/lighthouse-before.json`
+- **Après C1** : `UF-Zoom/metrics/lighthouse-after-c1-complete.json`
+
+### **Notes de Développement**
+- **Notes** : `UF-Zoom/.note/` (ignoré par Git)
+- **Modifications** : Documentation des changements apportés
+
+### **Workflows CI/CD**
+- **Eco Budget** : `.github/workflows/eco-budget.yml`
+- **Deploy Render** : `.github/workflows/deploy-render.yml`
+- **Feature Complete** : `.github/workflows/feature-complete.yml`
+
+## 🎯 Prochaines Étapes
+
+### **Immédiat (C1 Finalisation)**
+1. ✅ Finaliser documentation C1
+2. 🔄 Créer PR pour C1
+3. 🔄 Merger dans develop
+4. 🔄 Créer tag v0.2-cadrage
+
+### **Suivant (C2-C5)**
+1. 🔄 Créer branche C2
+2. 🔄 Implémenter cadrage et budget
+3. 🔄 Répéter pour C3, C4, C5
+4. 🔄 Finaliser livrables
+
+### **CI/CD & Build Automatique**
+1. ✅ Workflows GitHub Actions améliorés
+2. ✅ Build automatique à la fin de chaque feature
+3. ✅ Validation EPCT et RGESN intégrée
+4. ✅ Métriques et rapports automatisés
+
+## 📞 Contact
+
+**Auteur** : Yassen ABARJI  
+**Email** : Yabarji1@gmail.com  
+**Projet** : Individuel  
+**Formation** : Certification Éco-conception  
+**Date de soumission** : 04/09/2025
 
 ---
 
-## 📚 Livrables Attendus
-
-### **Dossier Projet (PDF)**
-- Résumé exécutif
-- Contexte et ACV
-- Cadrage et budget
-- Référentiel et optimisations
-- Mesures et analyse
-- Annexes techniques
-
-### **Support de Décision (15-30 slides)**
-- Problématique et UF
-- Impacts identifiés
-- Objectifs et budget
-- 3 bonnes pratiques clés
-- Résultats avant/après
-- Décisions et prochaines étapes
-- **Fichier source** : `UF-Zoom/Slide-Oral.md`
-- **Génération** : `UF-Zoom/generate-slide.sh`
-
-### **Traçabilité Technique**
-- Repository Git avec tags
-- Backlog v2 (5-8 user stories)
-- Roadmap v2 spécifique disaster-web2
-- **Documentation** : `UF-Zoom/README.md` (architecture complète)
-- **Notes de modifications** : `UF-Zoom/note-Modif-Slide-Oral.md`
-
----
-
-## 🌱 Impact Environnemental
-
-Cette plateforme permet d'apprendre :
-- **Éco-conception web** : Principes et bonnes pratiques
-- **ACV simplifiée** : Méthodologie d'analyse
-- **Mesure d'impact** : Outils et métriques
-- **Optimisation** : Techniques concrètes
-- **RGESN** : Référentiel français
-
----
-
-## 📚 Documentation Complète
-
-### **UF-Zoom** : Documentation Zoom UF
-- **README** : `UF-Zoom/README.md` - Architecture et contenu du dossier
-- **Présentation** : `UF-Zoom/Slide-Oral.md` - Version finale C1-C5
-- **Notes** : `UF-Zoom/note-Modif-Slide-Oral.md` - Modifications apportées
-- **Génération** : `UF-Zoom/generate-slide.sh` - Script automatique
-
-### **Approche Dual Documentée**
-- **Zoom UF** : Cadrage théorique et préconisations
-- **Disaster-web2** : Implémentation pratique et mesures
-- **Méthodologie** : Applicable et reproductible
-
----
-
-**Bonne formation ! 🚀**
-
-*L'objectif est d'apprendre à identifier, mesurer et corriger les problèmes de performance et d'impact environnemental.*
+*Dernière mise à jour : $(date)*
