@@ -1165,8 +1165,8 @@ header: "![6](https://icongr.am/material/numeric-6-circle.svg?color=d5103b) Conc
 
 <!-- _class: cover -->
 
-<br><br><br><br>
-<br><br><br><br>
+<br><br><br>
+<br><br><br>
 
 # 🙏 **Questions & Discussion**
 
@@ -1174,10 +1174,10 @@ header: "![6](https://icongr.am/material/numeric-6-circle.svg?color=d5103b) Conc
 
 ### **Contact & Ressources**
 
-<br><br><br><br>
-<br><br><br><br>
+<br><br><br>
+<br><br><br>
 
 - **Dépôt Git :** [Lien vers le projet](https://github.com/yabarji-startUp/Disasters-web/)
 - **Documentation complète :** docs/
 - **Métriques détaillées :** metrics/
-- **Template dossier :** docs/template-dossier-projet.md 
+- **Dossier Projet :** docs/Dossier-Projet.md 
