@@ -46,7 +46,7 @@ app.use(
     next()
   },
   express.static(path.join(__dirname, 'static'), {
-    extensions: ['js', 'css', 'jpg'],
+    extensions: ['js', 'css', 'jpg', 'webp'],
     maxAge: 0
   })
 )

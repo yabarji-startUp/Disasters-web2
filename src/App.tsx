@@ -15,6 +15,7 @@ import {
 } from 'lucide-react'
 import * as THREE from 'three'
 import _ from 'lodash'
+import { OptimizedImage } from './components/OptimizedImage'
 
 type Stat = {
   bundle: number
@@ -256,7 +257,13 @@ export default function App() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white">
       <div className="fixed inset-0 opacity-10 pointer-events-none">
-        <img src="http://localhost:5001/static/large.jpg" className="absolute inset-0 w-full h-full object-cover mix-blend-overlay" />
+        <OptimizedImage
+          src="http://localhost:5001/static/large.jpg"
+          webpSrc="http://localhost:5001/static/large.webp"
+          alt="Background image for eco-training platform"
+          className="absolute inset-0 w-full h-full object-cover mix-blend-overlay"
+          loading="lazy"
+        />
       </div>
       <div className="relative z-10 container mx-auto px-6 py-12">
         <header className="text-center mb-16">
