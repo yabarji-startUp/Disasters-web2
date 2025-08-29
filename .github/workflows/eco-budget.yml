@@ -258,7 +258,7 @@ jobs:
   feature-complete-validation:
     runs-on: ubuntu-latest
     name: Feature Complete Validation
-    if: contains(github.ref, 'feature/')
+    if: contains(github.ref_name, 'feature/')
     
     steps:
     - name: Checkout code
@@ -314,7 +314,7 @@ jobs:
         echo "- EPCT Workflow: ${{ needs.epct-workflow.result }}"
         echo "- Build & Validation: ${{ needs.build-and-validate.result }}"
         echo "- Eco Validation: ${{ needs.eco-validation.result }}"
-        if contains(github.ref, 'feature/'); then
+        if [[ "${{ github.ref }}" == *"feature/"* ]]; then
           echo "- Feature Complete: ${{ needs.feature-complete-validation.result }}"
         fi
         echo ""
