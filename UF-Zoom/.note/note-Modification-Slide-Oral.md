@@ -2,6 +2,31 @@
 
 ## 🔄 Modifications Apportées
 
+### **Version 3.0 - Finalisation C2** (Date: $(date))
+
+#### **Section C2 - Cadrage et Budget Environnemental**
+**Modifications** :
+- ✅ **Statut mis à jour** : "FINALISÉE" avec détails complets
+- ✅ **Cadrage du projet** : Contraintes techniques, environnementales, budgétaires, temporelles
+- ✅ **Budget environnemental quantifié** : 300k€ sur 6 mois, 12 personnes
+- ✅ **Objectifs quantifiés** : -30% CO2, -40% bande passante, < 2.5 kWh/heure, EcoIndex > 85/100
+- ✅ **Roadmap détaillée** : 6 mois avec jalons critiques mensuels
+- ✅ **Arbitrages gains/efforts/contraintes** : Matrice impact/effort avec 3 niveaux de priorité
+- ✅ **Plan d'accompagnement** : Formation équipe, processus EPCT, recommandations Zoom
+
+**Documentation mise à jour** :
+- ✅ **UF-Zoom/docs/C2-cadrage-budget.md** : Document complet C2 créé
+- ✅ **README.md** : Statut C2 mis à jour
+- ✅ **UF-Zoom/README.md** : Statut C2 mis à jour
+- ✅ **UF-Zoom/docs/Dossier-Projet.md** : Section C2 complétée
+- ✅ **UF-Zoom/Slide-Oral.md** : Section C2 détaillée
+- ✅ **UF-Zoom/.note/note-Modification-Slide-Oral.md** : Notes de modification
+
+**RGESN BP intégrées** : Contraintes environnementales, budget quantifié, planification
+**GreenScore intégré** : Planification et accompagnement
+
+**Raison** : Finalisation complète de C2 avec cadrage validé et budget environnemental quantifié.
+
 ### **Version 2.0 - Intégration Workflows GitHub** (Date: $(date))
 
 #### **Section C1 - ACV Simplifiée**
@@ -60,12 +85,13 @@
 ## 📊 État Actuel
 
 ### **✅ Complété**
-- **C1 - ACV Simplifiée** : Finalisée avec optimisations prioritaires
+- **C1 - ACV Simplifiée** : Finalisée avec optimisations prioritaires ✅ **PR VALIDÉE**
 - **C2 - Cadrage et Budget** : Finalisée avec cadrage validé et budget environnemental quantifié
 - **Structure générale** : Framework pour C3-C5
 - **Méthodologie** : ACV screening documentée
 - **Mesures** : Baseline disaster-web2 intégrée
 - **Workflows GitHub** : Intégration complète des workflows automatisés
+- **Documentation C2** : Document complet créé et intégré
 
 ### **🔄 En cours**
 - **C2 - Cadrage** : ✅ COMPLÉTÉE - Cadrage validé et budget environnemental quantifié
@@ -125,9 +151,11 @@
 1. ✅ Finaliser C1 dans Slide-Oral.md
 2. ✅ Intégrer workflows GitHub Actions
 3. ✅ Finaliser C2 dans Slide-Oral.md
-4. 🔄 Créer PR pour C2
-5. 🔄 Merger dans develop
-6. 🔄 Créer tag v0.3-cadrage-budget
+4. ✅ Mettre à jour README et fusionner notes
+5. ✅ **PR C1 VALIDÉE** - Mergée dans develop avec tag v0.2-cadrage
+6. 🔄 Créer PR pour C2
+7. 🔄 Merger dans develop
+8. 🔄 Créer tag v0.3-cadrage-budget
 
 ### **Suivant**
 1. 🔄 Compléter C2 dans Slide-Oral.md

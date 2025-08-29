@@ -30,6 +30,7 @@ UF-Zoom/
 
 ### **✅ C1 - ACV Simplifiée** COMPLÉTÉE
 **Statut** : ✅ **FINALISÉE** - Hotspots identifiés et optimisations prioritaires implémentées
+**PR** : ✅ **VALIDÉE** - Mergée dans develop avec tag v0.2-cadrage
 
 **Méthodologie ACV** :
 - **Approche** : Screening (simplifiée) pour disaster-web2
@@ -181,10 +182,11 @@ UF-Zoom/
 - **`v1.0-impact`** : Optimisations complètes (À CRÉER)
 
 ### **Pull Requests C1**
-- **PR #001** : Optimisation images WebP
-- **PR #002** : Optimisation Three.js
-- **PR #003** : Optimisation bundle et cache
-- **PR #004** : Optimisation polling réseau
+- **PR #001** : Optimisation images WebP ✅ **MERGÉE**
+- **PR #002** : Optimisation Three.js ✅ **MERGÉE**
+- **PR #003** : Optimisation bundle et cache ✅ **MERGÉE**
+- **PR #004** : Optimisation polling réseau ✅ **MERGÉE**
+- **PR C1 Global** : ✅ **VALIDÉE** - Mergée dans develop avec tag v0.2-cadrage
 
 ### **Workflows GitHub Actions**
 
@@ -238,12 +240,12 @@ UF-Zoom/
 
 ### **1. Dossier Projet (PDF)**
 - **Structure** : Résumé exécutif, contexte, méthode ACV, cadrage, référentiel, optimisations, mesure & analyse
-- **Statut** : 🔄 En cours de finalisation
+- **Statut** : 🔄 En cours de finalisation (C1-C2 complétées)
 - **Fichier** : `docs/Dossier-Projet.md`
 
 ### **2. Support de Décision (Deck)**
 - **Structure** : 15-30 slides max, problème → UF & impacts → objectifs → BP clés → résultats → décisions
-- **Statut** : 🔄 En cours de finalisation
+- **Statut** : 🔄 En cours de finalisation (C1-C2 complétées)
 - **Fichier** : `Slide-Oral.md`
 
 ### **3. Traçabilité Technique**
@@ -253,16 +255,16 @@ UF-Zoom/
 
 ## 🎯 Prochaines Étapes
 
-### **Immédiat (C1 Finalisation)**
-1. ✅ Finaliser documentation C1
-2. 🔄 Créer PR pour C1
+### **Immédiat (C2 Finalisation)**
+1. ✅ Finaliser documentation C2
+2. 🔄 Créer PR pour C2
 3. 🔄 Merger dans develop
-4. 🔄 Créer tag v0.2-cadrage
+4. 🔄 Créer tag v0.3-cadrage-budget
 
-### **Suivant (C2-C5)**
-1. 🔄 Créer branche C2
-2. 🔄 Implémenter cadrage et budget
-3. 🔄 Répéter pour C3, C4, C5
+### **Suivant (C3-C5)**
+1. 🔄 Créer branche C3
+2. 🔄 Implémenter référentiel projet
+3. 🔄 Répéter pour C4, C5
 4. 🔄 Finaliser livrables
 
 ### **CI/CD & Build Automatique**

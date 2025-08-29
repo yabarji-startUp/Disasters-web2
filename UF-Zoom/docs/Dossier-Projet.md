@@ -192,6 +192,7 @@ Objectif : rendre disaster-web2 **représentatif** de l'UF "participer visioconf
 ### **✅ C1 - ACV Simplifiée** COMPLÉTÉE
 
 **Statut** : ✅ **FINALISÉE** - Hotspots identifiés et optimisations prioritaires implémentées
+**PR** : ✅ **VALIDÉE** - Mergée dans develop avec tag v0.2-cadrage
 
 **Méthodologie ACV** :
 - **Approche** : Screening (simplifiée) pour disaster-web2
