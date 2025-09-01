@@ -16,7 +16,12 @@
     "lighthouse:dev": "npm run dev & sleep 10 && npm run lighthouse && pkill -f 'npm run dev'",
     "lighthouse:build": "npm run build && npm run preview & sleep 5 && npm run lighthouse && pkill -f 'npm run preview'",
     "test:eco": "npm run lighthouse:build",
-    "audit:full": "npm run lighthouse:build && npm run lighthouse:dev"
+    "audit:full": "npm run lighthouse:build && npm run lighthouse:dev",
+    "test:ecoindex": "node scripts/ecoindex-test.cjs",
+    "test:greenit": "node scripts/greenit-test.cjs",
+    "test:rgesn": "node scripts/rgesn-compliance.cjs",
+    "test:eco:all": "npm run test:ecoindex && npm run test:greenit && npm run test:rgesn",
+    "test:eco:ci": "npm run test:ecoindex -- --ci && npm run test:greenit -- --ci && npm run test:rgesn -- --ci"
   },
   "dependencies": {
     "@types/three": "^0.162.0",

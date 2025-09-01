@@ -29,8 +29,8 @@ UF-Zoom/
 ## 🎓 Compétences et Statuts
 
 ### **✅ C1 - ACV Simplifiée** COMPLÉTÉE
-**Statut** : ✅ **FINALISÉE** - Hotspots identifiés et optimisations prioritaires implémentées
-**PR** : ✅ **VALIDÉE** - Mergée dans develop avec tag v0.2-cadrage
+**Statut** : ✅ **FINALISÉE** - Méthodologie ACV screening validée
+**PR** : ✅ **VALIDÉE** - Mergée dans develop avec tag v0.1-acv
 
 **Méthodologie ACV** :
 - **Approche** : Screening (simplifiée) pour disaster-web2
@@ -38,53 +38,38 @@ UF-Zoom/
 - **Périmètre** : Frontend React + Backend Express
 - **Phases** : Développement, Utilisation, Fin de vie
 
-**Hotspots identifiés** :
-1. **Three.js lourd** : 20 cubes animés (RGESN 2.2)
-2. **Images massives** : 7.2MB large.jpg (RGESN 2.1)
-3. **Bundle non optimisé** : Pas de tree-shaking (RGESN 1.2)
-4. **Polling excessif** : Requêtes 1s + simultanées (RGESN 4.1)
+**Hotspots ACV identifiés** :
+1. **Phase Réseau** : 8,830 KiB par session, 1470 requêtes (Impact Élevé)
+2. **Phase Terminal** : 174 éléments DOM, 6,830 KiB images (Impact Moyen)
+3. **Phase Serveur** : CPU élevé, pas de cache, polling excessif (Impact Faible)
 
-**Optimisations C1 implémentées** :
-- **PR #001 - Images** : WebP conversion (7.2MB → 3.0MB, -59%), OptimizedImage component avec lazy loading
-- **PR #002 - Three.js** : 20 → 5 cubes, animations conditionnelles, optimisations GPU (antialias: false, pixel ratio limité)
-- **PR #003 - Bundle** : Tree-shaking lodash (import spécifique), compression Brotli niveau 6, cache 24h
-- **PR #004 - Polling** : intervalle 1s → 5s, réduction requêtes simultanées (2 → 1)
+**Données collectées** :
+- **Logs disaster-web2** : Requêtes, temps de réponse
+- **Métriques réseau** : Bande passante consommée
+- **Facteurs d'émission** : Base Carbone ADEME
+- **Limites documentées** : Périmètre simplifié, données proxy
 
-**Résultats mesurés** :
-- **Poids total** : 16.7MB → 12.7MB (-24%)
-- **Bytes gaspillés formats modernes** : 0MB (élimination complète)
-- **Performance Lighthouse** : 25/100 (baseline maintenue pour C2-C5)
-
-**RGESN BP implémentées** : Images responsives & WebP/AVIF, Nettoyage scripts tiers, Cache intelligent
-**GreenScore intégré** : DE02/DE03 (Cache intelligent), AR01 (Event Driven Architecture)
-
-**Note** : Les optimisations fines Three.js (frame rate 30 FPS, pixel ratio limité, réduction 5→3 cubes) seront implémentées dans **C4 - Optimisation Service Numérique**.
+**Priorisation ACV** : Utilisation/Réseau > Utilisation/Terminal > Serveur > Développement
 
 ### **✅ C2 - Cadrage et Budget Environnemental** COMPLÉTÉE
-**Statut** : ✅ **FINALISÉE** - Cadrage validé et budget environnemental quantifié
+**Statut** : ✅ **FINALISÉE** - Cadrage validé et tests automatisés implémentés
 
 **Cadrage du Projet** :
-- **Contraintes techniques** : WebRTC, vidéo streaming, compression, latence < 150ms, 100+ participants
-- **Contraintes environnementales** : RGESN, Green Software Foundation, EcoIndex > 85/100, -30% CO2 vs Zoom
+- **Contraintes techniques** : WebRTC, vidéo streaming, latence < 150ms, 100+ participants
+- **Contraintes environnementales** : RGESN, EcoIndex > 85/100, -30% CO2 vs Zoom
 - **Contraintes budgétaires** : 300k€ sur 6 mois, 12 personnes, infrastructure cloud green
 - **Contraintes temporelles** : 6 mois (septembre 2024 - février 2025), jalons critiques mensuels
 
-**Budget Environnemental Quantifié** :
-- **Métriques baseline** : 16.7MB poids total, 7.2MB images (43%), 3.2MB JS (19%), Performance 25/100
-- **Objectifs Zoom** : -30% CO2, -40% bande passante, < 2.5 kWh/heure, EcoIndex > 85/100
+**Budget Environnemental** :
+- **Métriques baseline** : 16.7MB poids total, Performance 25/100
+- **Objectifs Zoom** : -30% CO2, -40% bande passante, EcoIndex > 85/100
 - **Budget par compétence** : C1 (50k€), C2 (30k€), C3 (40k€), C4 (100k€), C5 (80k€)
 
-**Planification et Roadmap** :
-- **Mois 1** : Cadrage et méthodologie (C1-C2)
-- **Mois 2** : Référentiel et tests (C3)
-- **Mois 3-4** : Implémentations (C4)
-- **Mois 5** : Mesures et analyse (C5)
-- **Mois 6** : Finalisation et déploiement
-
-**Arbitrages Gains/Efforts/Contraintes** :
-- **Priorité 1** : Images WebP (-59% poids), cache intelligent (-40% requêtes), compression vidéo (-30% bande passante)
-- **Priorité 2** : Tree-shaking (-20% bundle), lazy loading (-30% chargement), service worker (-50% requêtes)
-- **Priorité 3** : Minification (-10% taille), Gzip/Brotli (-15% transfert), headers cache (-20% requêtes)
+**Tests Automatisés Implémentés** :
+- **EcoIndex** : Scripts de test automatisés
+- **Green IT** : Validation bonnes pratiques
+- **RGESN Compliance** : Tests conformité
+- **CI/CD** : Intégration workflows GitHub Actions
 
 **Plan d'Accompagnement** :
 - **Formation équipe** : RGESN, Green Software, outils (Lighthouse, EcoIndex, Green-IT)
