@@ -1,0 +1,138 @@
+{
+  "timestamp": "2025-08-29T21:20:05.020Z",
+  "tests": [
+    {
+      "name": "C1.1 - Écoconception intégrée",
+      "status": "PASS",
+      "details": "Approche éco-conception documentée",
+      "weight": 0.4
+    },
+    {
+      "name": "C1.2 - Objectifs environnementaux",
+      "status": "PASS",
+      "details": "Objectifs CO2 et EcoIndex définis",
+      "weight": 0.3
+    },
+    {
+      "name": "C1.3 - Mesure et suivi",
+      "status": "PASS",
+      "details": "Métriques environnementales mesurées",
+      "weight": 0.3
+    },
+    {
+      "name": "C2.1 - Optimisation des images",
+      "status": "FAIL",
+      "details": "Images non optimisées (WebP manquant)",
+      "weight": 0.4
+    },
+    {
+      "name": "C2.2 - Optimisation du code",
+      "status": "FAIL",
+      "details": "Bundle JavaScript non optimisé",
+      "weight": 0.3
+    },
+    {
+      "name": "C2.3 - Compression des ressources",
+      "status": "PASS",
+      "details": "Gzip compression activée",
+      "weight": 0.3
+    },
+    {
+      "name": "C3.1 - Limitation des requêtes",
+      "status": "FAIL",
+      "details": "Trop de requêtes (1470 > 50)",
+      "weight": 0.4
+    },
+    {
+      "name": "C3.2 - Cache intelligent",
+      "status": "PASS",
+      "details": "CacheManager implémenté",
+      "weight": 0.3
+    },
+    {
+      "name": "C3.3 - Service Worker",
+      "status": "PASS",
+      "details": "Service Worker fonctionnel",
+      "weight": 0.3
+    },
+    {
+      "name": "C4.1 - Polling optimisé",
+      "status": "FAIL",
+      "details": "Polling excessif détecté",
+      "weight": 0.4
+    },
+    {
+      "name": "C4.2 - Animations optimisées",
+      "status": "FAIL",
+      "details": "Three.js non optimisé",
+      "weight": 0.3
+    },
+    {
+      "name": "C4.3 - Traitements différés",
+      "status": "PASS",
+      "details": "Lazy loading implémenté",
+      "weight": 0.3
+    },
+    {
+      "name": "C5.1 - Headers optimisés",
+      "status": "PASS",
+      "details": "Headers cache configurés",
+      "weight": 0.4
+    },
+    {
+      "name": "C5.2 - Compression des échanges",
+      "status": "PASS",
+      "details": "Compression HTTP activée",
+      "weight": 0.3
+    },
+    {
+      "name": "C5.3 - Pagination des données",
+      "status": "FAIL",
+      "details": "Pas de pagination implémentée",
+      "weight": 0.3
+    }
+  ],
+  "summary": {
+    "totalTests": 15,
+    "passedTests": 9,
+    "failedTests": 6,
+    "successRate": 60,
+    "compliance": {
+      "score": 56,
+      "grade": "E",
+      "level": "basic"
+    },
+    "criterionBreakdown": {
+      "c1": 100,
+      "c2": 30,
+      "c3": 60,
+      "c4": 30,
+      "c5": 70
+    },
+    "recommendations": [
+      "✅ Stratégie de conception (100%): Conforme",
+      "🔴 Optimisation des ressources (30%): Amélioration critique nécessaire",
+      "🟡 Optimisation des requêtes (60%): Amélioration recommandée",
+      "🔴 Optimisation des traitements (30%): Amélioration critique nécessaire",
+      "🟡 Optimisation des échanges (70%): Amélioration recommandée",
+      "• Corriger: C2.1 - Optimisation des images - Images non optimisées (WebP manquant)",
+      "• Corriger: C2.2 - Optimisation du code - Bundle JavaScript non optimisé",
+      "• Corriger: C3.1 - Limitation des requêtes - Trop de requêtes (1470 > 50)",
+      "• Corriger: C4.1 - Polling optimisé - Polling excessif détecté",
+      "• Corriger: C4.2 - Animations optimisées - Three.js non optimisé",
+      "• Corriger: C5.3 - Pagination des données - Pas de pagination implémentée"
+    ]
+  },
+  "compliance": {
+    "score": 56,
+    "grade": "E",
+    "level": "basic"
+  },
+  "criterionScores": {
+    "c1": 100,
+    "c2": 30,
+    "c3": 60,
+    "c4": 30,
+    "c5": 70
+  }
+}
