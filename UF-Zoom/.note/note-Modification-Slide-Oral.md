@@ -1,205 +1,153 @@
-# 📝 Notes de Modifications - Slide-Oral.md
+# 📝 Notes de Modification - Slide Oral
 
-## 🔄 Modifications Apportées
+## 🎯 **Tests Automatisés EcoIndex et Green IT - Ajoutés**
 
-### **Version 3.0 - Finalisation C2** (Date: $(date))
+### **📊 Scripts de Test Créés**
 
-#### **Section C2 - Cadrage et Budget Environnemental**
-**Modifications** :
-- ✅ **Statut mis à jour** : "FINALISÉE" avec détails complets
-- ✅ **Cadrage du projet** : Contraintes techniques, environnementales, budgétaires, temporelles
-- ✅ **Budget environnemental quantifié** : 300k€ sur 6 mois, 12 personnes
-- ✅ **Objectifs quantifiés** : -30% CO2, -40% bande passante, < 2.5 kWh/heure, EcoIndex > 85/100
-- ✅ **Roadmap détaillée** : 6 mois avec jalons critiques mensuels
-- ✅ **Arbitrages gains/efforts/contraintes** : Matrice impact/effort avec 3 niveaux de priorité
-- ✅ **Plan d'accompagnement** : Formation équipe, processus EPCT, recommandations Zoom
+#### **1. EcoIndex Test Suite (`scripts/ecoindex-test.cjs`)**
+- **Performance Lighthouse** : Test automatique des métriques de performance
+- **Taille des ressources** : Validation du poids total de la page
+- **Nombre de requêtes** : Contrôle du nombre de requêtes HTTP
+- **Complexité DOM** : Analyse de la structure DOM
+- **Consommation énergétique** : Estimation de l'impact énergétique
+- **Conformité RGESN** : Tests des critères RGESN intégrés
 
-**Documentation mise à jour** :
-- ✅ **UF-Zoom/docs/C2-cadrage-budget.md** : Document complet C2 créé
-- ✅ **README.md** : Statut C2 mis à jour
-- ✅ **UF-Zoom/README.md** : Statut C2 mis à jour
-- ✅ **UF-Zoom/docs/Dossier-Projet.md** : Section C2 complétée
-- ✅ **UF-Zoom/Slide-Oral.md** : Section C2 détaillée
-- ✅ **UF-Zoom/.note/note-Modification-Slide-Oral.md** : Notes de modification
+#### **2. Green IT Test Suite (`scripts/greenit-test.cjs`)**
+- **Optimisation du bundle** : Validation de la taille du bundle
+- **Optimisation des images** : Test du taux d'optimisation
+- **Efficacité du cache** : Mesure du hit rate
+- **Efficacité du code** : Analyse de l'optimisation du code
+- **Efficacité énergétique** : Tests d'efficacité globale
+- **Bonnes pratiques Green IT** : Validation des pratiques
+- **Impact environnemental** : Calcul de l'impact CO2/eau
 
-**RGESN BP intégrées** : Contraintes environnementales, budget quantifié, planification
-**GreenScore intégré** : Planification et accompagnement
+#### **3. RGESN Compliance Test Suite (`scripts/rgesn-compliance.cjs`)**
+- **Critère C1** : Stratégie de conception (100% conforme)
+- **Critère C2** : Optimisation des ressources (30% - à améliorer)
+- **Critère C3** : Optimisation des requêtes (60% - à améliorer)
+- **Critère C4** : Optimisation des traitements (30% - à améliorer)
+- **Critère C5** : Optimisation des échanges (70% - à améliorer)
 
-**Raison** : Finalisation complète de C2 avec cadrage validé et budget environnemental quantifié.
+### **🚀 Scripts NPM Ajoutés**
 
-### **Version 2.0 - Intégration Workflows GitHub** (Date: $(date))
-
-#### **Section C1 - ACV Simplifiée**
-**Modifications** :
-- ✅ **Statut mis à jour** : "FINALISÉE" avec détails complets
-- ✅ **Méthodologie ACV** : Approche screening, UF, périmètre, phases
-- ✅ **Hotspots détaillés** : Liste complète avec priorités (PRIORITÉ 1/2)
-- ✅ **Optimisations C1** : Détail des 4 PR implémentées avec gains
-- ✅ **Résultats mesurés** : Métriques quantifiées (-24% poids total, 0MB bytes gaspillés)
-- ✅ **RGESN et GreenScore** : Bonnes pratiques et règles intégrées
-- ✅ **Note importante** : Clarification que optimisations fines Three.js seront dans C4
-
-**Raison** : Finalisation complète de C1 avec documentation détaillée des optimisations prioritaires implémentées et clarification de la répartition C1 vs C4.
-
-#### **Intégration Workflows GitHub Actions**
-**Nouveautés** :
-- ✅ **Workflow EPCT** : Explore, Plan, Code, Test intégré dans les slides
-- ✅ **Build Automatique** : Déclenchement automatique à la fin de chaque feature
-- ✅ **Validation RGESN** : Conformité automatique des bonnes pratiques
-- ✅ **Métriques Automatisées** : Lighthouse + EcoIndex + Performance
-- ✅ **Rapports Détaillés** : Artifacts et résumés automatiques
-
-**Workflows Intégrés** :
-1. **eco-budget.yml** : Eco Budget & RGESN Compliance Check
-2. **deploy-render.yml** : Deploy avec EPCT & Eco-Validation
-3. **feature-complete.yml** : Build automatique des features
-
-### **Version 1.0 - Finalisation C1** (Date: $(date))
-
-#### **Section C1 - ACV Simplifiée**
-**Modifications** :
-- ✅ **Statut mis à jour** : "FINALISÉE" au lieu de simple checkmark
-- ✅ **Ajout méthodologie ACV** : Approche screening, UF, périmètre, phases
-- ✅ **Hotspots détaillés** : Liste complète avec priorités (PRIORITÉ 1/2)
-- ✅ **Optimisations C1** : Détail des 4 PR implémentées avec gains
-- ✅ **Résultats mesurés** : Métriques quantifiées (-24% poids total, 0MB bytes gaspillés)
-- ✅ **RGESN et GreenScore** : Bonnes pratiques et règles intégrées
-- ✅ **Note importante** : Clarification que optimisations fines Three.js seront dans C4
-
-**Raison** : Finalisation complète de C1 avec documentation détaillée des optimisations prioritaires implémentées et clarification de la répartition C1 vs C4.
-
-#### **Impact sur la Présentation**
-- **C1** : Section complète et détaillée, prête pour présentation orale
-- **C2-C5** : Sections à compléter selon progression
-- **Cohérence** : Alignement avec documentation README et Dossier-Projet
-
-### **Version 0.9 - Structure Initiale** (Date: $(date))
-
-#### **Création du fichier**
-- ✅ **Structure Marp** : Thème yas-eco, pagination, transitions
-- ✅ **Sections C1-C5** : Framework pour toutes les compétences
-- ✅ **Méthodologie ACV** : Approche screening documentée
-- ✅ **Mesures baseline** : Intégration des métriques disaster-web2
-- ✅ **Hotspots identifiés** : Priorisation des impacts environnementaux
-
-## 📊 État Actuel
-
-### **✅ Complété**
-- **C1 - ACV Simplifiée** : Finalisée avec optimisations prioritaires ✅ **PR VALIDÉE**
-- **C2 - Cadrage et Budget** : Finalisée avec cadrage validé et budget environnemental quantifié
-- **Structure générale** : Framework pour C3-C5
-- **Méthodologie** : ACV screening documentée
-- **Mesures** : Baseline disaster-web2 intégrée
-- **Workflows GitHub** : Intégration complète des workflows automatisés
-- **Documentation C2** : Document complet créé et intégré
-
-### **🔄 En cours**
-- **C2 - Cadrage** : ✅ COMPLÉTÉE - Cadrage validé et budget environnemental quantifié
-- **C3 - Référentiel** : À compléter
-- **C4 - Implémentations** : À compléter
-- **C5 - Mesure et Analyse** : À compléter
-
-### **📋 À faire**
-- **Finalisation C2-C5** : Selon progression des compétences
-- **Génération PDF** : Via Marp CLI
-- **Validation contenu** : Alignement avec consignes
-
-## 🚀 Workflows GitHub Actions Intégrés
-
-### **eco-budget.yml**
-**Fonctionnalités** :
-- EPCT Workflow complet (Explore, Plan, Code, Test)
-- Validation RGESN automatique
-- Lighthouse audit et EcoIndex simulation
-- Feature validation spécifique
-- Rapports détaillés et artifacts
-
-**Déclencheurs** :
-- Push sur `main`, `develop`, `feature/*`
-- Pull Request vers `main`, `develop`
-- Workflow dispatch manuel
-
-### **deploy-render.yml**
-**Fonctionnalités** :
-- EPCT Pre-deploy validation
-- Eco-validation pre/post-deploy
-- Déploiement automatique sur Render
-- Métriques comparatives pre/post-deploy
-- RGESN Compliance intégrée
-
-**Déclencheurs** :
-- Push sur `main`, `develop`
-- Pull Request vers `main`
-- Workflow dispatch manuel
-
-### **feature-complete.yml**
-**Fonctionnalités** :
-- Build automatique à la fin de chaque feature
-- Workflow EPCT complet
-- Validation éco-conception
-- Rapports par feature
-- Résumé automatique pour merge
-
-**Déclencheurs** :
-- Push sur `feature/*`
-- Pull Request vers `develop`, `main`
-- Workflow dispatch manuel
-
-## 🎯 Prochaines Étapes
-
-### **Immédiat**
-1. ✅ Finaliser C1 dans Slide-Oral.md
-2. ✅ Intégrer workflows GitHub Actions
-3. ✅ Finaliser C2 dans Slide-Oral.md
-4. ✅ Mettre à jour README et fusionner notes
-5. ✅ **PR C1 VALIDÉE** - Mergée dans develop avec tag v0.2-cadrage
-6. 🔄 Créer PR pour C2
-7. 🔄 Merger dans develop
-8. 🔄 Créer tag v0.3-cadrage-budget
-
-### **Suivant**
-1. 🔄 Compléter C2 dans Slide-Oral.md
-2. 🔄 Répéter pour C3, C4, C5
-3. 🔄 Générer présentation finale
-4. 🔄 Valider workflows automatisés
-
-## 📋 Commandes Utiles
-
-### **Workflows Automatisés**
-```bash
-# Build automatique à la fin d'une feature
-npm run workflow:feature-complete
-
-# Workflow EPCT complet
-npm run epct:complete
-
-# Validation RGESN
-node scripts/rgesn-compliance.js
+```json
+{
+  "test:ecoindex": "node scripts/ecoindex-test.cjs",
+  "test:greenit": "node scripts/greenit-test.cjs", 
+  "test:rgesn": "node scripts/rgesn-compliance.cjs",
+  "test:eco:all": "npm run test:ecoindex && npm run test:greenit && npm run test:rgesn",
+  "test:eco:ci": "npm run test:ecoindex -- --ci && npm run test:greenit -- --ci && npm run test:rgesn -- --ci"
+}
 ```
 
-### **Génération Présentation**
-```bash
-# Générer PDF depuis Slide-Oral.md
-npx marp UF-Zoom/Slide-Oral.md --pdf --theme-set ../Themes/
+### **📈 Résultats des Tests Actuels**
 
-# Générer HTML
-npx marp UF-Zoom/Slide-Oral.md --html --theme-set ../Themes/
-```
+#### **EcoIndex Test Results**
+- **Score global** : 20/100 (Grade G)
+- **Tests réussis** : 1/11 (9%)
+- **Tests échoués** : 10/11 (91%)
+- **Recommandations** : Optimisation critique nécessaire
 
-## 🔄 Impact sur la Présentation
+#### **Green IT Test Results**
+- **Score Green IT** : 51/100 (Grade E)
+- **Impact environnemental** : MEDIUM
+- **Tests réussis** : 5/14 (36%)
+- **Tests échoués** : 9/14 (64%)
 
-### **C1 - ACV Simplifiée**
-- **Contenu** : Section complète avec méthodologie, hotspots, optimisations, résultats
-- **Workflows** : Intégration des validations automatiques
-- **Métriques** : Données réelles de disaster-web2
-- **Prêt pour** : Présentation orale et certification
+#### **RGESN Compliance Results**
+- **Score de conformité** : 56/100 (Grade E)
+- **Niveau de conformité** : BASIC
+- **Tests réussis** : 9/15 (60%)
+- **Tests échoués** : 6/15 (40%)
 
-### **C2-C5 - En cours**
-- **Structure** : Framework en place
-- **Contenu** : À compléter selon progression
-- **Workflows** : Prêts pour validation automatique
-- **Métriques** : Système de mesure en place
+### **🎯 Métriques Mesurées**
+
+#### **Performance (Lighthouse)**
+- **Score global** : 25/100 (baseline)
+- **First Contentful Paint** : 2.8s
+- **Largest Contentful Paint** : 8.2s
+- **Total Blocking Time** : 1.2s
+- **Cumulative Layout Shift** : 0.01
+
+#### **Ressources**
+- **Poids total** : 12.7MB (-24% vs baseline)
+- **Images** : 5.1MB (non optimisées)
+- **JavaScript** : 2.8MB (non optimisé)
+- **CSS** : 4.3KB
+- **Autres** : 4.8MB
+
+#### **Requêtes et Performance**
+- **Nombre de requêtes** : 1470 (cible <50)
+- **Éléments DOM** : 176 (cible <100)
+- **Consommation énergétique** : 0.15 kWh/session
+- **Émissions CO2** : 0.075 gCO2e/session
+
+### **💡 Optimisations Identifiées**
+
+#### **🔴 Priorité 1 - Impact Élevé**
+1. **Optimisation des images** : Conversion WebP, lazy loading
+2. **Optimisation du bundle** : Tree-shaking, code splitting
+3. **Réduction des requêtes** : Consolidation, cache intelligent
+4. **Optimisation Three.js** : Réduction objets, animations conditionnelles
+
+#### **🟡 Priorité 2 - Impact Moyen**
+1. **Optimisation DOM** : Réduction complexité
+2. **Polling optimisé** : Intervalle adaptatif
+3. **Headers cache** : Stratégies différenciées
+4. **Service Worker** : Cache-first pour assets
+
+#### **🟢 Priorité 3 - Impact Faible**
+1. **Resource hints** : Preload/prefetch
+2. **Critical CSS** : Inline CSS critique
+3. **Font optimization** : Font-display swap
+4. **CDN usage** : Distribution géographique
+
+### **📊 Fichiers de Métriques Générés**
+
+- `UF-Zoom/metrics/ecoindex-test-results.json`
+- `UF-Zoom/metrics/greenit-test-results.json`
+- `UF-Zoom/metrics/rgesn-compliance-report.json`
+- `UF-Zoom/metrics/lighthouse-ci.json`
+- `UF-Zoom/metrics/ecoindex-ci.json`
+
+### **🔄 Intégration CI/CD**
+
+#### **Workflows GitHub Actions**
+- **eco-budget.yml** : Tests automatisés sur push/PR
+- **deploy-render.yml** : Validation pre/post-deploy
+- **feature-complete.yml** : Validation complète des features
+
+#### **Seuils de Validation**
+- **Performance** ≥ 70 : ❌ (25.0) - optimisations en cours
+- **EcoIndex** ≥ 75 : ❌ (20.0) - optimisations en cours
+- **Poids** ≤ 2MB : ❌ (12.70MB) - optimisations en cours
+
+### **🎓 Compétences Validées**
+
+#### **C1 - ACV Simplifiée** ✅ COMPLÉTÉE
+- Méthodologie ACV screening implémentée
+- Hotspots identifiés et priorisés
+- Métriques baseline établies
+
+#### **C2 - Cadrage et Budget** ✅ COMPLÉTÉE
+- Cadrage projet défini
+- Budget environnemental quantifié
+- Tests automatisés implémentés
+
+#### **C3 - Référentiel Projet** 🚧 EN COURS
+- Tests RGESN automatisés
+- Bonnes pratiques documentées
+- Métriques de conformité mesurées
+
+### **📈 Prochaines Étapes**
+
+1. **Optimisations C3** : Implémenter les améliorations identifiées
+2. **Tests C4** : Validation des optimisations
+3. **Mesures C5** : Analyse finale des gains
+4. **Documentation finale** : Rapport complet
 
 ---
 
-*Dernière mise à jour : $(date)* 
+**Date de mise à jour** : $(date)  
+**Version** : v0.3-tests-automatises  
+**Statut** : Tests automatisés opérationnels 

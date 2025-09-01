@@ -26,10 +26,11 @@ Conduire une éco-optimisation complète : diagnostic → cadrage → implément
 **PR** : ✅ **VALIDÉE** - Mergée dans develop avec tag v0.2-cadrage
 
 **Optimisations C1 implémentées** :
-- **PR #001 - Images** : WebP conversion (7.2MB → 3.0MB, -59%), OptimizedImage component avec lazy loading
-- **PR #002 - Three.js** : 20 → 5 cubes, animations conditionnelles, optimisations GPU (antialias: false, pixel ratio limité)
-- **PR #003 - Bundle** : Tree-shaking lodash (import spécifique), compression Brotli niveau 6, cache 24h
-- **PR #004 - Polling** : intervalle 1s → 5s, réduction requêtes simultanées (2 → 1)
+- **Images** : WebP conversion (7.2MB → 3.0MB, -59%), OptimizedImage component avec lazy loading
+- **Three.js** : 20 → 5 cubes, animations conditionnelles, optimisations GPU (antialias: false, pixel ratio limité)
+- **Bundle** : Tree-shaking lodash (import spécifique), compression Brotli niveau 6, cache 24h
+- **Polling** : intervalle 1s → 5s, réduction requêtes simultanées (2 → 1)
+- **Tests automatisés** : EcoIndex, Green IT, RGESN compliance scripts
 
 **Résultats mesurés** :
 - **Poids total** : 16.7MB → 12.7MB (-24%)
@@ -85,14 +86,14 @@ Conduire une éco-optimisation complète : diagnostic → cadrage → implément
 - **Recommandations Zoom** : Architecture microservices, WebRTC optimisé, cloud green, métriques environnementales
 
 ### **🔄 C3 - Référentiel Projet** EN COURS
-**Statut** : 🔄 **À IMPLÉMENTER**
+**Statut** : 🔄 **EN COURS** - Tests automatisés implémentés
 
 **Objectifs** :
 - Adapter bonnes pratiques RGESN spécifiquement pour Zoom (basé sur disaster-web2)
 - Définir conditions de réussite spécifiques pour optimisations Zoom
 - Établir moyens de test pour valider optimisations sur Zoom
 - Esquisser stratégie de conformité pour Zoom
-- **Nouveau** : Implémenter cache headers intelligents et monitoring (RGESN 3.1, 4.1)
+- **Tests automatisés** : EcoIndex, Green IT, RGESN compliance implémentés
 
 ### **🔄 C4 - Implémentations Réalisées** EN COURS
 **Statut** : 🔄 **À IMPLÉMENTER**
@@ -204,12 +205,11 @@ Disasters-web2/
 - **`v1.0-impact`** : Optimisations complètes (À CRÉER)
 
 ### **Pull Requests**
-- **PR #001** : Optimisation images WebP ✅ **MERGÉE**
-- **PR #002** : Optimisation Three.js ✅ **MERGÉE**
-- **PR #003** : Optimisation bundle et cache ✅ **MERGÉE**
-- **PR #004** : Optimisation polling réseau ✅ **MERGÉE**
-- **PR C1 Global** : ✅ **VALIDÉE** - Mergée dans develop avec tag v0.2-cadrage
-- **PR #005-#007** : Optimisations C4 (À CRÉER)
+- **PR C1** : ACV Simplifiée ✅ **VALIDÉE** - Mergée dans develop avec tag v0.2-cadrage
+- **PR C2** : Cadrage et Budget Environnemental 🔄 **EN COURS** - Tests automatisés implémentés
+- **PR C3** : Référentiel Projet 🔄 **À CRÉER**
+- **PR C4** : Implémentations Réalisées 🔄 **À CRÉER**
+- **PR C5** : Mesure et Analyse 🔄 **À CRÉER**
 
 ### **Workflows GitHub Actions**
 
@@ -289,6 +289,12 @@ npx lighthouse http://localhost:3000 --output=json --output-path=./UF-Zoom/metri
 
 # EcoIndex (via extension navigateur)
 # Visiter https://www.ecoindex.fr/ et analyser l'URL
+
+# Tests automatisés
+npm run test:ecoindex
+npm run test:greenit
+npm run test:rgesn
+npm run test:eco:all
 ```
 
 ### **Workflows Automatisés**
@@ -300,7 +306,23 @@ npm run workflow:feature-complete
 npm run epct:complete
 
 # Validation RGESN
-node scripts/rgesn-compliance.js
+node scripts/rgesn-compliance.cjs
+```
+
+### **Scripts NPM**
+```bash
+# Tests éco-conception
+npm run test:ecoindex      # Tests EcoIndex automatisés
+npm run test:greenit       # Tests Green IT automatisés
+npm run test:rgesn         # Tests RGESN compliance
+npm run test:eco:all       # Tous les tests éco-conception
+npm run test:eco:ci        # Tests CI/CD
+
+# Lighthouse
+npm run lighthouse         # Audit Lighthouse manuel
+npm run lighthouse:dev     # Audit en développement
+npm run lighthouse:build   # Audit en production
+npm run audit:full         # Audit complet
 ```
 
 ## 📚 Documentation

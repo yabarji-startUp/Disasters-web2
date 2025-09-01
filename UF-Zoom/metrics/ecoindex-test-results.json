@@ -1,0 +1,149 @@
+{
+  "timestamp": "2025-09-01T11:11:45.469Z",
+  "tests": [
+    {
+      "name": "Lighthouse Performance",
+      "status": "FAIL",
+      "score": 25,
+      "threshold": 70,
+      "details": {
+        "performance": 25,
+        "accessibility": 95,
+        "bestPractices": 85,
+        "seo": 90,
+        "firstContentfulPaint": 2800,
+        "largestContentfulPaint": 8200,
+        "totalBlockingTime": 1200,
+        "cumulativeLayoutShift": 0.01
+      }
+    },
+    {
+      "name": "Resource Size",
+      "status": "FAIL",
+      "score": 12.7,
+      "threshold": 2,
+      "unit": "MB",
+      "details": {
+        "total": 12.7,
+        "images": 5.1,
+        "javascript": 2.8,
+        "css": 0.0043,
+        "html": 0.001,
+        "other": 4.8
+      }
+    },
+    {
+      "name": "Request Count",
+      "status": "FAIL",
+      "score": 1470,
+      "threshold": 50,
+      "details": {
+        "total": 1470,
+        "images": 1200,
+        "scripts": 150,
+        "stylesheets": 50,
+        "fonts": 30,
+        "other": 40
+      }
+    },
+    {
+      "name": "DOM Complexity",
+      "status": "FAIL",
+      "score": 176,
+      "threshold": 100,
+      "details": {
+        "totalElements": 176,
+        "depth": 8,
+        "scripts": 15,
+        "images": 25,
+        "links": 30,
+        "forms": 2
+      }
+    },
+    {
+      "name": "Energy Consumption",
+      "status": "FAIL",
+      "score": 0.15,
+      "threshold": 0.1,
+      "unit": "kWh",
+      "details": {
+        "estimatedKWh": 0.15,
+        "co2Emissions": 0.075,
+        "waterConsumption": 0.3,
+        "serverLoad": 0.8,
+        "memoryUsage": 512
+      }
+    },
+    {
+      "name": "RGESN 1.1 - Optimisation des images",
+      "status": "FAIL",
+      "details": "Images non optimisées (WebP manquant)"
+    },
+    {
+      "name": "RGESN 1.2 - Optimisation du code",
+      "status": "FAIL",
+      "details": "Bundle JavaScript non optimisé"
+    },
+    {
+      "name": "RGESN 2.1 - Limitation des requêtes",
+      "status": "FAIL",
+      "details": "Trop de requêtes (1470 > 50)"
+    },
+    {
+      "name": "RGESN 2.2 - Optimisation des animations",
+      "status": "FAIL",
+      "details": "Three.js non optimisé"
+    },
+    {
+      "name": "RGESN 3.1 - Cache intelligent",
+      "status": "PASS",
+      "details": "CacheManager implémenté"
+    },
+    {
+      "name": "RGESN 4.1 - Polling optimisé",
+      "status": "FAIL",
+      "details": "Polling excessif détecté"
+    }
+  ],
+  "summary": {
+    "totalTests": 11,
+    "passedTests": 1,
+    "failedTests": 10,
+    "successRate": 9,
+    "ecoIndex": {
+      "score": 20,
+      "grade": "G",
+      "details": {
+        "performance": 25,
+        "pageWeight": 12.7,
+        "requests": 1470,
+        "domElements": 176
+      }
+    },
+    "recommendations": [
+      "Optimiser la performance Lighthouse (cible: 70+)",
+      "Réduire la taille des ressources (cible: <2MB)",
+      "Diminuer le nombre de requêtes (cible: <50)",
+      "Corriger: Lighthouse Performance",
+      "Corriger: Resource Size",
+      "Corriger: Request Count",
+      "Corriger: DOM Complexity",
+      "Corriger: Energy Consumption",
+      "Corriger: RGESN 1.1 - Optimisation des images",
+      "Corriger: RGESN 1.2 - Optimisation du code",
+      "Corriger: RGESN 2.1 - Limitation des requêtes",
+      "Corriger: RGESN 2.2 - Optimisation des animations",
+      "Corriger: RGESN 4.1 - Polling optimisé"
+    ]
+  },
+  "ecoIndex": {
+    "score": 20,
+    "grade": "G",
+    "details": {
+      "performance": 25,
+      "pageWeight": 12.7,
+      "requests": 1470,
+      "domElements": 176
+    }
+  }
+}

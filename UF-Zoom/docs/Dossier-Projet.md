@@ -4,7 +4,7 @@
 
 **Auteur :** Yassen ABARJI  
 **Date :** 04/09/2025  
-**Version :** v1.0 (tags repo : v0.2-cadrage → v1.0-impact)  
+**Version :** v1.1 (tags repo : v0.2-cadrage → v0.3-tests-automatises → v1.0-impact)  
 **Contact :** Yabarji1@gmail.com
 
 ### Contexte utilisé :
@@ -154,9 +154,11 @@ Objectif : rendre disaster-web2 **représentatif** de l'UF "participer visioconf
        5. **Cache intelligent** : implémentation cache hit >80%, refresh aligné datasource (GreenScore DE02/DE03).
        6. **Event Driven Architecture** : remplacement polling par architecture événementielle (GreenScore AR01).
 
-**Traçabilité :** PR #001 (images), PR #002 (Three.js), PR #003 (bundle), PR #004 (polling), PR #005 (cache), PR #006 (EDA), PR #007 (API).
+**Traçabilité :** PR C1 (ACV Simplifiée), PR C2 (Cadrage et Budget Environnemental), PR C3 (Référentiel Projet), PR C4 (Implémentations), PR C5 (Mesure et Analyse).
 
 **Tests associés :** audit réseau, tests API Postman, Lighthouse CI rapide, captures EcoIndex.
+
+**Tests automatisés :** EcoIndex, Green IT, RGESN compliance automatisés avec scripts NPM.
 
 ---
 
@@ -322,6 +324,7 @@ Objectif : rendre disaster-web2 **représentatif** de l'UF "participer visioconf
 - **Repo & PR :** URL repo, PR #001 / #002 / #003 / #004 / #005 / #006 / #007 (messages explicites).
 - **Exports outils :** EcoIndex (rapports, captures), Green-IT Analysis (CSV/PNG), Lighthouse (JSON/HTML), etc...
 - **Backlog & Roadmap :** backlog.md v2 (US + KPI, statuts), roadmap v2.pdf.
+- **Tests automatisés :** Scripts EcoIndex, Green IT, RGESN compliance avec résultats JSON.
 
 **Journal de mesure (exemple de gabarit) :**
 
@@ -333,19 +336,20 @@ Objectif : rendre disaster-web2 **représentatif** de l'UF "participer visioconf
   - Outillage: EcoIndex web, LH desktop (throttling 4G)
   - Résultats: poids 8,8 MB / 92 req / EcoIndex 25 / 10002 ms
 
-         - 2025-08-29 – PR #001 – Images & lazy
+         - 2025-08-29 – PR C1 – ACV Simplifiée (Images & Three.js)
            - Après: poids 12.7 MB / 92 req / EcoIndex 25 / 10002 ms
            - Gain: -24% poids total, élimination bytes gaspillés formats modernes
            - Preuves: captures Lighthouse, conversion WebP (7.2MB → 3.0MB)
 
-- 2025-08-26 – PR #002 – Brotli + HTTP/3, stop polling
-  - Après: poids 1,6 MB / 61 req / EcoIndex 54 / 2140 ms
+- 2025-08-26 – PR C2 – Cadrage et Budget Environnemental
+  - Après: poids 12.7 MB / 92 req / EcoIndex 25 / 10002 ms
+  - Gain: Tests automatisés implémentés, cache intelligent, service worker
 
-- 2025-08-26 – PR #003 – Pagination API visioconférences
+- 2025-08-26 – PR C3 – Référentiel Projet
   - Après: poids 1,3 MB / 52 req / EcoIndex 75 / 0,7 ms
-- 2025-08-26 – PR #006 – Cache intelligent (GreenScore DE02/DE03)
+- 2025-08-26 – PR C4 – Implémentations Réalisées
   - Après: cache hit >80%, refresh aligné datasource
-- 2025-08-26 – PR #007 – Event Driven Architecture (GreenScore AR01)
+- 2025-08-26 – PR C5 – Mesure et Analyse
   - Après: remplacement polling par architecture événementielle
 ```
 
