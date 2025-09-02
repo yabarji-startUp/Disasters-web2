@@ -1,0 +1,25 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "🚀 Hook pre-commit : Génération automatique des documents..."
+
+# Vérifier si les fichiers de documentation ont été modifiés
+if git diff --cached --name-only | grep -E "(UF-Zoom/docs/|UF-Zoom/Slide-Oral.md|Themes/)" > /dev/null; then
+    echo "📄 Fichiers de documentation modifiés, génération des documents..."
+    
+    # Générer les documents
+    if npm run build:docs; then
+        echo "✅ Documents générés avec succès"
+        
+        # Ajouter les documents générés au commit
+        git add UF-Zoom/docs/output/ UF-Zoom/output/
+        echo "📁 Documents générés ajoutés au commit"
+    else
+        echo "❌ Échec de la génération des documents"
+        exit 1
+    fi
+else
+    echo "ℹ️  Aucune modification de documentation, pas de génération nécessaire"
+fi
+
+echo "✅ Hook pre-commit terminé" 

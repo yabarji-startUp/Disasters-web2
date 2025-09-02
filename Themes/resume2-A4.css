@@ -1,0 +1,539 @@
+/* @theme resume2-A4 */
+/* Author: Yassen ABARJI - Custom theme A4 format */
+/* Charte graphique rouge/vert éco-responsable */
+/* Optimisé pour format A4 (210mm x 297mm) */
+
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css?family=Lato:400,900|Roboto+Mono:400,700&display=swap');
+
+/* Format A4 strict - PORTRAIT uniquement */
+@size A4 210mm 297mm;
+/* Désactivation du mode landscape pour forcer le portrait */
+@size A4-landscape 210mm 297mm;
+
+/* Variables CSS pour la charte graphique */
+:root {
+    /* Charte graphique rouge/vert éco-responsable */
+    --background-color: #2e7d32; /* Vert éco-responsable */
+    --accent-color: #d5103b; /* Rouge de yas.css */
+    --secondary-color: #4caf50; /* Vert accent */
+    --text-color: #2c3e50;
+    --light-bg: #e8f5e8;
+    --border-color: #81c784;
+    --red-light: #ffebee; /* Rouge clair pour les backgrounds */
+    --red-accent: #f44336; /* Rouge accent plus vif */
+    
+    /* Couleurs supplémentaires */
+    --success-color: #2e7d32;
+    --warning-color: #ff9800;
+    --error-color: #f44336;
+    --info-color: #2196f3;
+    
+    /* Format A4 strict */
+    --page-width: 210mm;
+    --page-height: 297mm;
+    --margin-top: 20mm;
+    --margin-bottom: 20mm;
+    --margin-left: 20mm;
+    --margin-right: 20mm;
+    --content-width: calc(210mm - 40mm);
+    --content-height: calc(297mm - 40mm);
+}
+
+/* Forcer l'orientation portrait A4 */
+@page {
+    size: A4 portrait;
+    margin: 0;
+}
+
+/* Override Marp pour forcer le portrait */
+section {
+    /* Dimensions A4 strictes en portrait */
+    width: 210mm !important;
+    height: 297mm !important;
+    max-width: 210mm !important;
+    max-height: 297mm !important;
+    
+    /* Forcer l'aspect ratio portrait */
+    aspect-ratio: 210/297 !important;
+    
+    /* Empêcher la rotation automatique */
+    transform: none !important;
+}
+
+/* Reset et base A4 */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Section principale A4 - PORTRAIT forcé */
+section {
+    /* Dimensions A4 strictes en portrait */
+    width: 210mm !important;
+    height: 297mm !important;
+    max-width: 210mm !important;
+    max-height: 297mm !important;
+    
+    /* Marges A4 */
+    padding: var(--margin-top) var(--margin-left) var(--margin-bottom) var(--margin-right);
+    
+    /* Typographie */
+    font-family: 'Lato', sans-serif;
+    font-size: 12pt; /* Taille standard A4 */
+    line-height: 1.4;
+    color: var(--text-color);
+    
+    /* Background */
+    background-color: white;
+    
+    /* Layout */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    
+    /* Page break */
+    page-break-after: always;
+    break-after: page;
+    
+    /* Overflow */
+    overflow: hidden;
+    
+    /* Forcer l'aspect ratio portrait */
+    aspect-ratio: 210/297 !important;
+    
+    /* Empêcher la rotation automatique */
+    transform: none !important;
+}
+
+/* En-tête A4 */
+section header {
+    width: 100%;
+    height: 30mm;
+    background-image: linear-gradient(135deg, var(--background-color) 0%, var(--accent-color) 100%);
+    padding: 5mm 0 5mm 5mm;
+    font-size: 14pt;
+    font-weight: 600;
+    color: white;
+    border-radius: 0 0 3mm 3mm;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 5mm;
+}
+
+/* Titres optimisés A4 */
+section h1 {
+    font-size: 18pt;
+    font-weight: 700;
+    color: var(--background-color);
+    margin: 3mm 0 2mm 0;
+    line-height: 1.2;
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 2mm;
+}
+
+section h2 {
+    font-size: 16pt;
+    font-weight: 600;
+    color: var(--accent-color);
+    margin: 3mm 0 2mm 0;
+    line-height: 1.3;
+}
+
+section h3 {
+    font-size: 14pt;
+    font-weight: 500;
+    color: var(--text-color);
+    margin: 2mm 0 1mm 0;
+    line-height: 1.3;
+}
+
+section h4 {
+    font-size: 12pt;
+    font-weight: 500;
+    color: var(--secondary-color);
+    margin: 2mm 0 1mm 0;
+    line-height: 1.3;
+}
+
+/* Paragraphes A4 */
+section p {
+    font-size: 11pt;
+    line-height: 1.4;
+    margin: 2mm 0;
+    text-align: justify;
+    hyphens: auto;
+}
+
+/* Listes A4 */
+section ul, section ol {
+    margin: 2mm 0;
+    padding-left: 5mm;
+    font-size: 11pt;
+    line-height: 1.4;
+}
+
+section li {
+    margin: 1mm 0;
+    line-height: 1.4;
+}
+
+/* Tableaux A4 */
+section table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 3mm 0;
+    font-size: 10pt;
+    page-break-inside: avoid;
+}
+
+section th {
+    background: linear-gradient(135deg, var(--background-color), var(--secondary-color));
+    color: white;
+    padding: 2mm 3mm;
+    text-align: left;
+    font-weight: 600;
+    font-size: 11pt;
+}
+
+section td {
+    padding: 2mm 3mm;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 10pt;
+}
+
+section tr:nth-child(even) {
+    background-color: var(--light-bg);
+}
+
+/* Métriques A4 */
+section .metric {
+    background: linear-gradient(135deg, var(--background-color), var(--secondary-color));
+    color: white;
+    padding: 3mm;
+    border-radius: 2mm;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin: 2mm 0;
+    font-size: 10pt;
+}
+
+section .metric-value {
+    font-size: 16pt;
+    font-weight: 900;
+    margin-bottom: 1mm;
+}
+
+section .metric-label {
+    font-size: 9pt;
+    opacity: 0.9;
+    font-weight: 500;
+}
+
+/* Grille de métriques A4 */
+section .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(35mm, 1fr));
+    gap: 3mm;
+    margin: 3mm 0;
+}
+
+/* Barres de progression A4 */
+section .progress-bar {
+    background: #e0e0e0;
+    border-radius: 1mm;
+    overflow: hidden;
+    margin: 2mm 0;
+    height: 6mm;
+    position: relative;
+}
+
+section .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--background-color), var(--secondary-color));
+    border-radius: 1mm;
+    transition: width 1s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 9pt;
+}
+
+/* Timeline A4 */
+section .timeline {
+    position: relative;
+    padding-left: 8mm;
+    margin: 3mm 0;
+}
+
+section .timeline::before {
+    content: '';
+    position: absolute;
+    left: 4mm;
+    top: 0;
+    bottom: 0;
+    width: 1mm;
+    background: linear-gradient(to bottom, var(--background-color), var(--accent-color));
+    border-radius: 0.5mm;
+}
+
+section .timeline-item {
+    position: relative;
+    margin: 3mm 0;
+    padding: 3mm;
+    background: white;
+    border-radius: 2mm;
+    border-left: 2px solid var(--background-color);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    font-size: 10pt;
+}
+
+section .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -3mm;
+    top: 4mm;
+    width: 4mm;
+    height: 4mm;
+    background: var(--background-color);
+    border-radius: 50%;
+    border: 1mm solid white;
+    box-shadow: 0 0 0 1mm var(--background-color);
+}
+
+/* Statuts A4 */
+section .status-completed { 
+    color: var(--success-color); 
+    font-weight: bold; 
+    background: var(--light-bg);
+    padding: 1mm 2mm;
+    border-radius: 1mm;
+    font-size: 9pt;
+}
+
+section .status-in-progress { 
+    color: var(--warning-color); 
+    font-weight: bold; 
+    background: #fff3e0;
+    padding: 1mm 2mm;
+    border-radius: 1mm;
+    font-size: 9pt;
+}
+
+section .status-pending { 
+    color: var(--error-color); 
+    font-weight: bold; 
+    background: var(--red-light);
+    padding: 1mm 2mm;
+    border-radius: 1mm;
+    font-size: 9pt;
+}
+
+/* Colonnes A4 */
+section .two-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5mm;
+    margin: 3mm 0;
+}
+
+section .three-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 3mm;
+    margin: 3mm 0;
+}
+
+/* Images A4 */
+section img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 2mm;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin: 2mm 0;
+}
+
+/* Code A4 */
+section pre {
+    background: #2d3748;
+    color: #e2e8f0;
+    padding: 3mm;
+    border-radius: 2mm;
+    overflow-x: auto;
+    font-size: 9pt;
+    border-left: 2px solid var(--accent-color);
+    margin: 2mm 0;
+    font-family: 'Roboto Mono', monospace;
+}
+
+section code {
+    font-family: 'Roboto Mono', monospace;
+    background: #f7fafc;
+    color: var(--accent-color);
+    padding: 1mm 2mm;
+    border-radius: 1mm;
+    font-size: 9pt;
+}
+
+/* Citations A4 */
+section blockquote {
+    margin: 3mm 0;
+    padding: 3mm 4mm;
+    border-left: var(--accent-color) 2px solid;
+    background: var(--red-light);
+    border-radius: 0 2mm 2mm 0;
+    font-style: italic;
+    font-size: 10pt;
+}
+
+/* Page de couverture A4 */
+section.cover {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, var(--light-bg) 0%, var(--red-light) 100%);
+    text-align: center;
+}
+
+section.cover h1 {
+    font-size: 24pt;
+    margin-bottom: 10mm;
+    text-align: center;
+}
+
+section.cover p {
+    font-size: 14pt;
+    margin: 3mm 0;
+    text-align: center;
+}
+
+/* Highlight box A4 */
+section .highlight-box {
+    background: linear-gradient(135deg, var(--accent-color), var(--background-color));
+    color: white;
+    padding: 4mm;
+    border-radius: 3mm;
+    margin: 3mm 0;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* Print optimisations A4 */
+@media print {
+    section {
+        width: 210mm;
+        height: 297mm;
+        margin: 0;
+        padding: 20mm;
+        page-break-after: always;
+        break-after: page;
+    }
+    
+    .metric-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .two-columns {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Responsive A4 */
+@media screen and (max-width: 210mm) {
+    section {
+        width: 100vw;
+        height: 100vh;
+        max-width: 100vw;
+        max-height: 100vh;
+        padding: 20px;
+    }
+}
+
+/* Animations subtiles */
+section .metric,
+section .timeline-item,
+section .progress-bar {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(5mm);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Règles spécifiques pour forcer l'orientation portrait A4 */
+@media screen {
+    /* Forcer l'orientation portrait sur écran */
+    section {
+        width: 210mm !important;
+        height: 297mm !important;
+        max-width: 210mm !important;
+        max-height: 297mm !important;
+        aspect-ratio: 210/297 !important;
+        transform: none !important;
+    }
+    
+    /* Container principal en portrait */
+    .bespoke-marp-parent {
+        width: 210mm !important;
+        height: 297mm !important;
+        max-width: 210mm !important;
+        max-height: 297mm !important;
+    }
+    
+    /* Slides en portrait */
+    .bespoke-marp-slide {
+        width: 210mm !important;
+        height: 297mm !important;
+        max-width: 210mm !important;
+        max-height: 297mm !important;
+    }
+}
+
+@media print {
+    /* Forcer l'orientation portrait à l'impression */
+    @page {
+        size: A4 portrait;
+        margin: 0;
+    }
+    
+    section {
+        width: 210mm !important;
+        height: 297mm !important;
+        max-width: 210mm !important;
+        max-height: 297mm !important;
+        page-break-after: always;
+        break-after: page;
+    }
+}
+
+/* Override Marp pour forcer le portrait */
+.bespoke-marp-slide {
+    width: 210mm !important;
+    height: 297mm !important;
+    max-width: 210mm !important;
+    max-height: 297mm !important;
+    aspect-ratio: 210/297 !important;
+}
+
+/* Container SVG en portrait */
+svg[data-marpit-svg] {
+    width: 210mm !important;
+    height: 297mm !important;
+    max-width: 210mm !important;
+    max-height: 297mm !important;
+}

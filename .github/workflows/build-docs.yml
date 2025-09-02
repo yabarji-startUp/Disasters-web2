@@ -1,0 +1,126 @@
+name: Build et Génération des Documents
+
+on:
+  push:
+    branches: [ main, develop, feature/* ]
+    paths:
+      - 'UF-Zoom/docs/**'
+      - 'UF-Zoom/Slide-Oral.md'
+      - 'Themes/**'
+      - 'package.json'
+  pull_request:
+    branches: [ main, develop ]
+    paths:
+      - 'UF-Zoom/docs/**'
+      - 'UF-Zoom/Slide-Oral.md'
+      - 'Themes/**'
+      - 'package.json'
+  workflow_dispatch: # Permet le déclenchement manuel
+
+jobs:
+  build-and-docs:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
+    
+    steps:
+    - name: Checkout du code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+        
+    - name: Installation des dépendances
+      run: |
+        npm ci
+        npm install -g @marp-team/marp-cli
+        
+    - name: Vérification des prérequis
+      run: |
+        echo "Vérification des thèmes CSS..."
+        ls -la Themes/
+        echo "Vérification des fichiers sources..."
+        ls -la UF-Zoom/docs/
+        ls -la UF-Zoom/
+        
+    - name: Build du projet
+      run: |
+        echo "🚀 Build du projet..."
+        npm run build
+        
+    - name: Génération des documents
+      run: |
+        echo "📄 Génération des documents..."
+        bash UF-Zoom/build-docs.sh
+        
+    - name: Vérification des documents générés
+      run: |
+        echo "✅ Vérification des documents générés..."
+        echo "--- PDF Dossier ---"
+        ls -la UF-Zoom/docs/output/
+        echo "--- Slides ---"
+        ls -la UF-Zoom/output/
+        echo "--- Rapport de build ---"
+        ls -la build-docs-report.txt
+        
+    - name: Upload des documents générés
+      uses: actions/upload-artifact@v4
+      with:
+        name: documents-generes
+        path: |
+          UF-Zoom/docs/output/
+          UF-Zoom/output/
+          build-docs-report.txt
+        retention-days: 30
+        
+    - name: Comment PR avec les résultats
+      if: github.event_name == 'pull_request'
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const fs = require('fs');
+          
+          let comment = '## 📄 Documents générés automatiquement\n\n';
+          comment += '✅ **Build réussi** avec génération automatique des documents\n\n';
+          
+          try {
+            if (fs.existsSync('build-docs-report.txt')) {
+              const report = fs.readFileSync('build-docs-report.txt', 'utf8');
+              comment += '### 📋 Rapport de build\n';
+              comment += '```\n' + report + '\n```\n\n';
+            }
+          } catch (error) {
+            comment += '⚠️ Impossible de lire le rapport de build\n\n';
+          }
+          
+          comment += '### 📁 Fichiers disponibles\n';
+          comment += '- **PDF Dossier** : `UF-Zoom/docs/output/Dossier-Projet2.pdf`\n';
+          comment += '- **Slides PDF** : `UF-Zoom/output/Slide-Oral.pdf`\n';
+          comment += '- **Slides HTML** : `UF-Zoom/output/Slide-Oral.html`\n';
+          comment += '- **Slides PPTX** : `UF-Zoom/output/Slide-Oral.pptx`\n\n';
+          
+          comment += '💡 Ces documents sont générés automatiquement à chaque build.';
+          
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: comment
+          });
+          
+    - name: Notification de succès
+      if: success()
+      run: |
+        echo "🎉 Build et génération des documents terminés avec succès !"
+        echo "📄 Documents disponibles dans les artifacts GitHub Actions"
+        
+    - name: Notification d'échec
+      if: failure()
+      run: |
+        echo "❌ Échec du build ou de la génération des documents"
+        echo "📋 Vérifiez les logs pour plus de détails" 
