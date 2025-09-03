@@ -226,11 +226,21 @@ export default function App() {
     )
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white p-6">
+    <div id="main-content" className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white">
+      {/* Image de fond fixe pour mettre la rosace en arrière-plan */}
+      <div className="fixed inset-0 opacity-10 pointer-events-none">
+        <img 
+          src="/static/large.jpg" 
+          className="absolute inset-0 w-full h-full object-cover mix-blend-overlay" 
+          loading="lazy"
+          alt="Background pattern"
+        />
+      </div>
+      
       {/* C4 - Preload Manager pour optimisations avancées */}
       <PreloadManager />
       
-      <div className="max-w-7xl mx-auto">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-12">
         <header className="text-center mb-8">
           <h1 className="text-4xl font-bold text-red-400 mb-4">
             Plateforme d'entraînement avancée
@@ -253,21 +263,21 @@ export default function App() {
           <Card icon={<Activity className="w-8 h-8 text-lime-400" />} title="RPS" value={stats.rps} tone={color(stats.rps, limits.rps)} />
           <Card icon={<Timer className="w-8 h-8 text-yellow-400" />} title="Load page" value={`${stats.pl} ms`} tone="bg-white/10 border-white/20" />
         </section>
-        <section className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 mb-16">
-          <div className="flex items-center gap-4 mb-6">
-            <Zap className="w-8 h-8 text-yellow-400" />
-            <h2 className="text-2xl font-bold text-white">Visualisation 3D</h2>
+        <section className="bg-white/10 backdrop-blur-lg rounded-2xl p-12 border border-white/20 mb-24">
+          <div className="flex items-center gap-4 mb-8">
+            <Zap className="w-10 h-10 text-yellow-400" />
+            <h2 className="text-3xl font-bold text-white">⚡ Visualisation 3D</h2>
           </div>
-          <div className="flex justify-center">
+          <div className="flex justify-center mb-8">
             <Suspense fallback={
-              <div className="w-full h-96 flex items-center justify-center">
-                <div className="animate-spin h-12 w-12 rounded-full border-b-2 border-white" />
+              <div className="w-full h-[500px] flex items-center justify-center">
+                <div className="animate-spin h-16 w-16 rounded-full border-b-2 border-white" />
               </div>
             }>
               {show3D && <ThreeScene />}
             </Suspense>
           </div>
-          <p className="text-slate-300 text-center mt-4">20 cubes optimisés en temps réel (RGESN 2.2)</p>
+          <p className="text-slate-300 text-center text-lg">8 cubes optimisés en temps réel (RGESN 2.2)</p>
         </section>
       </div>
     </div>
