@@ -36,6 +36,15 @@ export default defineConfig({
           if (ext === 'css') return `css/[name]-[hash].${ext}`;
           if (/\.(png|jpe?g|svg|gif|tiff|bmp|ico)$/i.test(assetInfo.name || '')) return `images/[name]-[hash].${ext}`;
           return `assets/[name]-[hash].${ext}`;
+        },
+        // Compression ESBuild optimisée C4
+        compact: true,
+        // Optimisation des noms
+        generatedCode: {
+          preset: 'es2015',
+          constBindings: true,
+          objectShorthand: true,
+          reservedNamesAsProps: false
         }
       }
     },
@@ -54,7 +63,11 @@ export default defineConfig({
     // Optimisations C4 : Compression avancée
     target: 'es2020',
     cssCodeSplit: true,
-    reportCompressedSize: true
+    reportCompressedSize: true,
+    // Compression ESBuild optimisée C4
+    minifyIdentifiers: true,
+    minifySyntax: true,
+    minifyWhitespace: true
   },
   
   // Optimisation des dépendances
@@ -67,7 +80,12 @@ export default defineConfig({
       target: 'es2020',
       supported: {
         bigint: true
-      }
+      },
+      // Optimisations de compression C4
+      minify: true,
+      minifyIdentifiers: true,
+      minifySyntax: true,
+      minifyWhitespace: true
     }
   },
   
