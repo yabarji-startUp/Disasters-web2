@@ -215,7 +215,7 @@ Workflow: ${{ github.workflow }}
 
 ### PDF - Dossier-Projet2.md
 - Fichier: UF-Zoom/docs/output/Dossier-Projet2.pdf
-- Taille: $(du -h UF-Zoom/docs/output/Dossier-Projet2.pdf | cut -f1)
+- Taille: $(du -h "UF-Zoom/docs/output/Dossier-Projet2.pdf" | cut -f1)
 - Thème: resume2-A4.css
 - Format: A4 Portrait
 
@@ -234,7 +234,7 @@ Workflow: ${{ github.workflow }}
 
 ## 📈 Métriques
 - Temps de build: ${{ steps.build-and-docs.outputs.build-time }}
-- Taille totale des documents: $(du -sh UF-Zoom/docs/output/ UF-Zoom/output/ | awk '{sum+=$1} END {print sum "B"}')
+- Taille totale des documents: $(du -sh "UF-Zoom/docs/output/" "UF-Zoom/output/" | awk '{sum+=$1} END {print sum "B"}')
 
 ## 🎯 Statut
 ✅ Build terminé avec succès
