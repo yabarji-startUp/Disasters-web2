@@ -11,9 +11,10 @@ echo ""
 
 # Configuration
 INPUT_FILE="UF-Zoom/Slide-Oral.md"
-OUTPUT_PDF="UF-Zoom/Slide-Oral.pdf"
-OUTPUT_HTML="UF-Zoom/Slide-Oral.html"
-OUTPUT_PPTX="UF-Zoom/Slide-Oral.pptx"
+OUTPUT_DIR="UF-Zoom/output"
+OUTPUT_PDF="$OUTPUT_DIR/Slide-Oral.pdf"
+OUTPUT_HTML="$OUTPUT_DIR/Slide-Oral.html"
+OUTPUT_PPTX="$OUTPUT_DIR/Slide-Oral.pptx"
 THEME="resume2-A4"
 PORT=8081
 
@@ -73,12 +74,14 @@ cleanup() {
     log "Nettoyage des fichiers précédents..."
     
     # Supprimer les anciens fichiers de sortie
-    for file in "$OUTPUT_PDF" "$OUTPUT_HTML" "$OUTPUT_PPTX"; do
-        if [ -f "$file" ]; then
-            rm "$file"
-            success "Ancien fichier supprimé : $(basename "$file")"
-        fi
-    done
+    if [ -d "$OUTPUT_DIR" ]; then
+        rm -r "$OUTPUT_DIR"
+        success "Anciens fichiers de sortie supprimés"
+    fi
+    
+    # Créer le dossier output
+    mkdir -p "$OUTPUT_DIR"
+    success "Dossier de sortie créé : $OUTPUT_DIR"
     
     # Nettoyer les fichiers temporaires
     find . -name "*.tmp" -delete 2>/dev/null || true

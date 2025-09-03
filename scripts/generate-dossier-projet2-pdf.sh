@@ -11,7 +11,8 @@ echo ""
 
 # Configuration
 INPUT_FILE="UF-Zoom/docs/Dossier-Projet2.md"
-OUTPUT_FILE="UF-Zoom/docs/Dossier-Projet2.pdf"
+OUTPUT_DIR="UF-Zoom/docs/output"
+OUTPUT_FILE="$OUTPUT_DIR/Dossier-Projet2.pdf"
 THEME="resume2-A4"
 PORT=8080
 
@@ -65,10 +66,14 @@ check_prerequisites() {
 cleanup() {
     log "Nettoyage des fichiers précédents..."
     
-    if [ -f "$OUTPUT_FILE" ]; then
-        rm "$OUTPUT_FILE"
-        success "Ancien PDF supprimé"
+    if [ -d "$OUTPUT_DIR" ]; then
+        rm -r "$OUTPUT_DIR"
+        success "Anciens fichiers de sortie supprimés"
     fi
+    
+    # Créer le dossier output
+    mkdir -p "$OUTPUT_DIR"
+    success "Dossier de sortie créé : $OUTPUT_DIR"
     
     # Nettoyer les fichiers temporaires
     find . -name "*.tmp" -delete 2>/dev/null || true
@@ -128,7 +133,7 @@ verify_pdf() {
 generate_html() {
     log "Génération HTML pour prévisualisation..."
     
-    HTML_OUTPUT="UF-Zoom/docs/Dossier-Projet2.html"
+    HTML_OUTPUT="$OUTPUT_DIR/Dossier-Projet2.html"
     
     marp "$INPUT_FILE" \
         --html \

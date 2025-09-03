@@ -51,6 +51,8 @@ _color: #fff
 10. [Annexes](#10-annexes)
 11. [Annexes complémentaires](#11-annexes)
 
+---
+
 ### **Sous-sections Détaillées**
 
 #### **Section 4 - Cadrage & Budget**
@@ -94,6 +96,9 @@ _color: #fff
 #### **Section 9 - Conclusion**
 - [9.1 Synthèse des réalisations](#91-synthèse-des-réalisations)
 - [9.2 Impact mesurable](#92-impact-mesurable)
+
+---
+
 - [9.3 Décisions stratégiques](#93-décisions-stratégiques)
 - [9.4 Prochaines étapes](#94-prochaines-étapes)
 - [9.5 Leçons apprises](#95-leçons-apprises)
@@ -104,28 +109,6 @@ _color: #fff
 - [10.2 Données techniques détaillées](#102-données-techniques-détaillées)
 - [10.3 Recommandations visuelles](#103-recommandations-visuelles)
 - [10.4 Tests automatisés et pipeline CI/CD](#104-tests-automatisés-et-pipeline-cicd)
-
-#### **Section 11 - Annexes Complémentaires**
-- [11.1 User Stories Backlog](#111-user-stories-backlog)
-- [11.2 Données techniques détaillées](#112-données-techniques-détaillées)
-- [11.3 Recommandations visuelles](#113-recommandations-visuelles)
-- [11.4 Tests automatisés et pipeline CI/CD](#114-tests-automatisés-et-pipeline-cicd)
-- [11.5 Glossaire](#115-glossaire)
-- [11.6 Références](#116-références)
-
-### **Compétences C1-C5 Implémentées**
-- **C1 - ACV Simplifiée** ✅ COMPLÉTÉE
-- **C2 - Cadrage & Budget** ✅ COMPLÉTÉE  
-- **C3 - Référentiel** ✅ COMPLÉTÉE
-- **C4 - Implémentations Avancées** ✅ COMPLÉTÉE
-- **C5 - Mesure & Analyse** ✅ COMPLÉTÉE
-
-### **Dashboard C5 - Mesure et Analyse Avancées**
-- **Architecture C5** : AppRouter, C5Routes, C5Layout, C5Dashboard, C5Metrics, C5Reports
-- **Métriques C5** : EcoIndex, Green-IT, Lighthouse, RGESN
-- **Rosace 3D** : En arrière-plan avec optimisations RGESN 2.2
-- **PR C5** : #7 créée et prête pour merge
-- **Intégration Scaphandre** : Planifiée pour améliorations futures
 
 ---
 
@@ -324,6 +307,7 @@ _color: #fff
 - **Risque technique** : Faible risque de régression
 - **ROI** : Retour sur investissement rapide
 
+---
 
 ## 4. Cadrage & budget environnemental
 

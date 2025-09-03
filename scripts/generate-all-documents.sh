@@ -12,8 +12,8 @@ echo ""
 # Configuration
 DOSSIER_SCRIPT="scripts/generate-dossier-projet2-pdf.sh"
 SLIDE_SCRIPT="scripts/generate-slide-oral-presentation.sh"
-DOSSIER_OUTPUT_DIR="UF-Zoom/docs"
-SLIDE_OUTPUT_DIR="UF-Zoom"
+DOSSIER_OUTPUT_DIR="UF-Zoom/docs/output"
+SLIDE_OUTPUT_DIR="UF-Zoom/output"
 
 # Couleurs pour l'affichage
 RED='\033[0;31m'
