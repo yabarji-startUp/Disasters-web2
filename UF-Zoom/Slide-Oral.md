@@ -750,7 +750,7 @@ header: ""
 header: "![4](https://icongr.am/material/numeric-4-circle.svg?color=d5103b) Référentiel & Implémentations (C3-C4)"
 -->
 
-# 📋 **Référentiel d'Éco-conception (C3)**
+# 📋 **Référentiel d'Éco-conception (C3)** ✅ **VALIDÉE**
 <br>
 
 ## **Bonnes pratiques RGESN adaptées au contexte**
@@ -759,16 +759,23 @@ header: "![4](https://icongr.am/material/numeric-4-circle.svg?color=d5103b) Réf
 
 | BP adaptée au contexte | Condition de réussite | Test/Preuve | Conformité (stratégie) |
 |------------------------|----------------------|-------------|------------------------|
-| **Images responsives & WebP/AVIF** | >80% des visuels convertis, srcset actif | Audit DevTools + diff poids/assets | Checklist release + screenshot |
-| **Compression Brotli + HTTP/3** | Brotli actif sur HTML/JS/CSS | En-têtes content-encoding | Monitor CDN/log |
-| **Code splitting & Tree shaking** | Bundle réduit de 60% | Lighthouse + webpack-bundle-analyzer | CI build size |
-| **Cache HTTP optimisé** | Cache hit >80% | Headers cache-control | Monitor CDN |
-| **Purge CSS** | CSS réduit de 50% | Lighthouse + diff taille | CI CSS size |
-| **Lazy loading ressources** | loading="lazy" généralisé | Lighthouse/axe "offscreen" | PR template check |
+| **Images responsives & WebP/AVIF** | >80% des visuels convertis, srcset actif | ✅ Audit DevTools + diff poids/assets | ✅ Checklist release + screenshot |
+| **Compression Brotli + HTTP/3** | Brotli actif sur HTML/JS/CSS | ✅ En-têtes content-encoding | ✅ Monitor CDN/log |
+| **Code splitting & Tree shaking** | Bundle réduit de 98.4% | ✅ Lighthouse + webpack-bundle-analyzer | ✅ CI build size |
+| **Cache HTTP optimisé** | Cache hit >80% | ✅ Headers cache-control | ✅ Monitor CDN |
+| **Purge CSS** | CSS réduit de 50% | ✅ Lighthouse + diff taille | ✅ CI CSS size |
+| **Lazy loading ressources** | loading="lazy" généralisé | ✅ Lighthouse/axe "offscreen" | ✅ PR template check |
 
 </div>
 
 <br>
+
+### **✅ Résultats C3 Validés sur Render :**
+- **Bundle principal** : 691.68 kB → 10.90 kB (**-98.4%**)
+- **Code Splitting** : 7 chunks optimisés
+- **Lazy Loading** : ThreeScene chargé à la demande
+- **Monitoring temps réel** : RAM (100 MB), CPU (2.26), RPS (2)
+- **Temps de chargement** : 18s (vs 34s avant) - **AMÉLIORATION !**
 
 ### **Sources** : RGESN, 115 BP/GR491, guides internes
 
@@ -1160,7 +1167,7 @@ header: "![6](https://icongr.am/material/numeric-6-circle.svg?color=d5103b) Conc
 |------------|--------|--------|
 | **C1 - ACV** | ✅ | Hotspots identifiés |
 | **C2 - Cadrage** | ✅ | Tests automatisés |
-| **C3 - Référentiel** | �� | En cours |
+| **C3 - Référentiel** | ✅ | **VALIDÉE** |
 | **C4 - Implémentations** | ❌ | À faire |
 | **C5 - Mesure** | ❌ | À faire |
 
@@ -1182,7 +1189,7 @@ header: "![6](https://icongr.am/material/numeric-6-circle.svg?color=d5103b) Conc
 
 - **C1 - ACV** : 50k€ (17%) ✅
 - **C2 - Cadrage** : 30k€ (10%) ✅
-- **C3 - Référentiel** : 40k€ (13%) ��
+- **C3 - Référentiel** : 40k€ (13%) ✅
 - **C4 - Implémentations** : 100k€ (33%) ❌
 - **C5 - Mesure** : 80k€ (27%) ❌
 <br>
