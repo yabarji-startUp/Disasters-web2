@@ -130,6 +130,9 @@ export default function App() {
       const totalEncoded = nav.encodedBodySize + resources.reduce((sum, r) => sum + (r.encodedBodySize || 0), 0);
       const cacheRatio = totalEncoded ? 1 - totalWeight / totalEncoded : 0;
 
+      // Mesure correcte du temps de chargement
+      const loadTime = Math.round(performance.now() - startTime);
+
       setStats(s => ({
         ...s,
         bundle: nav.transferSize,
@@ -140,7 +143,7 @@ export default function App() {
         css: cssWeight || s.css,
         img: imgWeight || s.img,
         cache: cacheRatio,
-        pl: Math.round(performance.now() - startTime)
+        pl: loadTime
       }));
       setReady(true);
     };
@@ -150,11 +153,6 @@ export default function App() {
     } else {
       window.addEventListener('load', computeStats, { once: true });
     }
-
-    // Ajout du rafraîchissement périodique
-    const interval = setInterval(computeStats, 2000);
-
-    return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {
