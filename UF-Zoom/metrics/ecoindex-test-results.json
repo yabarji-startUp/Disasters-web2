@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-09-03T00:13:07.656Z",
+  "timestamp": "2025-09-03T04:40:48.074Z",
   "ecoIndex": {
     "score": 57,
     "grade": "E",
@@ -34,5 +34,4 @@
     "Implémenter le lazy loading pour les images et composants",
     "Optimiser le cache et les headers HTTP"
   ]
-
 }

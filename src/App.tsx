@@ -95,10 +95,10 @@ export default function App() {
       const h = document.head
       const link = document.createElement('link')
       link.rel = 'stylesheet'
-      link.href = 'http://localhost:5001/static/big.css'
+      link.href = 'https://disasters-web2.onrender.com/static/big.css'
       h.appendChild(link)
       const script = document.createElement('script')
-      script.src = 'http://localhost:5001/static/big.js'
+      script.src = 'https://disasters-web2.onrender.com/static/big.js'
       script.crossOrigin = 'anonymous'
       h.appendChild(script)
     }
@@ -182,11 +182,11 @@ export default function App() {
 
     intervalRef.current = window.setInterval(async () => {
       for (let i = 0; i < 2; i++) {
-        fetch(`http://localhost:5001/api/payload?${Date.now()}_${i}`)
+        fetch(`https://disasters-web2.onrender.com/api/payload?${Date.now()}_${i}`)
       }
 
       try {
-        const { memory, load, rps } = await fetch('http://localhost:5001/api/server', {
+        const { memory, load, rps } = await fetch('https://disasters-web2.onrender.com/api/server', {
           cache: 'no-store'
         }).then(r => r.json())
 
@@ -217,7 +217,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white">
       <div className="fixed inset-0 opacity-10 pointer-events-none">
-        <img src="http://localhost:5001/static/large.jpg" className="absolute inset-0 w-full h-full object-cover mix-blend-overlay" />
+        <img src="https://disasters-web2.onrender.com/static/large.jpg" className="absolute inset-0 w-full h-full object-cover mix-blend-overlay" />
       </div>
       <div className="relative z-10 container mx-auto px-6 py-12">
         <header className="text-center mb-16">
