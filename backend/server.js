@@ -114,13 +114,48 @@ app.get('/api/payload', (_, res) => {
 const distPath = path.join(__dirname, '..', 'dist')
 console.log('🔍 Dist path:', distPath)
 console.log('🔍 Dist exists:', fs.existsSync(distPath))
-console.log('🔍 Dist contents:', fs.readdirSync(distPath))
 
-app.use(express.static(distPath, {
-  maxAge: 86400000, // 24 heures de cache
-  etag: true,
-  lastModified: true
-}))
+if (fs.existsSync(distPath)) {
+  console.log('🔍 Dist contents:', fs.readdirSync(distPath))
+  
+  // Serve Vite chunks with proper MIME types
+  app.use('/js', express.static(path.join(distPath, 'js'), {
+    maxAge: 86400000,
+    etag: true,
+    lastModified: true,
+    setHeaders: (res, path) => {
+      if (path.endsWith('.js')) {
+        res.setHeader('Content-Type', 'application/javascript')
+      }
+    }
+  }))
+  
+  app.use('/css', express.static(path.join(distPath, 'css'), {
+    maxAge: 86400000,
+    etag: true,
+    lastModified: true,
+    setHeaders: (res, path) => {
+      if (path.endsWith('.css')) {
+        res.setHeader('Content-Type', 'text/css')
+      }
+    }
+  }))
+  
+  app.use('/assets', express.static(path.join(distPath, 'assets'), {
+    maxAge: 86400000,
+    etag: true,
+    lastModified: true
+  }))
+  
+  // Serve root files (index.html, etc.)
+  app.use(express.static(distPath, {
+    maxAge: 86400000,
+    etag: true,
+    lastModified: true
+  }))
+} else {
+  console.log('❌ Dist directory not found!')
+}
 
 // --- Catch-all route for SPA ---
 app.get('*', (req, res) => {
