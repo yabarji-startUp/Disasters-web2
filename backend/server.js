@@ -119,7 +119,7 @@ if (fs.existsSync(distPath)) {
   console.log('🔍 Dist contents:', fs.readdirSync(distPath))
   
   // Serve Vite chunks with proper MIME types
-  app.use('/js', express.static(path.join(distPath, 'js'), {
+  app.use('/js/', express.static(path.join(distPath, 'js'), {
     maxAge: 86400000,
     etag: true,
     lastModified: true,
@@ -130,7 +130,7 @@ if (fs.existsSync(distPath)) {
     }
   }))
   
-  app.use('/css', express.static(path.join(distPath, 'css'), {
+  app.use('/css/', express.static(path.join(distPath, 'css'), {
     maxAge: 86400000,
     etag: true,
     lastModified: true,
@@ -139,6 +139,25 @@ if (fs.existsSync(distPath)) {
         res.setHeader('Content-Type', 'text/css')
       }
     }
+  }))
+  
+  app.use('/assets/', express.static(path.join(distPath, 'assets'), {
+    maxAge: 86400000,
+    etag: true,
+    lastModified: true
+  }))
+  
+  // Also serve without trailing slash for compatibility
+  app.use('/js', express.static(path.join(distPath, 'js'), {
+    maxAge: 86400000,
+    etag: true,
+    lastModified: true
+  }))
+  
+  app.use('/css', express.static(path.join(distPath, 'css'), {
+    maxAge: 86400000,
+    etag: true,
+    lastModified: true
   }))
   
   app.use('/assets', express.static(path.join(distPath, 'assets'), {
