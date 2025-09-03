@@ -202,6 +202,31 @@ export default function App() {
     return () => clearInterval(intervalRef.current)
   }, [])
 
+  // Enregistrement du Service Worker pour cache offline (C4)
+  useEffect(() => {
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js')
+        .then(registration => {
+          console.log('✅ Service Worker enregistré:', registration.scope)
+          
+          // Vérifier les mises à jour
+          registration.addEventListener('updatefound', () => {
+            const newWorker = registration.installing
+            if (newWorker) {
+              newWorker.addEventListener('statechange', () => {
+                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                  console.log('🔄 Nouvelle version du Service Worker disponible')
+                }
+              })
+            }
+          })
+        })
+        .catch(error => {
+          console.warn('⚠️ Erreur enregistrement Service Worker:', error)
+        })
+    }
+  }, [])
+
   if (!ready)
     return (
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-900 via-indigo-900 to-blue-900">

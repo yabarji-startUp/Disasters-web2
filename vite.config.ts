@@ -15,7 +15,7 @@ export default defineConfig({
           // Chunk principal React
           'react-vendor': ['react', 'react-dom'],
           
-          // Chunk Three.js (lourd)
+          // Chunk Three.js (lourd) - à optimiser
           'three-vendor': ['three'],
           
           // Chunk utilitaires
@@ -32,16 +32,9 @@ export default defineConfig({
         
         // Optimisation des assets
         assetFileNames: (assetInfo) => {
-          if (!assetInfo.name) return `assets/[name]-[hash].[ext]`;
-          
-          const info = assetInfo.name.split('.');
-          const ext = info[info.length - 1];
-          if (/\.(css)$/.test(assetInfo.name)) {
-            return `css/[name]-[hash].${ext}`;
-          }
-          if (/\.(png|jpe?g|svg|gif|tiff|bmp|ico)$/i.test(assetInfo.name)) {
-            return `images/[name]-[hash].${ext}`;
-          }
+          const ext = assetInfo.name?.split('.').pop();
+          if (ext === 'css') return `css/[name]-[hash].${ext}`;
+          if (/\.(png|jpe?g|svg|gif|tiff|bmp|ico)$/i.test(assetInfo.name || '')) return `images/[name]-[hash].${ext}`;
           return `assets/[name]-[hash].${ext}`;
         }
       }
@@ -51,13 +44,17 @@ export default defineConfig({
     minify: 'esbuild', // Utiliser esbuild par défaut (plus rapide)
     
     // Limite de taille des chunks
-    chunkSizeWarningLimit: 300, // Avertir si chunk > 300 kB
+    chunkSizeWarningLimit: 500, // Augmenté pour Three.js
     
     // Source maps pour debug (désactivé en production)
     sourcemap: false,
     
     // Optimisation des assets
     assetsInlineLimit: 4096, // Inline assets < 4 kB
+    // Optimisations C4 : Compression avancée
+    target: 'es2020',
+    cssCodeSplit: true,
+    reportCompressedSize: true
   },
   
   // Optimisation des dépendances
