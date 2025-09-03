@@ -38,7 +38,10 @@ const limits = {
   js: [153_600, 307_200],
   css: [51_200, 102_400],
   img: [307_200, 716_800],
-  cache: [0.6, 0.4]
+  cache: [0.6, 0.4],
+  memory: [100, 200], // MB - Vert: < 100MB, Jaune: 100-200MB, Rouge: > 200MB
+  load: [50, 80], // % - Vert: < 50%, Jaune: 50-80%, Rouge: > 80%
+  rps: [10, 20] // req/s - Vert: < 10, Jaune: 10-20, Rouge: > 20
 }
 
 const color = (v: number, [g, y]: number[], inv = false) =>
@@ -81,49 +84,90 @@ export default function App() {
     const scene = new THREE.Scene()
     const camera = new THREE.PerspectiveCamera(75, canvas.clientWidth / canvas.clientHeight, 0.1, 1_000)
     camera.position.z = 30
-    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true })
+    
+    // Optimisation RGESN 2.2 : Réduction de la charge GPU
+    const renderer = new THREE.WebGLRenderer({ 
+      canvas, 
+      antialias: false, // Désactiver l'antialiasing pour performance
+      powerPreference: "high-performance"
+    })
     renderer.setSize(canvas.clientWidth || 640, canvas.clientHeight || 480)
-    renderer.setPixelRatio(window.devicePixelRatio)
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)) // Limiter le pixel ratio
+    
     const ambient = new THREE.AmbientLight(0xffffff, 0.3)
     scene.add(ambient)
     const dir = new THREE.DirectionalLight(0xffffff, 0.8)
     dir.position.set(25, 25, 25)
     scene.add(dir)
-    for (let i = 0; i < 20; i++) {
-      const mat = new THREE.MeshPhongMaterial({ color: Math.random() * 0xffffff, shininess: 80 })
-      const geo = new THREE.BoxGeometry(1 + Math.random(), 1 + Math.random(), 1 + Math.random())
-      const cube = new THREE.Mesh(geo, mat)
-      cube.position.set((Math.random() - 0.5) * 50, (Math.random() - 0.5) * 50, (Math.random() - 0.5) * 50)
+    
+    // Optimisation RGESN 2.2 : Réduction du nombre d'objets et partage des ressources
+    const cubes: THREE.Mesh[] = []
+    
+    // Géométrie partagée pour tous les cubes
+    const sharedGeometry = new THREE.BoxGeometry(1, 1, 1)
+    
+    // Matériaux partagés (3 couleurs différentes)
+    const materials = [
+      new THREE.MeshPhongMaterial({ color: 0x4f46e5, shininess: 50 }), // Indigo
+      new THREE.MeshPhongMaterial({ color: 0x7c3aed, shininess: 50 }), // Violet
+      new THREE.MeshPhongMaterial({ color: 0xec4899, shininess: 50 })  // Pink
+    ]
+    
+    // Réduction de 20 à 8 cubes pour performance
+    for (let i = 0; i < 8; i++) {
+      const material = materials[i % materials.length]
+      const cube = new THREE.Mesh(sharedGeometry, material)
+      
+      // Positionnement optimisé
+      cube.position.set(
+        (Math.random() - 0.5) * 30, // Réduire l'espacement
+        (Math.random() - 0.5) * 30,
+        (Math.random() - 0.5) * 30
+      )
+      
+      // Échelle aléatoire pour variété
+      const scale = 0.5 + Math.random() * 1.5
+      cube.scale.set(scale, scale, scale)
+      
       scene.add(cube)
+      cubes.push(cube)
     }
+    
+    // Optimisation RGESN 2.2 : Animation plus efficace
+    let frameCount = 0
     const animate = () => {
-      let i = 0
-      scene.traverse((o: any) => {
-        if (o.isMesh) {
-          o.rotation.x += 0.002 * ((i % 3) + 1)
-          o.rotation.y += 0.003 * ((i % 4) + 1)
-        }
-        i++
+      frameCount++
+      
+      // Animation optimisée avec moins de calculs
+      cubes.forEach((cube, i) => {
+        const speed = 0.01 + (i * 0.005)
+        cube.rotation.x += speed
+        cube.rotation.y += speed * 0.7
       })
-      renderer.render(scene, camera)
+      
+      // Rendu conditionnel pour économiser les ressources
+      if (frameCount % 2 === 0) { // Rendu à 30 FPS au lieu de 60
+        renderer.render(scene, camera)
+      }
+      
       requestAnimationFrame(animate)
     }
     animate()
+    
     const onResize = _.throttle(() => {
       camera.aspect = canvas.clientWidth / canvas.clientHeight
       camera.updateProjectionMatrix()
       renderer.setSize(canvas.clientWidth, canvas.clientHeight)
     }, 200)
     window.addEventListener('resize', onResize)
+    
     return () => {
       window.removeEventListener('resize', onResize)
       renderer.dispose()
-      scene.traverse((o: any) => {
-        if (o.geometry) o.geometry.dispose()
-        if (o.material) {
-          Array.isArray(o.material) ? o.material.forEach((m: any) => m.dispose()) : o.material.dispose()
-        }
-      })
+      
+      // Nettoyage optimisé RGESN 2.2
+      sharedGeometry.dispose()
+      materials.forEach(material => material.dispose())
     }
   }, [])
 
@@ -274,9 +318,9 @@ export default function App() {
           <Card icon={<FilePlus className="w-8 h-8 text-sky-400" />} title="CSS" value={`${(stats.img / 1024).toFixed(1)} kB`} tone={color(stats.css, limits.css)} />
           <Card icon={<Image className="w-8 h-8 text-amber-400" />} title="Images" value={`${(stats.img / 1_024).toFixed(0)} kB`} tone={color(stats.img, limits.img)} />
           <Card icon={<Cloud className="w-8 h-8 text-emerald-400" />} title="Cache hit" value={`${Math.round(stats.cache * 100)} %`} tone={color(stats.cache, limits.cache, true)} />
-          <Card icon={<MemoryStick className="w-8 h-8 text-red-400" />} title="RAM serveur" value={`${stats.memory} MB`} tone="bg-white/10 border-white/20" />
-          <Card icon={<Cpu className="w-8 h-8 text-indigo-400" />} title="CPU" value={stats.load} tone="bg-white/10 border-white/20" />
-          <Card icon={<Activity className="w-8 h-8 text-lime-400" />} title="RPS" value={stats.rps} tone="bg-white/10 border-white/20" />
+          <Card icon={<MemoryStick className="w-8 h-8 text-red-400" />} title="RAM serveur" value={`${stats.memory} MB`} tone={color(stats.memory, limits.memory)} />
+          <Card icon={<Cpu className="w-8 h-8 text-indigo-400" />} title="CPU" value={`${stats.load} %`} tone={color(stats.load, limits.load)} />
+          <Card icon={<Activity className="w-8 h-8 text-lime-400" />} title="RPS" value={stats.rps} tone={color(stats.rps, limits.rps)} />
           <Card icon={<Timer className="w-8 h-8 text-yellow-400" />} title="Load page" value={`${stats.pl} ms`} tone="bg-white/10 border-white/20" />
         </section>
         <section className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 mb-16">
@@ -287,7 +331,7 @@ export default function App() {
           <div className="flex justify-center">
             <canvas ref={canvasRef} className="rounded-xl border border-white/20 shadow-2xl w-full h-96" />
           </div>
-          <p className="text-slate-300 text-center mt-4">500 cubes tournants en temps réel</p>
+          <p className="text-slate-300 text-center mt-4">8 cubes optimisés en temps réel (RGESN 2.2)</p>
         </section>
       </div>
     </div>
