@@ -1,0 +1,98 @@
+{
+  "timestamp": "2025-09-03T00:12:24.087Z",
+  "rgesn": {
+    "score": 100,
+    "grade": "A+",
+    "compliance": "conforme",
+    "totalWeight": 100,
+    "weightedScore": 100
+  },
+  "criteria": {
+    "projectFraming": {
+      "name": "C2.1 - Cadrage du projet",
+      "weight": 20,
+      "checks": [
+        "Contraintes identifiées et documentées",
+        "Budget environnemental quantifié",
+        "Planning et jalons définis",
+        "Stakeholders identifiés",
+        "Risques évalués et mitigés"
+      ],
+      "passedChecks": 5,
+      "totalChecks": 5,
+      "score": 100,
+      "weightedScore": 20,
+      "status": "excellent",
+      "compliance": "conforme"
+    },
+    "technicalOptimizations": {
+      "name": "C2.2 - Optimisations techniques",
+      "weight": 35,
+      "checks": [
+        "Cache intelligent implémenté",
+        "Service Worker fonctionnel",
+        "Headers de cache optimisés",
+        "Lighthouse automatisé",
+        "Tree-shaking et minification"
+      ],
+      "passedChecks": 5,
+      "totalChecks": 5,
+      "score": 100,
+      "weightedScore": 35,
+      "status": "excellent",
+      "compliance": "conforme"
+    },
+    "metricsAndMonitoring": {
+      "name": "C2.3 - Métriques et monitoring",
+      "weight": 25,
+      "checks": [
+        "EcoIndex mesuré et documenté",
+        "Performance Lighthouse",
+        "Workflows CI/CD automatisés",
+        "Hooks Git pre-commit",
+        "Rapports automatisés"
+      ],
+      "passedChecks": 5,
+      "totalChecks": 5,
+      "score": 100,
+      "weightedScore": 25,
+      "status": "excellent",
+      "compliance": "conforme"
+    },
+    "documentationAndDeliverables": {
+      "name": "C2.4 - Documentation et livrables",
+      "weight": 20,
+      "checks": [
+        "Document de cadrage complet",
+        "Journal de mesure détaillé",
+        "Rapport d'état C2",
+        "Documentation technique",
+        "Livrables validés"
+      ],
+      "passedChecks": 5,
+      "totalChecks": 5,
+      "score": 100,
+      "weightedScore": 20,
+      "status": "excellent",
+      "compliance": "conforme"
+    }
+  },
+  "summary": {
+    "totalCriteria": 4,
+    "conformCriteria": 4,
+    "partiallyConformCriteria": 0,
+    "excellentCriteria": 4,
+    "goodCriteria": 0
+  },
+  "recommendations": [
+    "Continuer l'optimisation des scores EcoIndex et Performance",
+    "Implémenter des tests de charge pour valider les performances",
+    "Ajouter des métriques de consommation énergétique",
+    "Documenter les bonnes pratiques pour C3"
+  ],
+  "nextSteps": [
+    "Validation finale de C2",
+    "Passage à C3 - Référentiel d'Écoconception",
+    "Implémentation des optimisations finales"
+  ]
+}

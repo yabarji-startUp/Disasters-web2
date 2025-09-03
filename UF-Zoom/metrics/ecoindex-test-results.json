@@ -1,0 +1,37 @@
+{
+  "timestamp": "2025-09-03T00:13:07.656Z",
+  "ecoIndex": {
+    "score": 57,
+    "grade": "E",
+    "metrics": {
+      "performance": 25,
+      "accessibility": 85,
+      "bestPractices": 70,
+      "seo": 80
+    }
+  },
+  "analysis": {
+    "performance": {
+      "score": 25,
+      "status": "poor"
+    },
+    "accessibility": {
+      "score": 85,
+      "status": "good"
+    },
+    "bestPractices": {
+      "score": 70,
+      "status": "good"
+    },
+    "seo": {
+      "score": 80,
+      "status": "excellent"
+    }
+  },
+  "recommendations": [
+    "Optimiser les Core Web Vitals pour améliorer le score EcoIndex",
+    "Réduire la taille des bundles JavaScript et CSS",
+    "Implémenter le lazy loading pour les images et composants",
+    "Optimiser le cache et les headers HTTP"
+  ]
+}

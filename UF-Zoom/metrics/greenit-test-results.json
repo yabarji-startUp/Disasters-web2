@@ -1,0 +1,88 @@
+{
+  "timestamp": "2025-09-03T00:12:23.827Z",
+  "greenIT": {
+    "score": 100,
+    "grade": "A+",
+    "totalWeight": 100,
+    "weightedScore": 100
+  },
+  "criteria": {
+    "resourceOptimization": {
+      "name": "Optimisation des ressources",
+      "weight": 25,
+      "checks": [
+        "Cache intelligent implémenté",
+        "Service Worker fonctionnel",
+        "Lazy loading des composants",
+        "Tree-shaking JavaScript",
+        "Minification CSS/JS"
+      ],
+      "passedChecks": 5,
+      "totalChecks": 5,
+      "score": 100,
+      "weightedScore": 25,
+      "status": "excellent"
+    },
+    "energyEfficiency": {
+      "name": "Efficacité énergétique",
+      "weight": 30,
+      "checks": [
+        "Core Web Vitals optimisés",
+        "Images compressées (WebP)",
+        "Bundles optimisés",
+        "Requêtes réseau réduites",
+        "Cache HTTP optimisé"
+      ],
+      "passedChecks": 5,
+      "totalChecks": 5,
+      "score": 100,
+      "weightedScore": 30,
+      "status": "excellent"
+    },
+    "developmentPractices": {
+      "name": "Bonnes pratiques développement",
+      "weight": 25,
+      "checks": [
+        "Code splitting implémenté",
+        "Event-driven architecture",
+        "Polling remplacé par événements",
+        "Tests automatisés",
+        "CI/CD optimisé"
+      ],
+      "passedChecks": 5,
+      "totalChecks": 5,
+      "score": 100,
+      "weightedScore": 25,
+      "status": "excellent"
+    },
+    "monitoring": {
+      "name": "Monitoring et métriques",
+      "weight": 20,
+      "checks": [
+        "Lighthouse automatisé",
+        "Métriques EcoIndex",
+        "Workflows GitHub Actions",
+        "Hooks Git pre-commit",
+        "Rapports automatisés"
+      ],
+      "passedChecks": 5,
+      "totalChecks": 5,
+      "score": 100,
+      "weightedScore": 20,
+      "status": "excellent"
+    }
+  },
+  "summary": {
+    "totalCriteria": 4,
+    "excellentCriteria": 4,
+    "goodCriteria": 0,
+    "fairCriteria": 0,
+    "poorCriteria": 0
+  },
+  "recommendations": [
+    "Continuer l'optimisation des Core Web Vitals",
+    "Améliorer le score EcoIndex vers 85/100",
+    "Implémenter des tests de charge pour valider les performances",
+    "Ajouter des métriques de consommation énergétique"
+  ]
+}
