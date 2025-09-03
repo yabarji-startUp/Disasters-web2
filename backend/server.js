@@ -5,6 +5,7 @@ import compression from 'compression'
 import os from 'os'
 import path from 'path'
 import { fileURLToPath } from 'url'
+import fs from 'fs'
 
 const app = express()
 const PORT = process.env.PORT || 5001
@@ -112,8 +113,8 @@ app.get('/api/payload', (_, res) => {
 // --- Serve frontend static files ---
 const distPath = path.join(__dirname, '..', 'dist')
 console.log('🔍 Dist path:', distPath)
-console.log('🔍 Dist exists:', require('fs').existsSync(distPath))
-console.log('🔍 Dist contents:', require('fs').readdirSync(distPath))
+console.log('🔍 Dist exists:', fs.existsSync(distPath))
+console.log('🔍 Dist contents:', fs.readdirSync(distPath))
 
 app.use(express.static(distPath, {
   maxAge: 86400000, // 24 heures de cache
@@ -125,9 +126,9 @@ app.use(express.static(distPath, {
 app.get('*', (req, res) => {
   const indexPath = path.join(distPath, 'index.html')
   console.log('🔍 Index path:', indexPath)
-  console.log('🔍 Index exists:', require('fs').existsSync(indexPath))
+  console.log('🔍 Index exists:', fs.existsSync(indexPath))
   
-  if (require('fs').existsSync(indexPath)) {
+  if (fs.existsSync(indexPath)) {
     res.sendFile(indexPath)
   } else {
     res.status(404).send('Frontend not found. Check build process.')
