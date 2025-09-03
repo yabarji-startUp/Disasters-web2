@@ -292,7 +292,7 @@ jobs:
     - name: Upload feature reports
       uses: actions/upload-artifact@v4
       with:
-        name: feature-reports-${{ github.ref_name }}
+        name: feature-reports-feature
         path: |
           .yassen/epct-*.json
           .yassen/rgesn-compliance-report.json

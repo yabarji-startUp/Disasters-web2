@@ -196,56 +196,16 @@ jobs:
     - name: 📊 Rapport de build
       run: |
         echo "📊 Génération du rapport de build..."
-        
-        REPORT_FILE="build-docs-report.txt"
-        
-        cat > "$REPORT_FILE" << EOF
-# 📊 Rapport de Build - Génération des Documents
-Date: $(date)
-Commit: ${{ github.sha }}
-Branch: ${{ github.ref_name }}
-Workflow: ${{ github.workflow }}
-
-## 🏗️ Informations du build
-- **Runner**: ${{ runner.os }} (${{ runner.arch }})
-- **Node.js**: ${{ env.NODE_VERSION }}
-- **Cache**: ${{ env.CACHE_KEY }}
-
-## 📄 Documents générés
-
-### PDF - Dossier-Projet2.md
-- Fichier: UF-Zoom/docs/output/Dossier-Projet2.pdf
-- Taille: $(du -h UF-Zoom/docs/output/Dossier-Projet2.pdf | cut -f1)
-- Thème: resume2-A4.css
-- Format: A4 Portrait
-
-### Slides - Slide-Oral.md
-- PDF: UF-Zoom/output/Slide-Oral.pdf
-- HTML: UF-Zoom/output/Slide-Oral.html
-- PPTX: UF-Zoom/output/Slide-Oral.pptx
-- Thème: yas-eco.css
-
-## 🔍 Vérifications
-- ✅ Thèmes CSS disponibles
-- ✅ Fichiers sources trouvés
-- ✅ Build du projet réussi
-- ✅ Documents générés
-- ✅ Artifacts uploadés
-
-## 📈 Métriques
-- Temps de build: ${{ steps.build-and-docs.outputs.build-time }}
-- Taille totale des documents: $(du -sh UF-Zoom/docs/output/ UF-Zoom/output/ | awk '{sum+=$1} END {print sum "B"}')
-
-## 🎯 Statut
-✅ Build terminé avec succès
-EOF
-        
-        echo "✅ Rapport de build généré: $REPORT_FILE"
+        echo "Date: $(date)"
+        echo "Commit: ${{ github.sha }}"
+        echo "Branch: ${{ github.ref_name }}"
+        echo "Workflow: ${{ github.workflow }}"
+        echo "✅ Build terminé avec succès"
         
     - name: 📤 Upload du rapport
       uses: actions/upload-artifact@v4
       with:
-        name: rapport-build-${{ github.sha }}
+        name: rapport-build
         path: build-docs-report.txt
         retention-days: 90
         

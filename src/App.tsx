@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState, lazy, Suspense } from 'react'
 import {
   Activity,
   Cpu,
@@ -13,9 +13,9 @@ import {
   Image,
   Cloud
 } from 'lucide-react'
-import { OptimizedImage } from './components/OptimizedImage'
-import { OptimizedThreeJS } from './components/OptimizedThreeJS'
-import { CacheManager, useCacheStats } from './components/CacheManager'
+
+// Lazy loading pour Three.js (RGESN 1.2)
+const ThreeScene = lazy(() => import('./components/ThreeScene'))
 
 type Stat = {
   bundle: number
@@ -39,7 +39,10 @@ const limits = {
   js: [153_600, 307_200],
   css: [51_200, 102_400],
   img: [307_200, 716_800],
-  cache: [0.6, 0.4]
+  cache: [0.6, 0.4],
+  memory: [100, 200], // MB - Vert: < 100MB, Jaune: 100-200MB, Rouge: > 200MB
+  load: [50, 80], // % - Vert: < 50%, Jaune: 50-80%, Rouge: > 80%
+  rps: [10, 20] // req/s - Vert: < 10, Jaune: 10-20, Rouge: > 20
 }
 
 const color = (v: number, [g, y]: number[], inv = false) =>
@@ -55,7 +58,7 @@ const color = (v: number, [g, y]: number[], inv = false) =>
     ? 'border-yellow-500/30 bg-yellow-500/20'
     : 'border-red-500/30 bg-red-500/20'
 
-function AppContent() {
+export default function App() {
   const [stats, setStats] = useState<Stat>({
     bundle: 0,
     weight: 0,
@@ -71,14 +74,19 @@ function AppContent() {
     pl: 0
   })
   const [ready, setReady] = useState(false)
+  const [show3D, setShow3D] = useState(false)
 
   const injectedRef = useRef(false)
   const intervalRef = useRef<number>()
-  
-  // Statistiques du cache intelligent
-  const cacheStats = useCacheStats()
 
-  // Three.js optimisé géré par le composant OptimizedThreeJS
+  // RGESN 2.2 : Optimisation du rendu 3D - Chargement différé
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShow3D(true)
+    }, 2000) // Retarde le chargement 3D de 2 secondes
+
+    return () => clearTimeout(timer)
+  }, [])
 
   useEffect(() => {
     if (injectedRef.current) return
@@ -87,10 +95,10 @@ function AppContent() {
       const h = document.head
       const link = document.createElement('link')
       link.rel = 'stylesheet'
-      link.href = 'http://localhost:5001/static/big.css'
+      link.href = 'https://disasters-web2.onrender.com/static/big.css'
       h.appendChild(link)
       const script = document.createElement('script')
-      script.src = 'http://localhost:5001/static/big.js'
+      script.src = 'https://disasters-web2.onrender.com/static/big.js'
       script.crossOrigin = 'anonymous'
       h.appendChild(script)
     }
@@ -122,6 +130,9 @@ function AppContent() {
       const totalEncoded = nav.encodedBodySize + resources.reduce((sum, r) => sum + (r.encodedBodySize || 0), 0);
       const cacheRatio = totalEncoded ? 1 - totalWeight / totalEncoded : 0;
 
+      // Mesure correcte du temps de chargement
+      const loadTime = Math.round(performance.now() - startTime);
+
       setStats(s => ({
         ...s,
         bundle: nav.transferSize,
@@ -132,7 +143,7 @@ function AppContent() {
         css: cssWeight || s.css,
         img: imgWeight || s.img,
         cache: cacheRatio,
-        pl: Math.round(performance.now() - startTime)
+        pl: loadTime
       }));
       setReady(true);
     };
@@ -142,11 +153,6 @@ function AppContent() {
     } else {
       window.addEventListener('load', computeStats, { once: true });
     }
-
-    // Ajout du rafraîchissement périodique
-    const interval = setInterval(computeStats, 2000);
-
-    return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {
@@ -173,11 +179,12 @@ function AppContent() {
     if (intervalRef.current) return
 
     intervalRef.current = window.setInterval(async () => {
-      // Réduit le nombre de requêtes simultanées
-      fetch(`http://localhost:5001/api/payload?${Date.now()}`)
+      for (let i = 0; i < 2; i++) {
+        fetch(`https://disasters-web2.onrender.com/api/payload?${Date.now()}_${i}`)
+      }
 
       try {
-        const { memory, load, rps } = await fetch('http://localhost:5001/api/server', {
+        const { memory, load, rps } = await fetch('https://disasters-web2.onrender.com/api/server', {
           cache: 'no-store'
         }).then(r => r.json())
 
@@ -190,7 +197,7 @@ function AppContent() {
       } catch (err) {
         console.warn('Erreur lors du fetch des stats serveur', err)
       }
-    }, 5_000) // Augmenté de 1s à 5s pour réduire le polling
+    }, 1_000)
 
     return () => clearInterval(intervalRef.current)
   }, [])
@@ -208,13 +215,7 @@ function AppContent() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white">
       <div className="fixed inset-0 opacity-10 pointer-events-none">
-        <OptimizedImage
-          src="http://localhost:5001/static/large.jpg"
-          webpSrc="http://localhost:5001/static/large.webp"
-          alt="Background image for eco-training platform"
-          className="absolute inset-0 w-full h-full object-cover mix-blend-overlay"
-          loading="lazy"
-        />
+        <img src="https://disasters-web2.onrender.com/static/large.jpg" className="absolute inset-0 w-full h-full object-cover mix-blend-overlay" />
       </div>
       <div className="relative z-10 container mx-auto px-6 py-12">
         <header className="text-center mb-16">
@@ -222,13 +223,6 @@ function AppContent() {
             EcoTraining Platform
           </h1>
           <p className="text-xl text-slate-300 max-w-3xl mx-auto">Plateforme d'entraînement avancée pour l'optimisation web et l'éco-conception</p>
-          <div className="mt-4 p-4 bg-green-900/30 border border-green-500/30 rounded-lg">
-            <p className="text-sm text-green-300">
-              🚀 Cache Intelligent C2 : Hit Rate {cacheStats.hitRate}% | 
-              Requêtes {cacheStats.totalRequests} | 
-              Taille Cache {cacheStats.cacheSize}
-            </p>
-          </div>
         </header>
         <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-16">
           <Card icon={<Database className="w-8 h-8 text-purple-400" />} title="Poids HTML" value={`${(stats.bundle / 1_024).toFixed(0)} kB`} tone={color(stats.bundle, limits.weight)} tip="transferSize du document" />
@@ -239,9 +233,9 @@ function AppContent() {
           <Card icon={<FilePlus className="w-8 h-8 text-sky-400" />} title="CSS" value={`${(stats.img / 1024).toFixed(1)} kB`} tone={color(stats.css, limits.css)} />
           <Card icon={<Image className="w-8 h-8 text-amber-400" />} title="Images" value={`${(stats.img / 1_024).toFixed(0)} kB`} tone={color(stats.img, limits.img)} />
           <Card icon={<Cloud className="w-8 h-8 text-emerald-400" />} title="Cache hit" value={`${Math.round(stats.cache * 100)} %`} tone={color(stats.cache, limits.cache, true)} />
-          <Card icon={<MemoryStick className="w-8 h-8 text-red-400" />} title="RAM serveur" value={`${stats.memory} MB`} tone="bg-white/10 border-white/20" />
-          <Card icon={<Cpu className="w-8 h-8 text-indigo-400" />} title="CPU" value={stats.load} tone="bg-white/10 border-white/20" />
-          <Card icon={<Activity className="w-8 h-8 text-lime-400" />} title="RPS" value={stats.rps} tone="bg-white/10 border-white/20" />
+          <Card icon={<MemoryStick className="w-8 h-8 text-red-400" />} title="RAM serveur" value={`${stats.memory} MB`} tone={color(stats.memory, limits.memory)} />
+          <Card icon={<Cpu className="w-8 h-8 text-indigo-400" />} title="CPU" value={`${stats.load} %`} tone={color(stats.load, limits.load)} />
+          <Card icon={<Activity className="w-8 h-8 text-lime-400" />} title="RPS" value={stats.rps} tone={color(stats.rps, limits.rps)} />
           <Card icon={<Timer className="w-8 h-8 text-yellow-400" />} title="Load page" value={`${stats.pl} ms`} tone="bg-white/10 border-white/20" />
         </section>
         <section className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 mb-16">
@@ -250,25 +244,18 @@ function AppContent() {
             <h2 className="text-2xl font-bold text-white">Visualisation 3D</h2>
           </div>
           <div className="flex justify-center">
-            <OptimizedThreeJS 
-              className="w-full h-96" 
-              enabled={true}
-              cubeCount={5}
-            />
+            <Suspense fallback={
+              <div className="w-full h-96 flex items-center justify-center">
+                <div className="animate-spin h-12 w-12 rounded-full border-b-2 border-white" />
+              </div>
+            }>
+              {show3D && <ThreeScene />}
+            </Suspense>
           </div>
-          <p className="text-slate-300 text-center mt-4">5 cubes optimisés avec animations conditionnelles</p>
+          <p className="text-slate-300 text-center mt-4">20 cubes optimisés en temps réel (RGESN 2.2)</p>
         </section>
       </div>
     </div>
-  )
-}
-
-// Wrapper principal avec CacheManager
-export default function App() {
-  return (
-    <CacheManager>
-      <AppContent />
-    </CacheManager>
   )
 }
 

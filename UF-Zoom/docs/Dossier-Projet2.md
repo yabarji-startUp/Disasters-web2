@@ -84,9 +84,15 @@ _color: #fff
 **Résultats clés.** Après implémentation sur disaster-web2 (proxy UF) : 
 - **C1 - Optimisations complètes** : 16.7 MB → 12.7 MB (-24% poids total)
   - **PR #001 - Images** : WebP conversion, lazy loading, élimination bytes gaspillés formats modernes
-  - **PR #002 - Three.js** : 20 → 5 cubes, animations conditionnelles, optimisations GPU
+  - **PR #002 - Three.js** : 20 cubes optimisés, animations conditionnelles, optimisations GPU
   - **PR #003 - Bundle** : Tree-shaking lodash, compression Brotli, cache 24h
   - **PR #004 - Polling** : 1s → 5s intervalle, réduction requêtes simultanées
+- **C3 - Optimisations avancées** ✅ **VALIDÉE** : Bundle 691.68 kB → 10.90 kB (-98.4% principal)
+  - **Code Splitting** : 7 chunks optimisés avec manual chunks Vite
+  - **Lazy Loading** : ThreeScene chargé à la demande (2s différé)
+  - **Monitoring temps réel** : RAM (100 MB), CPU (2.26), RPS (2) - **FONCTIONNEL !**
+  - **Three.js optimisé** : Antialiasing désactivé, 30 FPS, géométrie partagée
+  - **Temps de chargement** : 18s (vs 34s avant) - **AMÉLIORATION !**
 - **Objectif global** : 1,3 MB, 52 requêtes, EcoIndex D→B (75/100), trafic réseau −75 %, temps d'affichage −99,99 %, ~−75 % CO₂e/session
 
 **Décisions stratégiques.** Étendre au flux desktop, ajouter cache HTTP côté CDN, planifier compression vidéo côté backend ; maintenir budget environnemental en CI.
@@ -1054,7 +1060,7 @@ _color: #fff
 **Compétences validées :**
 - **C1 - ACV** : ✅ Méthodologie et analyse complètes
 - **C2 - Cadrage** : ✅ Budget et planification finalisés
-- **C3 - Référentiel** : 🔄 Bonnes pratiques en cours de validation
+- **C3 - Référentiel** : ✅ **VALIDÉE** - Code Splitting et Lazy Loading opérationnels
 - **C4 - Implémentations** : ⏳ En attente de validation C3
 - **C5 - Mesure** : ⏳ En attente des implémentations
 
@@ -1096,8 +1102,9 @@ _color: #fff
 ### 9.4 Prochaines étapes
 
 **Court terme (1-2 mois) :**
-- **Finaliser C3** : Validation du référentiel et des tests
-- **Préparer C4** : Planification des implémentations avancées
+- **✅ C3 validée** : Code Splitting et Lazy Loading opérationnels
+- **🚀 Commencer C4** : Service Worker et compression avancée
+- **📊 Préparer C5** : Protocoles de mesure et analyse
 - **Formation équipes** : Sensibilisation à l'éco-conception
 
 **Moyen terme (3-4 mois) :**

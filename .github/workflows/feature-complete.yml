@@ -63,7 +63,7 @@ jobs:
     - name: Upload EPCT reports
       uses: actions/upload-artifact@v4
       with:
-        name: epct-reports-${{ github.ref_name }}
+        name: epct-reports-feature
         path: .yassen/epct-*.json
         retention-days: 30
       if: always()
@@ -110,7 +110,7 @@ jobs:
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: build-artifacts-${{ github.ref_name }}
+        name: build-artifacts-feature
         path: |
           dist/
           backend/
@@ -173,16 +173,16 @@ jobs:
         # Run Lighthouse audit
         lighthouse http://localhost:3000 \
           --output=json \
-          --output-path=./UF-Zoom/metrics/lighthouse-feature-${{ github.ref_name }}.json \
+          --output-path=./UF-Zoom/metrics/lighthouse-feature.json \
           --chrome-flags="--headless --no-sandbox --disable-dev-shm-usage" \
           --only-categories=performance,accessibility,best-practices,seo || echo "⚠️ Lighthouse audit failed"
         
         # Extract and display key metrics
-        if [ -f "./UF-Zoom/metrics/lighthouse-feature-${{ github.ref_name }}.json" ]; then
+        if [ -f "./UF-Zoom/metrics/lighthouse-feature.json" ]; then
           echo "📊 Lighthouse Results:"
-          cat ./UF-Zoom/metrics/lighthouse-feature-${{ github.ref_name }}.json | jq -r '.categories.performance.score * 100 | "Performance: \(.)%"' || echo "Performance: N/A"
-          cat ./UF-Zoom/metrics/lighthouse-feature-${{ github.ref_name }}.json | jq -r '.categories.accessibility.score * 100 | "Accessibility: \(.)%"' || echo "Accessibility: N/A"
-          cat ./UF-Zoom/metrics/lighthouse-feature-${{ github.ref_name }}.json | jq -r '.categories["best-practices"].score * 100 | "Best Practices: \(.)%"' || echo "Best Practices: N/A"
+          cat ./UF-Zoom/metrics/lighthouse-feature.json | jq -r '.categories.performance.score * 100 | "Performance: \(.)%"' || echo "Performance: N/A"
+          cat ./UF-Zoom/metrics/lighthouse-feature.json | jq -r '.categories.accessibility.score * 100 | "Accessibility: \(.)%"' || echo "Accessibility: N/A"
+          cat ./UF-Zoom/metrics/lighthouse-feature.json | jq -r '.categories["best-practices"].score * 100 | "Best Practices: \(.)%"' || echo "Best Practices: N/A"
         fi
       
     - name: EcoIndex calculation
@@ -191,8 +191,8 @@ jobs:
         echo "======================"
         
         # Simulation EcoIndex basée sur Lighthouse
-        if [ -f "./UF-Zoom/metrics/lighthouse-feature-${{ github.ref_name }}.json" ]; then
-          PERFORMANCE=$(cat ./UF-Zoom/metrics/lighthouse-feature-${{ github.ref_name }}.json | jq -r '.categories.performance.score * 100')
+        if [ -f "./UF-Zoom/metrics/lighthouse-feature.json" ]; then
+          PERFORMANCE=$(cat ./UF-Zoom/metrics/lighthouse-feature.json | jq -r '.categories.performance.score * 100')
           
           # Calcul EcoIndex basé sur performance
           if (( $(echo "$PERFORMANCE > 90" | bc -l) )); then
@@ -212,10 +212,10 @@ jobs:
             ECO_GRADE="E"
           fi
           
-          echo "{\"score\": $ECO_SCORE, \"grade\": \"$ECO_GRADE\", \"performance\": $PERFORMANCE, \"feature\": \"${{ github.ref_name }}\"}" > ./UF-Zoom/metrics/ecoindex-feature-${{ github.ref_name }}.json
+          echo "{\"score\": $ECO_SCORE, \"grade\": \"$ECO_GRADE\", \"performance\": $PERFORMANCE, \"feature\": \"${{ github.ref_name }}\"}" > ./UF-Zoom/metrics/ecoindex-feature.json
           echo "📊 EcoIndex: Score $ECO_SCORE, Grade $ECO_GRADE"
         else
-          echo "{\"score\": 50, \"grade\": \"E\", \"note\": \"simulation\", \"feature\": \"${{ github.ref_name }}\"}" > ./UF-Zoom/metrics/ecoindex-feature-${{ github.ref_name }}.json
+          echo "{\"score\": 50, \"grade\": \"E\", \"note\": \"simulation\", \"feature\": \"${{ github.ref_name }}\"}" > ./UF-Zoom/metrics/ecoindex-feature.json
           echo "📊 EcoIndex: Score 50, Grade E (simulation)"
         fi
       
@@ -231,10 +231,10 @@ jobs:
     - name: Upload eco-metrics
       uses: actions/upload-artifact@v4
       with:
-        name: eco-metrics-${{ github.ref_name }}
+        name: eco-metrics-feature
         path: |
-          UF-Zoom/metrics/lighthouse-feature-${{ github.ref_name }}.json
-          UF-Zoom/metrics/ecoindex-feature-${{ github.ref_name }}.json
+          UF-Zoom/metrics/lighthouse-feature.json
+          UF-Zoom/metrics/ecoindex-feature.json
           .yassen/rgesn-compliance-report.json
         retention-days: 30
       if: always()
@@ -266,7 +266,7 @@ jobs:
     - name: Upload feature reports
       uses: actions/upload-artifact@v4
       with:
-        name: feature-reports-${{ github.ref_name }}
+        name: feature-reports-feature
         path: |
           .yassen/epct-*.json
           .yassen/rgesn-compliance-report.json
@@ -302,14 +302,14 @@ jobs:
         echo ""
         
         # Display eco metrics if available
-        if [ -f "./artifacts/eco-metrics-${{ github.ref_name }}/UF-Zoom/metrics/ecoindex-feature-${{ github.ref_name }}.json" ]; then
+        if [ -f "./artifacts/eco-metrics-${{ github.ref_name }}/UF-Zoom/metrics/ecoindex-feature.json" ]; then
           echo "🌱 Eco Metrics:"
-          cat ./artifacts/eco-metrics-${{ github.ref_name }}/UF-Zoom/metrics/ecoindex-feature-${{ github.ref_name }}.json | jq -r '"Score: \(.score), Grade: \(.grade)"'
+          cat ./artifacts/eco-metrics-${{ github.ref_name }}/UF-Zoom/metrics/ecoindex-feature.json | jq -r '"Score: \(.score), Grade: \(.grade)"'
         fi
         
-        if [ -f "./artifacts/eco-metrics-${{ github.ref_name }}/UF-Zoom/metrics/lighthouse-feature-${{ github.ref_name }}.json" ]; then
+        if [ -f "./artifacts/eco-metrics-${{ github.ref_name }}/UF-Zoom/metrics/lighthouse-feature.json" ]; then
           echo "💡 Lighthouse Metrics:"
-          cat ./artifacts/eco-metrics-${{ github.ref_name }}/UF-Zoom/metrics/lighthouse-feature-${{ github.ref_name }}.json | jq -r '.categories.performance.score * 100 | "Performance: \(.)%"'
+          cat ./artifacts/eco-metrics-${{ github.ref_name }}/UF-Zoom/metrics/lighthouse-feature.json | jq -r '.categories.performance.score * 100 | "Performance: \(.)%"'
         fi
         
         echo ""
