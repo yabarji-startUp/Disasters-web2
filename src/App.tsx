@@ -1,18 +1,6 @@
 import React, { useEffect, useRef, useState, lazy, Suspense } from 'react'
-import {
-  Activity,
-  Cpu,
-  Database,
-  Globe,
-  MemoryStick,
-  Timer,
-  Zap,
-  Layers,
-  FileText,
-  FilePlus,
-  Image,
-  Cloud
-} from 'lucide-react'
+import { MemoryStick, Cpu, Activity, BarChart3, Zap, Globe, Clock, HardDrive, Database, Layers, FileText, FilePlus, Image, Cloud, Timer } from 'lucide-react'
+import PreloadManager from './components/PreloadManager' // C4 - Preload intelligent
 
 // Lazy loading pour Three.js (RGESN 1.2)
 const ThreeScene = lazy(() => import('./components/ThreeScene'))
@@ -238,16 +226,18 @@ export default function App() {
     )
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white">
-      <div className="fixed inset-0 opacity-10 pointer-events-none">
-        <img src="https://disasters-web2.onrender.com/static/large.jpg" className="absolute inset-0 w-full h-full object-cover mix-blend-overlay" />
-      </div>
-      <div className="relative z-10 container mx-auto px-6 py-12">
-        <header className="text-center mb-16">
-          <h1 className="text-6xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent mb-6 animate-pulse">
-            EcoTraining Platform
+    <div className="min-h-screen bg-gray-900 text-white p-6">
+      {/* C4 - Preload Manager pour optimisations avancées */}
+      <PreloadManager />
+      
+      <div className="max-w-7xl mx-auto">
+        <header className="text-center mb-8">
+          <h1 className="text-4xl font-bold text-red-400 mb-4">
+            Plateforme d'entraînement avancée
           </h1>
-          <p className="text-xl text-slate-300 max-w-3xl mx-auto">Plateforme d'entraînement avancée pour l'optimisation web et l'éco-conception</p>
+          <p className="text-xl text-gray-300">
+            Optimisation web et éco-conception - C4 Implémentations Avancées
+          </p>
         </header>
         <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-16">
           <Card icon={<Database className="w-8 h-8 text-purple-400" />} title="Poids HTML" value={`${(stats.bundle / 1_024).toFixed(0)} kB`} tone={color(stats.bundle, limits.weight)} tip="transferSize du document" />
