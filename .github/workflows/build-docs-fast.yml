@@ -1,12 +1,13 @@
-name: ⚡ Build Rapide des Documents
+name: Build et Génération des Documents Rapide
 
 on:
-  push:
-    branches: [ main, develop ]
-    paths:
-      - 'UF-Zoom/docs/**'
-      - 'UF-Zoom/Slide-Oral.md'
-      - 'Themes/**'
+  # Désactivé temporairement pour éviter les conflits
+  # push:
+  #   branches: [ main, develop, feature/* ]
+  #   paths:
+  #     - 'UF-Zoom/docs/**'
+  #     - 'UF-Zoom/Slide-Oral.md'
+  #   workflow_dispatch: # Permet le déclenchement manuel uniquement
   pull_request:
     branches: [ main, develop ]
     paths:
