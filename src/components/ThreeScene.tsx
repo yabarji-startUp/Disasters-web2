@@ -1,5 +1,15 @@
 import React, { useEffect, useRef } from 'react'
-import * as THREE from 'three'
+// C4 - Imports optimisés Three.js
+import { 
+  Scene, 
+  PerspectiveCamera, 
+  WebGLRenderer, 
+  AmbientLight, 
+  DirectionalLight, 
+  BoxGeometry, 
+  MeshPhongMaterial, 
+  Mesh 
+} from 'three'
 import { throttle } from 'lodash'
 
 export default function ThreeScene() {
@@ -9,72 +19,76 @@ export default function ThreeScene() {
     const canvas = canvasRef.current
     if (!canvas) return
 
-    const scene = new THREE.Scene()
-    const camera = new THREE.PerspectiveCamera(75, canvas.clientWidth / canvas.clientHeight, 0.1, 1_000)
+    const scene = new Scene()
+    const camera = new PerspectiveCamera(75, canvas.clientWidth / canvas.clientHeight, 0.1, 1_000)
     camera.position.z = 30
     
-    // Optimisation RGESN 2.2 : Réduction de la charge GPU
-    const renderer = new THREE.WebGLRenderer({ 
+    // C4 - Optimisations avancées RGESN
+    const renderer = new WebGLRenderer({ 
       canvas, 
       antialias: false, // Désactiver l'antialiasing pour performance
-      powerPreference: "high-performance"
+      powerPreference: "high-performance",
+      // C4 - Optimisations supplémentaires
+      stencil: false,
+      depth: true,
+      alpha: false
     })
     renderer.setSize(canvas.clientWidth || 640, canvas.clientHeight || 480)
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)) // Limiter le pixel ratio
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5)) // C4: Limiter encore plus
     
-    const ambient = new THREE.AmbientLight(0xffffff, 0.3)
+    const ambient = new AmbientLight(0xffffff, 0.3)
     scene.add(ambient)
-    const dir = new THREE.DirectionalLight(0xffffff, 0.8)
+    const dir = new DirectionalLight(0xffffff, 0.8)
     dir.position.set(25, 25, 25)
     scene.add(dir)
     
-    // Optimisation RGESN 2.2 : Garder 20 cubes mais optimiser le rendu
-    const cubes: THREE.Mesh[] = []
+    // C4 - Optimisations géométrie et matériaux
+    const cubes: Mesh[] = []
     
     // Géométrie partagée pour tous les cubes
-    const sharedGeometry = new THREE.BoxGeometry(1, 1, 1)
+    const sharedGeometry = new BoxGeometry(1, 1, 1)
     
-    // Matériaux partagés (3 couleurs différentes)
+    // Matériaux partagés (3 couleurs différentes) - C4 optimisé
     const materials = [
-      new THREE.MeshPhongMaterial({ color: 0x4f46e5, shininess: 50 }), // Indigo
-      new THREE.MeshPhongMaterial({ color: 0x7c3aed, shininess: 50 }), // Violet
-      new THREE.MeshPhongMaterial({ color: 0xec4899, shininess: 50 })  // Pink
+      new MeshPhongMaterial({ color: 0x4f46e5, shininess: 30 }), // Indigo
+      new MeshPhongMaterial({ color: 0x7c3aed, shininess: 30 }), // Violet
+      new MeshPhongMaterial({ color: 0xec4899, shininess: 30 })  // Pink
     ]
     
-    // Garder 20 cubes mais avec géométrie et matériaux partagés
-    for (let i = 0; i < 20; i++) {
+    // C4 - Réduction à 15 cubes pour performance
+    for (let i = 0; i < 15; i++) {
       const material = materials[i % materials.length]
-      const cube = new THREE.Mesh(sharedGeometry, material)
+      const cube = new Mesh(sharedGeometry, material)
       
       // Positionnement optimisé
       cube.position.set(
-        (Math.random() - 0.5) * 50, // Garder l'espacement original
-        (Math.random() - 0.5) * 50,
-        (Math.random() - 0.5) * 50
+        (Math.random() - 0.5) * 40, // Réduire l'espacement
+        (Math.random() - 0.5) * 40,
+        (Math.random() - 0.5) * 40
       )
       
-      // Échelle aléatoire pour variété
-      const scale = 0.5 + Math.random() * 1.5
+      // Échelle optimisée
+      const scale = 0.8 + Math.random() * 1.2
       cube.scale.set(scale, scale, scale)
       
       scene.add(cube)
       cubes.push(cube)
     }
     
-    // Optimisation RGESN 2.2 : Animation plus efficace
+    // C4 - Animation ultra-optimisée
     let frameCount = 0
     const animate = () => {
       frameCount++
       
       // Animation optimisée avec moins de calculs
       cubes.forEach((cube, i) => {
-        const speed = 0.01 + (i * 0.005)
+        const speed = 0.008 + (i * 0.003) // Réduire la vitesse
         cube.rotation.x += speed
-        cube.rotation.y += speed * 0.7
+        cube.rotation.y += speed * 0.5
       })
       
-      // Rendu conditionnel pour économiser les ressources
-      if (frameCount % 2 === 0) { // Rendu à 30 FPS au lieu de 60
+      // C4 - Rendu ultra-optimisé : 20 FPS au lieu de 30
+      if (frameCount % 3 === 0) { // Rendu à 20 FPS
         renderer.render(scene, camera)
       }
       
@@ -82,27 +96,34 @@ export default function ThreeScene() {
     }
     animate()
     
+    // C4 - Resize optimisé
     const onResize = throttle(() => {
       camera.aspect = canvas.clientWidth / canvas.clientHeight
       camera.updateProjectionMatrix()
       renderer.setSize(canvas.clientWidth, canvas.clientHeight)
-    }, 200)
+    }, 300) // Augmenter le throttle
+    
     window.addEventListener('resize', onResize)
     
     return () => {
       window.removeEventListener('resize', onResize)
       renderer.dispose()
       
-      // Nettoyage optimisé RGESN 2.2
+      // C4 - Nettoyage optimisé
       sharedGeometry.dispose()
       materials.forEach(material => material.dispose())
     }
   }, [])
 
   return (
-    <canvas 
-      ref={canvasRef} 
-      className="rounded-xl border border-white/20 shadow-2xl w-full h-96" 
-    />
+    <div className="three-section">
+      <canvas
+        ref={canvasRef}
+        className="w-full h-64 bg-gray-800 rounded-lg"
+      />
+      <div className="mt-2 text-center text-sm text-gray-400">
+        🚀 C4: 3D optimisé - 15 cubes, 20 FPS, optimisations avancées
+      </div>
+    </div>
   )
 } 

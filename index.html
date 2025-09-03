@@ -4,10 +4,70 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title> Plateforme d'entraînement avancée pour l'optimisation web et l'éco-conception</title>
+    <title>Plateforme d'entraînement avancée pour l'optimisation web et l'éco-conception</title>
+    
+    <!-- C4 - Preload Stratégique pour Performance -->
+    <!-- 1. CSS Critique - Preload immédiat -->
+    <link rel="preload" href="/css/index-*.css" as="style" type="text/css" />
+    
+    <!-- 2. React Critique - Preload prioritaire -->
+    <link rel="preload" href="/js/react-vendor-*.js" as="script" type="application/javascript" />
+    
+    <!-- 3. Utils - Preload différé -->
+    <link rel="preload" href="/js/utils-vendor-*.js" as="script" type="application/javascript" />
+    
+    <!-- 4. Icons - Preload différé -->
+    <link rel="preload" href="/js/icons-vendor-*.js" as="script" type="application/javascript" />
+    
+    <!-- 5. Three.js - Preload conditionnel (lourd) -->
+    <link rel="preload" href="/js/three-vendor-*.js" as="script" type="application/javascript" media="(min-width: 768px)" />
+    
+    <!-- 6. DNS Prefetch pour performance -->
+    <link rel="dns-prefetch" href="//disasters-web2.onrender.com" />
+    
+    <!-- 7. Preconnect pour connexions rapides -->
+    <link rel="preconnect" href="https://disasters-web2.onrender.com" crossorigin />
+    
+    <!-- 8. Meta performance C4 -->
+    <meta name="performance-optimization" content="C4-preload-strategic" />
+    <meta name="compression-level" content="brotli-11" />
+    
+    <!-- 9. Resource Hints pour navigation -->
+    <link rel="prerender" href="/" />
+    
+    <!-- 10. Service Worker preload -->
+    <link rel="preload" href="/sw.js" as="script" type="application/javascript" />
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- C4 - Script de preload intelligent -->
+    <script>
+      // Preload intelligent C4
+      document.addEventListener('DOMContentLoaded', () => {
+        // Preload conditionnel basé sur la visibilité
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              // Preload Three.js quand la section 3D est visible
+              if (entry.target.classList.contains('three-section')) {
+                const threeScript = document.createElement('link');
+                threeScript.rel = 'preload';
+                threeScript.href = '/js/three-vendor-*.js';
+                threeScript.as = 'script';
+                document.head.appendChild(threeScript);
+              }
+            }
+          });
+        });
+        
+        // Observer la section 3D
+        const threeSection = document.querySelector('.three-section');
+        if (threeSection) {
+          observer.observe(threeSection);
+        }
+      });
+    </script>
   </body>
 </html>

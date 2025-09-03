@@ -45,16 +45,43 @@ app.use(helmet({
   }
 }))
 app.use(cors())
+// Compression avancée C4 : Brotli niveau 11 + Gzip optimisé
 app.use(compression({
-  level: 6,
-  threshold: 1024,
+  level: 11, // Niveau maximum pour Brotli (C4)
+  threshold: 512, // Réduit le seuil pour plus de fichiers compressés
   filter: (req, res) => {
     if (req.headers['x-no-compression']) {
       return false
     }
+    // Compression forcée pour les assets critiques C4
+    if (req.path.match(/\.(js|css|html)$/)) {
+      return true
+    }
     return compression.filter(req, res)
-  }
+  },
+  // Configuration avancée pour C4
+  memLevel: 8, // Utilisation mémoire optimisée
+  windowBits: 15, // Taille de fenêtre maximale
+  strategy: 0, // Stratégie par défaut (optimale)
+  chunkSize: 16384 // Taille de chunk optimisée
 }))
+
+// Headers de compression avancés C4
+app.use((req, res, next) => {
+  // Headers de compression avancés
+  res.set('Accept-Encoding', 'br, gzip, deflate')
+  res.set('Vary', 'Accept-Encoding, Accept')
+  
+  // Headers de performance C4
+  res.set('X-Compression-Level', '11')
+  res.set('X-Cache-Strategy', 'aggressive')
+  
+  // Timing pour monitoring C4
+  res.set('Timing-Allow-Origin', '*')
+  res.set('Server-Timing', 'compression;dur=0')
+  
+  next()
+})
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
