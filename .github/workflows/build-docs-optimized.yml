@@ -203,7 +203,7 @@ jobs:
 # 📊 Rapport de Build - Génération des Documents
 Date: $(date)
 Commit: ${{ github.sha }}
-Branch: ${{ github.ref_name }}
+Branch: ${{ github.ref_name | replace("/", "-") }}
 Workflow: ${{ github.workflow }}
 
 ## 🏗️ Informations du build

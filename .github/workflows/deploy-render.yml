@@ -250,7 +250,7 @@ jobs:
     - name: Deploy to Render
       run: |
         echo "🚀 Deploying to Render..."
-        echo "Branch: ${{ github.ref_name }}"
+        echo "Branch: ${{ github.ref_name | replace("/", "-") }}"
         echo "Commit: ${{ github.sha }}"
         
         # Déclencher un nouveau déploiement via l'API Render
@@ -390,7 +390,7 @@ jobs:
       run: |
         echo "🚀 Deployment Summary"
         echo "===================="
-        echo "Branch: ${{ github.ref_name }}"
+        echo "Branch: ${{ github.ref_name | replace("/", "-") }}"
         echo "Commit: ${{ github.sha }}"
         echo "Author: ${{ github.actor }}"
         echo "Deployment URL: ${{ secrets.RENDER_URL }}"
