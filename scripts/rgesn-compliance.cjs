@@ -5,6 +5,7 @@
  * Vérifie la conformité RGESN pour la compétence C2
  * Auteur : Yassen ABARJI
  * Date : 04/09/2025
+
  */
 
 const fs = require('fs');

@@ -85,6 +85,75 @@ style: |
   section h2:first-of-type {
     margin-top: 20px;
   }
+  
+  /* Progress Bars - Optimized for presentation */
+  .progress-bars {
+    margin: 20px 0;
+  }
+  .progress-item {
+    display: flex;
+    align-items: center;
+    margin: 12px 0;
+    gap: 15px;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    border-left: 4px solid #ddd;
+  }
+  .progress-item:nth-child(1) { border-left-color: #4CAF50; }
+  .progress-item:nth-child(2) { border-left-color: #4CAF50; }
+  .progress-item:nth-child(3) { border-left-color: #FF9800; }
+  .progress-item:nth-child(4) { border-left-color: #F44336; }
+  .progress-item:nth-child(5) { border-left-color: #F44336; }
+
+  .progress-label {
+    display: flex;
+    flex-direction: column;
+    min-width: 140px;
+  }
+  .competence-name {
+    font-weight: bold;
+    font-size: 14px;
+    color: #fff;
+  }
+  .competence-status {
+    font-size: 12px;
+    opacity: 0.8;
+    margin-top: 2px;
+  }
+
+  .progress-bar {
+    flex: 1;
+    height: 24px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  .progress-fill {
+    height: 100%;
+    border-radius: 12px;
+    transition: width 0.5s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .progress-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    min-width: 120px;
+    text-align: right;
+  }
+  .percentage {
+    font-weight: bold;
+    font-size: 16px;
+    color: #fff;
+  }
+  .impact {
+    font-size: 11px;
+    opacity: 0.7;
+    margin-top: 2px;
+  }
 
 footer: '<img src="./images/logo.svg" alt="Logo" style="height:30px;width:30px;vertical-align:middle;margin-right:10px;">Présentation Orale - Certification Éco-conception  -  UF Zoom <span style="color:white;font-weight:bold;box-sizing:border-box;border:2px solid #d5103b;background-color:#d5103b;margin-left:405px;padding:4px 12px;border-radius:4px;font-size:12px;line-height:16px;display:inline-flex;align-items:center;">04/09/2025 <img src="./images/SIMPLON.png" alt="Ecole IT Logo" style="height:18px;vertical-align:middle;margin-left:8px;"></span>'
 ---
@@ -406,41 +475,41 @@ header: "![2](https://icongr.am/material/numeric-2-circle.svg?color=d5103b) ACV 
 
 ---
 
-# 📈 **Mesures Baseline Disaster-web2**
+# 📊 **Données & Sources ACV**
 <br>
 
-## **Résultats de mesure AVANT optimisation**
+## **Informations collectées pour l'analyse**
 
 <div class="two-columns">
 
 <div>
 
-### **Lighthouse Scores**
-- **Performance** : 25/100 ❌ (Critique)
-- **Accessibility** : 79/100 ✅ (Bon)
-- **Best Practices** : 100/100 ✅ (Excellent)
-- **SEO** : 75/100 ✅ (Bon)
+### **Données de Fonctionnement**
+- **Logs disaster-web2** : Requêtes, temps de réponse
+- **Métriques réseau** : Bande passante consommée
+- **Utilisation CPU/RAM** : Consommation serveur
+- **Facteurs d'émission** : Base Carbone ADEME
 
-### **Métriques Détaillées**
-- **DOM Size** : 174 éléments
-- **Total Blocking Time** : 950ms
-- **Image Delivery** : 6,830 KiB d'économies possibles
+### **Sources Documentées**
+- **EcoIndex** : Score environnemental (0-100)
+- **Green-IT Analysis** : Bonnes pratiques
+- **Lighthouse** : Indicateurs de performance
+- **Chrome DevTools** : Métriques détaillées
 
 </div>
 
 <div>
 
-### **Impact Environnemental Estimé**
-- **CO2 par session** : 0.44 gCO2e (estimé)
-- **Bande passante** : 8,830 KiB par session
-- **EcoIndex** : Estimé C/D (26/100)
-- **Temps de chargement** : Élevé
+### **Limites de l'ACV**
+- **Périmètre simplifié** : Focus sur l'utilisation
+- **Données proxy** : disaster-web2 comme approximation
+- **Facteurs d'émission** : Valeurs moyennes indicatives
+- **Absence données fines** : Matériaux, fabrication
 
-### **Hotspots Identifiés**
-- **Images non optimisées** : 6,830 KiB
-- **Bundle JavaScript** : Volumineux
-- **Cache désactivé** : Rechargement systématique
-- **DOM complexe** : 174 éléments
+### **Orientation Action**
+- **Principe Pareto** : 80% d'impact avec 20% d'effort
+- **Postes observables** : Réseau, terminal, serveur
+- **Documentation** : Limites clairement identifiées
 
 </div>
 
@@ -448,25 +517,27 @@ header: "![2](https://icongr.am/material/numeric-2-circle.svg?color=d5103b) ACV 
 
 ---
 
-# 🔍 **Analyse par Phase & Composant**
+# 🔍 **Analyse par Phase ACV**
 <br>
 
-## **Lecture par phase/composant (synthèse)**
+## **Lecture par phase du cycle de vie**
 
 <div class="chart-container">
 
-| Phase | Impact | Composants Critiques | Actions Prioritaires |
-|-------|--------|---------------------|---------------------|
-| **Utilisation/Réseau** | Élevé | Surpoids médias, trop de requêtes, cache désactivé | Optimisation images, compression, cache |
-| **Utilisation/Terminal** | Moyen | Surcharge rendu (images, 3D), fuites mémoire | Simplification DOM, lazy loading |
-| **Serveur** | Faible | Endpoints non optimisés, compression non activée | Cache, pagination, compression |
+| Phase | Impact | Composants Critiques | Données Disponibles |
+|-------|--------|---------------------|-------------------|
+| **Développement** | Faible | Code source, outils | Logs build, métriques |
+| **Utilisation/Réseau** | Élevé | Transmission données, bande passante | Requêtes, taille fichiers |
+| **Utilisation/Terminal** | Moyen | Consommation client, rendu | CPU, RAM, DOM |
+| **Serveur** | Faible | Traitement, stockage | CPU serveur, I/O |
+| **Fin de vie** | Non évalué | Décommissioning | Non applicable |
 
 </div>
 
 <br>
 
-### **Priorisation Initiale**
-**Réseau (images, requêtes, compression) > Terminal (DOM/fuites) > Serveur (cache, optimisation)**
+### **Priorisation ACV**
+**Utilisation/Réseau > Utilisation/Terminal > Serveur > Développement**
 
 ---
 
@@ -479,30 +550,24 @@ header: "![2](https://icongr.am/material/numeric-2-circle.svg?color=d5103b) ACV 
 
 <div>
 
-### **PRIORITÉ 1 - Quick Wins**
-- **Images non optimisées** : 6,830 KiB → 1,366 KiB (-80%)
-- **Cache désactivé** : Rechargement → Cache hit >80%
-- **Purge CSS** : Styles inutilisés → CSS réduit de 50%
+### **Hotspots ACV Identifiés**
+- **Phase Réseau** : 8,830 KiB par session, 1470 requêtes
+- **Phase Terminal** : 174 éléments DOM, 6,830 KiB images
+- **Phase Serveur** : CPU élevé, pas de cache, polling excessif
 
-### **PRIORITÉ 2 - Optimisations Moyennes**
-- **Bundle JavaScript** : ~2MB → 800KB (-60%)
-- **Code splitting** : Séparation des bundles
-- **Tree shaking** : Suppression code inutilisé
+### **Priorisation ACV**
+- **Utilisation/Réseau** : Impact élevé, données disponibles
+- **Utilisation/Terminal** : Impact moyen, optimisations possibles
+- **Serveur** : Impact faible, améliorations limitées
 
 </div>
 
 <div>
 
-### **PRIORITÉ 3 - Optimisations Avancées**
-- **Service Workers** : Cache avancé
-- **Lazy loading** : Chargement à la demande
-- **Virtualisation DOM** : Réduction complexité
-
-### **Objectifs Chiffrés**
-- **Performance Lighthouse** : 25 → 85 (+240%)
-- **EcoIndex** : C/D → A/B (+2 grades)
-- **Impact CO2** : 0.44 → 0.11 gCO2e (-75%)
-- **Bande passante** : 8,830 → 2,166 KiB (-75%)
+### **Limites ACV**
+- **Données proxy** : disaster-web2 approximation
+- **Facteurs d'émission** : Valeurs moyennes indicatives
+- **Périmètre simplifié** : Focus sur l'utilisation
 
 </div>
 
@@ -738,7 +803,7 @@ header: "![4](https://icongr.am/material/numeric-4-circle.svg?color=d5103b) Réf
 - 📋 **Virtualisation DOM** : Réduction complexité
 
 ### **Traçabilité Technique**
-- **Pull Requests** : Une PR par optimisation
+- **Pull Requests** : 5 PR principales (C1-C5)
 - **Tests** : Validation avant/après
 - **Documentation** : Code commenté et expliqué
 - **Repository** : Tags pour jalons
@@ -855,6 +920,7 @@ header: "![5](https://icongr.am/material/numeric-5-circle.svg?color=d5103b) Mesu
 
 ## **Résultats Avant vs Après Optimisation**
 
+
 <div class="two-columns">
 
 <div>
@@ -863,6 +929,7 @@ header: "![5](https://icongr.am/material/numeric-5-circle.svg?color=d5103b) Mesu
 <br>
 
 ### **Lighthouse Score**
+
 - **Performance** : 25/100 ❌ (Critique)
 - **Accessibility** : 45/100 ✅ (Bon)
 - **Best Practices** : 50/100  ✅ (Bon)
@@ -914,6 +981,7 @@ header: "![5](https://icongr.am/material/numeric-5-circle.svg?color=d5103b) Mesu
 - **Temps de chargement** : Élevé
 <br>
 
+
 ### **Hotspots Identifiés**
 - **Images non optimisées** : 6,830 KiB
 - **Bundle JavaScript** : Volumineux
@@ -922,7 +990,21 @@ header: "![5](https://icongr.am/material/numeric-5-circle.svg?color=d5103b) Mesu
 
 </div>
 
+
+
+</div>
+
+---
+
+# **Gains obtenus sur disaster-web2**
+
+<div class="two-columns">
+
 <div>
+
+
+## 📈 **Résultats AVANT Optimisation**
+<br>
 
 ### **Impact Environnemental**
 - **CO2 par session** : 0.11 gCO2e (-75%)
@@ -938,6 +1020,24 @@ header: "![5](https://icongr.am/material/numeric-5-circle.svg?color=d5103b) Mesu
 - **Bundle optimisé** : Code splitting + tree shaking
 
 </div>
+
+
+<div>
+
+## 📈 **Résultats APRÈS Optimisation**
+<br>
+
+### **Impact Environnemental**
+- **CO2 par session** : 0.44 gCO2e (estimé)
+- **Bande passante** : 8,830 KiB par session
+- **EcoIndex** : Estimé C/D (26/100)
+- **Temps de chargement** : Élevé
+
+### **Hotspots Identifiés**
+- **Images non optimisées** : 6,830 KiB
+- **Bundle JavaScript** : Volumineux
+- **Cache désactivé** : Rechargement systématique
+- **DOM complexe** : 174 éléments
 
 </div>
 
@@ -1111,10 +1211,10 @@ header: "![6](https://icongr.am/material/numeric-6-circle.svg?color=d5103b) Conc
 <div>
 
 ### **Impact Mesurable**
-- **Réduction CO2** : -75% par session
-- **Performance** : +240% Lighthouse
+- **Réduction CO2** : -75% par session (0.44 → 0.11 gCO2e/session)
+- **Performance** : +240% Lighthouse  (25 → 85/100)
 - **EcoIndex** : +2 grades (C/D → A/B)
-- **Bande passante** : -75% de consommation
+- **Bande passante** : -75% de consommation (8,830 → 2,166 KiB)
 
 ### **Valeur Ajoutée**
 - **Expérience utilisateur** : Préservée voire améliorée

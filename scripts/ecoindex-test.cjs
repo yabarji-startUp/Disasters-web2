@@ -5,6 +5,7 @@
  * Teste et calcule le score EcoIndex pour la compétence C2
  * Auteur : Yassen ABARJI
  * Date : 04/09/2025
+
  */
 
 const fs = require('fs');
@@ -144,3 +145,4 @@ if (require.main === module) {
 }
 
 module.exports = { runEcoIndexTest, calculateEcoIndex, getEcoGrade }; 
+

@@ -317,6 +317,7 @@
 - **Objectif 1** : Mesure impact réel
 - **Objectif 2** : Optimisation continue
 
+
 ### 5.2 Conditions de réussite
 
 **Conditions techniques.**
@@ -324,6 +325,7 @@
 - **Métriques de suivi** : Dashboard de monitoring en temps réel
 - **Documentation** : Procédures et bonnes pratiques documentées
 - **Formation** : Équipes formées aux nouvelles pratiques
+
 
 **Conditions organisationnelles.**
 - **Engagement management** : Support de la direction
@@ -513,6 +515,7 @@
 - **Ressources** : Utilisation CPU, mémoire, stockage
 
 ---
+
 
 ## 8. Conclusion
 

@@ -26,6 +26,7 @@
     "lighthouse:build": "npm run build && npm run preview & sleep 5 && npm run lighthouse && pkill -f 'npm run preview'",
     "test:eco-lighthouse": "npm run lighthouse:build",
     "audit:full": "npm run lighthouse:build && npm run lighthouse:dev"
+
   },
   "dependencies": {
     "@types/three": "^0.162.0",
