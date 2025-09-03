@@ -1168,7 +1168,7 @@ header: "![6](https://icongr.am/material/numeric-6-circle.svg?color=d5103b) Conc
 | **C1 - ACV** | ✅ | Hotspots identifiés |
 | **C2 - Cadrage** | ✅ | Tests automatisés |
 | **C3 - Référentiel** | ✅ | **VALIDÉE** |
-| **C4 - Implémentations** | ❌ | À faire |
+| **C4 - Implémentations** | ✅ | **COMPLÉTÉE (75%)** |
 | **C5 - Mesure** | ❌ | À faire |
 
 
@@ -1185,20 +1185,20 @@ header: "![6](https://icongr.am/material/numeric-6-circle.svg?color=d5103b) Conc
 
 <div>
 
-## **�� Budget Répartition (300k€)**
+## ** Budget Répartition (300k€)**
 
 - **C1 - ACV** : 50k€ (17%) ✅
 - **C2 - Cadrage** : 30k€ (10%) ✅
 - **C3 - Référentiel** : 40k€ (13%) ✅
-- **C4 - Implémentations** : 100k€ (33%) ❌
+- **C4 - Implémentations** : 100k€ (33%) ✅
 - **C5 - Mesure** : 80k€ (27%) ❌
 <br>
 
 ## **📅 Timeline Roadmap**
 
 **✅ Mois 1** : C1-C2 - Cadrage et méthodologie
-**�� Mois 2** : C3 - Référentiel et tests
-**⏳ Mois 3-4** : C4 - Implémentations
+** Mois 2** : C3 - Référentiel et tests
+**✅ Mois 3-4** : C4 - Implémentations **COMPLÉTÉES**
 **⏳ Mois 5** : C5 - Mesures et analyse
 **⏳ Mois 6** : Finalisation et déploiement
 
