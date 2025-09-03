@@ -100,7 +100,7 @@ export default function App() {
     dir.position.set(25, 25, 25)
     scene.add(dir)
     
-    // Optimisation RGESN 2.2 : Réduction du nombre d'objets et partage des ressources
+    // Optimisation RGESN 2.2 : Garder 20 cubes mais optimiser le rendu
     const cubes: THREE.Mesh[] = []
     
     // Géométrie partagée pour tous les cubes
@@ -113,16 +113,16 @@ export default function App() {
       new THREE.MeshPhongMaterial({ color: 0xec4899, shininess: 50 })  // Pink
     ]
     
-    // Réduction de 20 à 8 cubes pour performance
-    for (let i = 0; i < 8; i++) {
+    // Garder 20 cubes mais avec géométrie et matériaux partagés
+    for (let i = 0; i < 20; i++) {
       const material = materials[i % materials.length]
       const cube = new THREE.Mesh(sharedGeometry, material)
       
       // Positionnement optimisé
       cube.position.set(
-        (Math.random() - 0.5) * 30, // Réduire l'espacement
-        (Math.random() - 0.5) * 30,
-        (Math.random() - 0.5) * 30
+        (Math.random() - 0.5) * 50, // Garder l'espacement original
+        (Math.random() - 0.5) * 50,
+        (Math.random() - 0.5) * 50
       )
       
       // Échelle aléatoire pour variété
@@ -331,7 +331,7 @@ export default function App() {
           <div className="flex justify-center">
             <canvas ref={canvasRef} className="rounded-xl border border-white/20 shadow-2xl w-full h-96" />
           </div>
-          <p className="text-slate-300 text-center mt-4">8 cubes optimisés en temps réel (RGESN 2.2)</p>
+          <p className="text-slate-300 text-center mt-4">20 cubes optimisés en temps réel (RGESN 2.2)</p>
         </section>
       </div>
     </div>
