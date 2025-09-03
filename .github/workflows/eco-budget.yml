@@ -292,7 +292,7 @@ jobs:
     - name: Upload feature reports
       uses: actions/upload-artifact@v4
       with:
-        name: feature-reports-${{ github.ref_name | replace("/", "-") }}
+        name: feature-reports-${{ github.ref_name }}
         path: |
           .yassen/epct-*.json
           .yassen/rgesn-compliance-report.json
@@ -315,7 +315,7 @@ jobs:
       run: |
         echo "📊 Workflow Summary"
         echo "==================="
-        echo "Branch: ${{ github.ref_name | replace("/", "-") }}"
+        echo "Branch: ${{ github.ref_name }}"
         echo "Commit: ${{ github.sha }}"
         echo "Author: ${{ github.actor }}"
         echo "Event: ${{ github.event_name }}"
