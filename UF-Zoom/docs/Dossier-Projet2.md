@@ -84,9 +84,14 @@ _color: #fff
 **Résultats clés.** Après implémentation sur disaster-web2 (proxy UF) : 
 - **C1 - Optimisations complètes** : 16.7 MB → 12.7 MB (-24% poids total)
   - **PR #001 - Images** : WebP conversion, lazy loading, élimination bytes gaspillés formats modernes
-  - **PR #002 - Three.js** : 20 → 5 cubes, animations conditionnelles, optimisations GPU
+  - **PR #002 - Three.js** : 20 cubes optimisés, animations conditionnelles, optimisations GPU
   - **PR #003 - Bundle** : Tree-shaking lodash, compression Brotli, cache 24h
   - **PR #004 - Polling** : 1s → 5s intervalle, réduction requêtes simultanées
+- **C3 - Optimisations avancées** : Bundle 691.68 kB → 10.88 kB (-98.4% principal)
+  - **Code Splitting** : 7 chunks optimisés avec manual chunks Vite
+  - **Lazy Loading** : ThreeScene chargé à la demande (2s différé)
+  - **Monitoring temps réel** : RAM, CPU, RPS avec seuils colorés
+  - **Three.js optimisé** : Antialiasing désactivé, 30 FPS, géométrie partagée
 - **Objectif global** : 1,3 MB, 52 requêtes, EcoIndex D→B (75/100), trafic réseau −75 %, temps d'affichage −99,99 %, ~−75 % CO₂e/session
 
 **Décisions stratégiques.** Étendre au flux desktop, ajouter cache HTTP côté CDN, planifier compression vidéo côté backend ; maintenir budget environnemental en CI.
