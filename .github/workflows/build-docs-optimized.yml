@@ -1,33 +1,32 @@
-name: 🚀 Build et Génération des Documents (Optimisé)
+name: Build et Génération des Documents Optimisé
 
 on:
-  push:
-    branches: [ main, develop, feature/* ]
-    paths:
-      - 'UF-Zoom/docs/**'
-      - 'UF-Zoom/Slide-Oral.md'
-      - 'Themes/**'
-      - 'package.json'
-      - 'UF-Zoom/generate-*.sh'
-  pull_request:
-    branches: [ main, develop ]
-    paths:
-      - 'UF-Zoom/docs/**'
-      - 'UF-Zoom/Slide-Oral.md'
-      - 'Themes/**'
-      - 'package.json'
-      - 'UF-Zoom/generate-*.sh'
-  workflow_dispatch:
+  # Désactivé temporairement pour éviter les conflits
+  # push:
+  #   branches: [ main, develop, feature/* ]
+  #   paths:
+  #     - 'UF-Zoom/docs/**'
+  #     - 'UF-Zoom/Slide-Oral.md'
+  #     - 'Themes/**'
+  #     - 'package.json'
+  # pull_request:
+  #   branches: [ main, develop ]
+  #   paths:
+  #     - 'UF-Zoom/docs/**'
+  #     - 'UF-Zoom/Slide-Oral.md'
+  #     - 'Themes/**'
+  #     - 'package.json'
+  workflow_dispatch: # Permet le déclenchement manuel uniquement
     inputs:
       force_rebuild:
         description: 'Forcer la régénération des documents'
         required: false
-        default: 'false'
+        default: false
         type: boolean
 
 env:
   NODE_VERSION: '20.x'
-  CACHE_KEY: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+  CACHE_KEY: node-${{ github.sha }}
 
 jobs:
   build-and-docs:
