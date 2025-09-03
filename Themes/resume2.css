@@ -1,0 +1,546 @@
+/* @theme resume2 */
+/* Author: Yassen ABARJI - Custom theme combining yas-eco and yas-eco-red */
+/* Based on Gaia theme by Yuki Hattori */
+/* Optimized for A4 format and resume presentation */
+/* Charte graphique rouge/vert éco-responsable */
+
+@charset "UTF-8";
+@import 'gaia';
+@import url('https://fonts.googleapis.com/css?family=Lato:400,900|Roboto+Mono:400,700&display=swap');
+@import '~highlight.js/styles/sunburst';
+
+/* Format A4 optimisé */
+@size A4 210mm 297mm;
+@size A4-landscape 297mm 210mm;
+
+:root {
+    /* Charte graphique rouge/vert éco-responsable */
+    --background-color: #2e7d32; /* Vert éco-responsable */
+    --accent-color: #d5103b; /* Rouge de yas.css */
+    --secondary-color: #4caf50; /* Vert accent */
+    --text-color: #2c3e50;
+    --light-bg: #e8f5e8;
+    --border-color: #81c784;
+    --red-light: #ffebee; /* Rouge clair pour les backgrounds */
+    --red-accent: #f44336; /* Rouge accent plus vif */
+    
+    /* Couleurs supplémentaires */
+    --success-color: #2e7d32;
+    --warning-color: #ff9800;
+    --error-color: #f44336;
+    --info-color: #2196f3;
+    
+    /* Espacement A4 optimisé */
+    --padding-a4: 20mm;
+    --margin-a4: 15mm;
+}
+
+/* Override Gaia's default colors with resume2 palette */
+section {
+    --color-background: var(--light-bg);
+    --color-foreground: var(--text-color);
+    --color-highlight: var(--accent-color);
+    --color-dimmed: var(--border-color);
+    --color-background-stripe: rgba(46, 125, 50, 0.1);
+    
+    /* Format A4 */
+    padding: var(--padding-a4);
+    background-color: #f8f9fa !important;
+    font-family: 'Lato', sans-serif;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Typographie optimisée A4 */
+section p, section h1, section h2, section h3, section h4 {
+    color: var(--text-color) !important;
+    font-family: 'Lato', sans-serif;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* En-tête avec charte rouge/vert */
+section header {
+    width: 100%;
+    height: 45px;
+    background-image: linear-gradient(135deg, var(--background-color) 0%, var(--accent-color) 100%);
+    padding: 8px 0 8px 15px;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 28px;
+    color: #fff;
+    z-index: 100;
+    border-radius: 0 0 8px 8px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Images d'en-tête pour View Transitions API */
+section header img {
+    height: 14px;
+    width: 14px;
+    margin-right: 8px;
+    display: inline-block;
+    contain: layout;
+}
+
+/* View Transitions API pour les images numérotées */
+section header img[src*="numeric-1-circle"] { view-transition-name: one; }
+section header img[src*="numeric-2-circle"] { view-transition-name: two; }
+section header img[src*="numeric-3-circle"] { view-transition-name: three; }
+section header img[src*="numeric-4-circle"] { view-transition-name: four; }
+section header img[src*="numeric-5-circle"] { view-transition-name: five; }
+section header img[src*="numeric-6-circle"] { view-transition-name: six; }
+
+/* Pied de page */
+section footer {
+    width: 100%;
+    height: 18px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(to right, var(--accent-color), transparent);
+    padding: 0 0 0 15px;
+    font-size: 11px;
+    line-height: 18px;
+    color: #fff;
+    z-index: 100;
+}
+
+/* Numérotation des pages */
+section::after {
+    position: absolute;
+    bottom: 0;
+    right: 15px;
+    color: var(--accent-color);
+    padding: 0;
+    height: 18px;
+    font-size: 14px;
+    line-height: 18px;
+}
+
+/* Titres avec charte rouge/vert */
+section h1 {
+    margin: 12px 0 10px 0;
+    line-height: 1.1;
+    font-size: 28px;
+    color: var(--background-color);
+    font-weight: 700;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    border-bottom: 3px solid var(--accent-color);
+    padding-bottom: 8px;
+}
+
+section h2 {
+    font-size: 22px;
+    color: var(--accent-color);
+    margin: 10px 0 8px 0;
+    line-height: 1.2;
+    font-weight: 600;
+}
+
+section h3 {
+    font-size: 18px;
+    color: var(--text-color);
+    margin: 8px 0 6px 0;
+    line-height: 1.3;
+    font-weight: 500;
+}
+
+section h4 {
+    font-size: 16px;
+    color: var(--secondary-color);
+    margin: 6px 0 4px 0;
+    line-height: 1.4;
+    font-weight: 500;
+}
+
+/* Mise en forme du texte fort */
+section h1 strong, 
+section h2 strong, 
+section h3 strong,
+section h4 strong {
+    color: var(--accent-color);
+    font-weight: 800;
+}
+
+/* Code inline */
+section h1 code, 
+section h2 code,
+section h3 code {
+    font-size: inherit;
+    font-family: 'Roboto Mono', monospace;
+    background-color: var(--accent-color);
+    color: #fff;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+/* Paragraphes */
+section p {
+    margin: 8px 0;
+    line-height: 1.5;
+    font-size: 14px;
+    text-align: justify;
+}
+
+/* Listes */
+section ul, 
+section ol {
+    margin: 8px 0;
+    padding-left: 20px;
+    line-height: 1.5;
+    font-size: 14px;
+}
+
+section li {
+    margin: 4px 0;
+    line-height: 1.5;
+}
+
+/* Citations */
+section blockquote {
+    margin: 10px 0;
+    padding: 12px 15px;
+    border-left: var(--accent-color) 4px solid;
+    background: var(--red-light);
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 13px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+blockquote::before, 
+blockquote::after {
+    content: '';
+}
+
+/* Page de couverture */
+section.cover {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--light-bg) 0%, var(--red-light) 100%);
+    padding: 30px 25px;
+    text-align: center;
+}
+
+section.cover h1 {
+    font-size: 36px;
+    color: var(--background-color);
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+section.cover p {
+    font-size: 18px;
+    color: var(--text-color);
+    margin: 10px 0;
+}
+
+/* Tableaux avec charte rouge/vert */
+section table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    font-size: 13px;
+}
+
+section th {
+    background: linear-gradient(135deg, var(--background-color), var(--secondary-color));
+    color: white;
+    padding: 12px 15px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+section td {
+    padding: 10px 15px;
+    border-bottom: 1px solid #e0e0e0;
+    transition: background-color 0.3s ease;
+}
+
+section tr:nth-child(even) {
+    background-color: var(--light-bg);
+}
+
+section tr:hover {
+    background-color: #e8f5e8;
+    transform: scale(1.01);
+}
+
+section tr:last-child td {
+    border-bottom: none;
+}
+
+/* Métriques avec charte rouge/vert */
+section .metric {
+    background: linear-gradient(135deg, var(--background-color), var(--secondary-color));
+    color: white;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+    margin: 10px 0;
+}
+
+section .metric:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+section .metric-value {
+    font-size: 2em;
+    font-weight: 900;
+    margin-bottom: 5px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+section .metric-label {
+    font-size: 0.9em;
+    opacity: 0.9;
+    font-weight: 500;
+}
+
+/* Grille de métriques */
+section .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+}
+
+/* Barres de progression */
+section .progress-bar {
+    background: #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 8px 0;
+    height: 25px;
+    position: relative;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+}
+
+section .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--background-color), var(--secondary-color));
+    border-radius: 8px;
+    transition: width 1s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 0.8em;
+    position: relative;
+    overflow: hidden;
+}
+
+section .progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+/* Timeline */
+section .timeline {
+    position: relative;
+    padding-left: 30px;
+    margin: 20px 0;
+}
+
+section .timeline::before {
+    content: '';
+    position: absolute;
+    left: 15px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom, var(--background-color), var(--accent-color));
+    border-radius: 2px;
+}
+
+section .timeline-item {
+    position: relative;
+    margin: 15px 0;
+    padding: 15px;
+    background: white;
+    border-radius: 8px;
+    border-left: 4px solid var(--background-color);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+section .timeline-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+section .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 20px;
+    width: 18px;
+    height: 18px;
+    background: var(--background-color);
+    border-radius: 50%;
+    border: 3px solid white;
+    box-shadow: 0 0 0 2px var(--background-color);
+}
+
+/* Indicateurs de statut */
+section .status-completed { 
+    color: var(--success-color); 
+    font-weight: bold; 
+    background: var(--light-bg);
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+section .status-in-progress { 
+    color: var(--warning-color); 
+    font-weight: bold; 
+    background: #fff3e0;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+section .status-pending { 
+    color: var(--error-color); 
+    font-weight: bold; 
+    background: var(--red-light);
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+/* Colonnes */
+section .two-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin: 15px 0;
+}
+
+section .three-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 15px;
+    margin: 15px 0;
+}
+
+/* Images */
+section img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin: 10px 0;
+}
+
+/* Code blocks */
+section pre {
+    background: #2d3748;
+    color: #e2e8f0;
+    padding: 15px;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-size: 12px;
+    border-left: 4px solid var(--accent-color);
+}
+
+section code {
+    font-family: 'Roboto Mono', monospace;
+    background: #f7fafc;
+    color: var(--accent-color);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+/* Responsive pour A4 */
+@media print {
+    section {
+        padding: var(--padding-a4);
+        margin: var(--margin-a4);
+    }
+    
+    section .metric-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    section .two-columns {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Animations subtiles */
+section .metric,
+section .timeline-item,
+section .progress-bar {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Optimisations pour A4 */
+section {
+    page-break-inside: avoid;
+    orphans: 3;
+    widows: 3;
+}
+
+section h1, section h2, section h3 {
+    page-break-after: avoid;
+}
+
+section table {
+    page-break-inside: avoid;
+}
+
+/* Styles spécifiques pour le resume */
+section.resume {
+    background: linear-gradient(135deg, var(--light-bg) 0%, #ffffff 100%);
+}
+
+section.resume h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+section.resume .highlight {
+    background: linear-gradient(135deg, var(--accent-color), var(--background-color));
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 15px 0;
+    text-align: center;
+    font-weight: bold;
+}

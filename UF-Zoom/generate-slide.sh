@@ -10,56 +10,77 @@ fi
 # Vérifier si le thème existe
 if [ ! -f "../Themes/yas-eco.css" ]; then
     echo "❌ Le thème yas-eco.css n'existe pas dans Themes/"
-    exit 1
+    echo "Recherche depuis le répertoire racine..."
+    if [ ! -f "Themes/yas-eco.css" ]; then
+        echo "❌ Le thème yas-eco.css n'existe pas non plus dans Themes/ depuis le répertoire racine"
+        exit 1
+    else
+        echo "✅ Thème trouvé depuis le répertoire racine"
+        THEME_PATH="Themes/yas-eco.css"
+    fi
+else
+    echo "✅ Thème trouvé depuis UF-Zoom/"
+    THEME_PATH="../Themes/yas-eco.css"
 fi
 
 # Vérifier si le fichier de présentation existe
 if [ ! -f "Slide-Oral.md" ]; then
-    echo "❌ Le fichier Slide-Oral.md n'existe pas"
-    exit 1
+    echo "Recherche depuis le répertoire racine..."
+    if [ ! -f "UF-Zoom/Slide-Oral.md" ]; then
+        echo "❌ Le fichier Slide-Oral.md n'existe pas dans UF-Zoom/ ni dans le répertoire racine"
+        exit 1
+    else
+        echo "✅ Fichier trouvé depuis le répertoire racine"
+        SLIDE_FILE="UF-Zoom/Slide-Oral.md"
+        OUTPUT_DIR="UF-Zoom/output"
+    fi
+else
+    echo "✅ Fichier trouvé depuis UF-Zoom/"
+    SLIDE_FILE="Slide-Oral.md"
+    OUTPUT_DIR="output"
 fi
 
 # Créer le dossier de sortie
-mkdir -p output
+mkdir -p "$OUTPUT_DIR"
 
 echo "📄 Génération de Slide-Oral.md..."
 
 # HTML
 echo "  📄 HTML..."
-marp "Slide-Oral.md" \
-    --theme-set ../Themes/yas-eco.css \
+marp "$SLIDE_FILE" \
+    --theme-set "$THEME_PATH" \
     --html \
-    --output "output/Slide-Oral.html"
+    --output "$OUTPUT_DIR/Slide-Oral.html"
 
 # PDF
 echo "  📄 PDF..."
-marp "Slide-Oral.md" \
-    --theme-set ../Themes/yas-eco.css \
+marp "$SLIDE_FILE" \
+    --theme-set "$THEME_PATH" \
     --pdf \
     --allow-local-files \
-    --output "output/Slide-Oral.pdf"
+    --output "$OUTPUT_DIR/Slide-Oral.pdf"
 
 # PowerPoint
 echo "  📄 PPTX..."
-marp "Slide-Oral.md" \
-    --theme-set ../Themes/yas-eco.css \
+marp "$SLIDE_FILE" \
+    --theme-set "$THEME_PATH" \
     --pptx \
     --allow-local-files \
-    --output "output/Slide-Oral.pptx"
+    --output "$OUTPUT_DIR/Slide-Oral.pptx"
 
 echo ""
 echo "✅ Présentation Slide-Oral.md générée avec succès !"
-echo "📁 Fichiers créés dans le dossier 'output/' :"
-ls -la output/ | grep -E 'Slide-Oral\.(html|pdf|pptx)$' | awk '{print "   - " $9}'
+echo "📁 Fichiers créés dans le dossier '$OUTPUT_DIR/' :"
+ls -la "$OUTPUT_DIR"/ | grep -E 'Slide-Oral\.(html|pdf|pptx)$' | awk '{print "   - " $9}'
 
 # Ouvrir la présentation HTML
-if [ -f "output/Slide-Oral.html" ]; then
+if [ -f "$OUTPUT_DIR/Slide-Oral.html" ]; then
     echo "🌐 Ouverture de la présentation..."
     if command -v xdg-open &> /dev/null; then
-        xdg-open output/Slide-Oral.html
+        xdg-open "$OUTPUT_DIR/Slide-Oral.html"
     elif command -v open &> /dev/null; then
-        open output/Slide-Oral.html
+        open "$OUTPUT_DIR/Slide-Oral.html"
     else
-        echo "💡 Ouvrez manuellement : output/Slide-Oral.html"
+        echo "💡 Ouvrez manuellement : $OUTPUT_DIR/Slide-Oral.html"
     fi
 fi 

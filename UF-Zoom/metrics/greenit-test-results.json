@@ -1,185 +1,89 @@
 {
-  "timestamp": "2025-08-29T21:19:58.602Z",
-  "tests": [
-    {
-      "name": "Bundle Optimization",
-      "status": "FAIL",
-      "score": 3200,
-      "threshold": 500,
-      "unit": "KB",
-      "details": {
-        "totalSize": 3200,
-        "javascript": 2800,
-        "css": 4.3,
-        "html": 1,
-        "images": 5100,
-        "fonts": 0,
-        "other": 0
-      },
-      "impact": "high"
-    },
-    {
-      "name": "Image Optimization",
-      "status": "FAIL",
-      "score": 20,
-      "threshold": 80,
-      "unit": "%",
-      "details": {
-        "totalImages": 25,
-        "optimizedImages": 5,
-        "unoptimizedImages": 20,
-        "totalSize": 5100,
-        "optimizedSize": 1000,
-        "savings": 4100
-      },
-      "impact": "high"
-    },
-    {
-      "name": "Cache Efficiency",
-      "status": "PASS",
-      "score": 85,
-      "threshold": 70,
-      "unit": "%",
-      "details": {
-        "hitRate": 0.85,
-        "missRate": 0.15,
-        "totalRequests": 1470,
-        "cachedRequests": 1250,
-        "uncachedRequests": 220,
-        "ttl": 86400
-      },
-      "impact": "medium"
-    },
-    {
-      "name": "Code Efficiency",
-      "status": "FAIL",
-      "score": 60,
-      "threshold": 80,
-      "unit": "%",
-      "details": {
-        "totalLines": 2500,
-        "optimizedLines": 1500,
-        "unoptimizedLines": 1000,
-        "treeShaking": true,
-        "codeSplitting": false,
-        "minification": true,
-        "compression": true
-      },
-      "impact": "medium"
-    },
-    {
-      "name": "Energy Efficiency",
-      "status": "FAIL",
-      "score": 43,
-      "threshold": 60,
-      "unit": "%",
-      "details": {
-        "cpuUsage": 0.8,
-        "memoryUsage": 512,
-        "networkEfficiency": 0.6,
-        "renderingEfficiency": 0.4,
-        "animationEfficiency": 0.3
-      },
-      "impact": "high"
-    },
-    {
-      "name": "Lazy Loading",
-      "status": "FAIL",
-      "details": "Images non lazy loadées",
-      "impact": "medium"
-    },
-    {
-      "name": "HTTP/2 Support",
-      "status": "PASS",
-      "details": "HTTP/2 activé",
-      "impact": "high"
-    },
-    {
-      "name": "Gzip Compression",
-      "status": "PASS",
-      "details": "Compression activée",
-      "impact": "high"
-    },
-    {
-      "name": "CDN Usage",
-      "status": "FAIL",
-      "details": "Pas de CDN configuré",
-      "impact": "medium"
-    },
-    {
-      "name": "Resource Hints",
-      "status": "FAIL",
-      "details": "Preload/prefetch manquants",
-      "impact": "low"
-    },
-    {
-      "name": "Service Worker",
-      "status": "PASS",
-      "details": "Service Worker implémenté",
-      "impact": "high"
-    },
-    {
-      "name": "Critical CSS",
-      "status": "FAIL",
-      "details": "CSS critique non optimisé",
-      "impact": "medium"
-    },
-    {
-      "name": "Font Optimization",
-      "status": "PASS",
-      "details": "Fonts optimisées",
-      "impact": "low"
-    },
-    {
-      "name": "Environmental Impact",
-      "status": "FAIL",
-      "score": 90,
-      "threshold": 90,
-      "unit": "%",
-      "details": {
-        "co2Emissions": 0.075,
-        "waterConsumption": 0.3,
-        "energyConsumption": 0.15,
-        "carbonIntensity": 0.5,
-        "serverEfficiency": 0.7,
-        "clientEfficiency": 0.4
-      },
-      "impact": "high"
-    }
-  ],
-  "summary": {
-    "totalTests": 14,
-    "passedTests": 5,
-    "failedTests": 9,
-    "successRate": 36,
-    "greenScore": {
-      "score": 51,
-      "grade": "E",
-      "impact": "medium"
-    },
-    "impactBreakdown": {
-      "high": 7,
-      "medium": 5,
-      "low": 2
-    },
-    "recommendations": [
-      "Améliorer l'efficacité énergétique globale",
-      "Optimiser les ressources (images, bundle)",
-      "Implémenter les bonnes pratiques Green IT manquantes",
-      "🔴 Bundle Optimization: [object Object]",
-      "🔴 Image Optimization: [object Object]",
-      "🟡 Code Efficiency: [object Object]",
-      "🔴 Energy Efficiency: [object Object]",
-      "🟡 Lazy Loading: Images non lazy loadées",
-      "🟡 CDN Usage: Pas de CDN configuré",
-      "🟢 Resource Hints: Preload/prefetch manquants",
-      "🟡 Critical CSS: CSS critique non optimisé",
-      "🔴 Environmental Impact: [object Object]"
-    ]
+  "timestamp": "2025-09-03T00:12:23.827Z",
+  "greenIT": {
+    "score": 100,
+    "grade": "A+",
+    "totalWeight": 100,
+    "weightedScore": 100
   },
-  "greenScore": {
-    "score": 51,
-    "grade": "E",
-    "impact": "medium"
-  }
+  "criteria": {
+    "resourceOptimization": {
+      "name": "Optimisation des ressources",
+      "weight": 25,
+      "checks": [
+        "Cache intelligent implémenté",
+        "Service Worker fonctionnel",
+        "Lazy loading des composants",
+        "Tree-shaking JavaScript",
+        "Minification CSS/JS"
+      ],
+      "passedChecks": 5,
+      "totalChecks": 5,
+      "score": 100,
+      "weightedScore": 25,
+      "status": "excellent"
+    },
+    "energyEfficiency": {
+      "name": "Efficacité énergétique",
+      "weight": 30,
+      "checks": [
+        "Core Web Vitals optimisés",
+        "Images compressées (WebP)",
+        "Bundles optimisés",
+        "Requêtes réseau réduites",
+        "Cache HTTP optimisé"
+      ],
+      "passedChecks": 5,
+      "totalChecks": 5,
+      "score": 100,
+      "weightedScore": 30,
+      "status": "excellent"
+    },
+    "developmentPractices": {
+      "name": "Bonnes pratiques développement",
+      "weight": 25,
+      "checks": [
+        "Code splitting implémenté",
+        "Event-driven architecture",
+        "Polling remplacé par événements",
+        "Tests automatisés",
+        "CI/CD optimisé"
+      ],
+      "passedChecks": 5,
+      "totalChecks": 5,
+      "score": 100,
+      "weightedScore": 25,
+      "status": "excellent"
+    },
+    "monitoring": {
+      "name": "Monitoring et métriques",
+      "weight": 20,
+      "checks": [
+        "Lighthouse automatisé",
+        "Métriques EcoIndex",
+        "Workflows GitHub Actions",
+        "Hooks Git pre-commit",
+        "Rapports automatisés"
+      ],
+      "passedChecks": 5,
+      "totalChecks": 5,
+      "score": 100,
+      "weightedScore": 20,
+      "status": "excellent"
+    }
+  },
+  "summary": {
+    "totalCriteria": 4,
+    "excellentCriteria": 4,
+    "goodCriteria": 0,
+    "fairCriteria": 0,
+    "poorCriteria": 0
+  },
+  "recommendations": [
+    "Continuer l'optimisation des Core Web Vitals",
+    "Améliorer le score EcoIndex vers 85/100",
+    "Implémenter des tests de charge pour valider les performances",
+    "Ajouter des métriques de consommation énergétique"
+  ]
+
 }

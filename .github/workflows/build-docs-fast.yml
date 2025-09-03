@@ -1,0 +1,62 @@
+name: ⚡ Build Rapide des Documents
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - 'UF-Zoom/docs/**'
+      - 'UF-Zoom/Slide-Oral.md'
+      - 'Themes/**'
+  pull_request:
+    branches: [ main, develop ]
+    paths:
+      - 'UF-Zoom/docs/**'
+      - 'UF-Zoom/Slide-Oral.md'
+      - 'Themes/**'
+
+jobs:
+  fast-docs:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10  # Timeout rapide
+    
+    steps:
+    - name: 🚀 Checkout rapide
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 1  # Shallow clone pour la vitesse
+        
+    - name: 📦 Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.x'
+        cache: 'npm'
+        
+    - name: 📦 Installation rapide
+      run: |
+        npm ci --only=production --no-audit --no-fund
+        npm install -g @marp-team/marp-cli
+        
+    - name: 📄 Génération des documents
+      run: |
+        mkdir -p UF-Zoom/docs/output UF-Zoom/output
+        
+        # Générer en parallèle
+        bash UF-Zoom/generate-dossier-pdf.sh &
+        bash UF-Zoom/generate-slide.sh &
+        
+        wait  # Attendre la fin des deux processus
+        
+    - name: 📤 Upload rapide
+      uses: actions/upload-artifact@v4
+      with:
+        name: docs-rapides
+        path: |
+          UF-Zoom/docs/output/
+          UF-Zoom/output/
+        retention-days: 30
+        
+    - name: 💬 Commentaire PR
+      if: github.event_name == 'pull_request'
+      run: |
+        echo "📄 Documents générés rapidement pour la PR #${{ github.event.number }}"
+        echo "📁 Disponibles dans les artifacts GitHub Actions" 

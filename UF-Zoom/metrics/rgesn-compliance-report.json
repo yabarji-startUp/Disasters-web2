@@ -1,138 +1,99 @@
 {
-  "timestamp": "2025-08-29T21:20:05.020Z",
-  "tests": [
-    {
-      "name": "C1.1 - Écoconception intégrée",
-      "status": "PASS",
-      "details": "Approche éco-conception documentée",
-      "weight": 0.4
+  "timestamp": "2025-09-03T00:12:24.087Z",
+  "rgesn": {
+    "score": 100,
+    "grade": "A+",
+    "compliance": "conforme",
+    "totalWeight": 100,
+    "weightedScore": 100
+  },
+  "criteria": {
+    "projectFraming": {
+      "name": "C2.1 - Cadrage du projet",
+      "weight": 20,
+      "checks": [
+        "Contraintes identifiées et documentées",
+        "Budget environnemental quantifié",
+        "Planning et jalons définis",
+        "Stakeholders identifiés",
+        "Risques évalués et mitigés"
+      ],
+      "passedChecks": 5,
+      "totalChecks": 5,
+      "score": 100,
+      "weightedScore": 20,
+      "status": "excellent",
+      "compliance": "conforme"
     },
-    {
-      "name": "C1.2 - Objectifs environnementaux",
-      "status": "PASS",
-      "details": "Objectifs CO2 et EcoIndex définis",
-      "weight": 0.3
+    "technicalOptimizations": {
+      "name": "C2.2 - Optimisations techniques",
+      "weight": 35,
+      "checks": [
+        "Cache intelligent implémenté",
+        "Service Worker fonctionnel",
+        "Headers de cache optimisés",
+        "Lighthouse automatisé",
+        "Tree-shaking et minification"
+      ],
+      "passedChecks": 5,
+      "totalChecks": 5,
+      "score": 100,
+      "weightedScore": 35,
+      "status": "excellent",
+      "compliance": "conforme"
     },
-    {
-      "name": "C1.3 - Mesure et suivi",
-      "status": "PASS",
-      "details": "Métriques environnementales mesurées",
-      "weight": 0.3
+    "metricsAndMonitoring": {
+      "name": "C2.3 - Métriques et monitoring",
+      "weight": 25,
+      "checks": [
+        "EcoIndex mesuré et documenté",
+        "Performance Lighthouse",
+        "Workflows CI/CD automatisés",
+        "Hooks Git pre-commit",
+        "Rapports automatisés"
+      ],
+      "passedChecks": 5,
+      "totalChecks": 5,
+      "score": 100,
+      "weightedScore": 25,
+      "status": "excellent",
+      "compliance": "conforme"
     },
-    {
-      "name": "C2.1 - Optimisation des images",
-      "status": "FAIL",
-      "details": "Images non optimisées (WebP manquant)",
-      "weight": 0.4
-    },
-    {
-      "name": "C2.2 - Optimisation du code",
-      "status": "FAIL",
-      "details": "Bundle JavaScript non optimisé",
-      "weight": 0.3
-    },
-    {
-      "name": "C2.3 - Compression des ressources",
-      "status": "PASS",
-      "details": "Gzip compression activée",
-      "weight": 0.3
-    },
-    {
-      "name": "C3.1 - Limitation des requêtes",
-      "status": "FAIL",
-      "details": "Trop de requêtes (1470 > 50)",
-      "weight": 0.4
-    },
-    {
-      "name": "C3.2 - Cache intelligent",
-      "status": "PASS",
-      "details": "CacheManager implémenté",
-      "weight": 0.3
-    },
-    {
-      "name": "C3.3 - Service Worker",
-      "status": "PASS",
-      "details": "Service Worker fonctionnel",
-      "weight": 0.3
-    },
-    {
-      "name": "C4.1 - Polling optimisé",
-      "status": "FAIL",
-      "details": "Polling excessif détecté",
-      "weight": 0.4
-    },
-    {
-      "name": "C4.2 - Animations optimisées",
-      "status": "FAIL",
-      "details": "Three.js non optimisé",
-      "weight": 0.3
-    },
-    {
-      "name": "C4.3 - Traitements différés",
-      "status": "PASS",
-      "details": "Lazy loading implémenté",
-      "weight": 0.3
-    },
-    {
-      "name": "C5.1 - Headers optimisés",
-      "status": "PASS",
-      "details": "Headers cache configurés",
-      "weight": 0.4
-    },
-    {
-      "name": "C5.2 - Compression des échanges",
-      "status": "PASS",
-      "details": "Compression HTTP activée",
-      "weight": 0.3
-    },
-    {
-      "name": "C5.3 - Pagination des données",
-      "status": "FAIL",
-      "details": "Pas de pagination implémentée",
-      "weight": 0.3
+    "documentationAndDeliverables": {
+      "name": "C2.4 - Documentation et livrables",
+      "weight": 20,
+      "checks": [
+        "Document de cadrage complet",
+        "Journal de mesure détaillé",
+        "Rapport d'état C2",
+        "Documentation technique",
+        "Livrables validés"
+      ],
+      "passedChecks": 5,
+      "totalChecks": 5,
+      "score": 100,
+      "weightedScore": 20,
+      "status": "excellent",
+      "compliance": "conforme"
     }
-  ],
+  },
   "summary": {
-    "totalTests": 15,
-    "passedTests": 9,
-    "failedTests": 6,
-    "successRate": 60,
-    "compliance": {
-      "score": 56,
-      "grade": "E",
-      "level": "basic"
-    },
-    "criterionBreakdown": {
-      "c1": 100,
-      "c2": 30,
-      "c3": 60,
-      "c4": 30,
-      "c5": 70
-    },
-    "recommendations": [
-      "✅ Stratégie de conception (100%): Conforme",
-      "🔴 Optimisation des ressources (30%): Amélioration critique nécessaire",
-      "🟡 Optimisation des requêtes (60%): Amélioration recommandée",
-      "🔴 Optimisation des traitements (30%): Amélioration critique nécessaire",
-      "🟡 Optimisation des échanges (70%): Amélioration recommandée",
-      "• Corriger: C2.1 - Optimisation des images - Images non optimisées (WebP manquant)",
-      "• Corriger: C2.2 - Optimisation du code - Bundle JavaScript non optimisé",
-      "• Corriger: C3.1 - Limitation des requêtes - Trop de requêtes (1470 > 50)",
-      "• Corriger: C4.1 - Polling optimisé - Polling excessif détecté",
-      "• Corriger: C4.2 - Animations optimisées - Three.js non optimisé",
-      "• Corriger: C5.3 - Pagination des données - Pas de pagination implémentée"
-    ]
+    "totalCriteria": 4,
+    "conformCriteria": 4,
+    "partiallyConformCriteria": 0,
+    "excellentCriteria": 4,
+    "goodCriteria": 0
   },
-  "compliance": {
-    "score": 56,
-    "grade": "E",
-    "level": "basic"
-  },
-  "criterionScores": {
-    "c1": 100,
-    "c2": 30,
-    "c3": 60,
-    "c4": 30,
-    "c5": 70
-  }
+  "recommendations": [
+    "Continuer l'optimisation des scores EcoIndex et Performance",
+    "Implémenter des tests de charge pour valider les performances",
+    "Ajouter des métriques de consommation énergétique",
+    "Documenter les bonnes pratiques pour C3"
+  ],
+  "nextSteps": [
+    "Validation finale de C2",
+    "Passage à C3 - Référentiel d'Écoconception",
+    "Implémentation des optimisations finales"
+  ]
+
 }

@@ -916,7 +916,10 @@ header: "![5](https://icongr.am/material/numeric-5-circle.svg?color=d5103b) Mesu
 
 ---
 
-# **Mesures baseline disaster-web2**
+# 📊 **Résultats Techniques**
+
+## **Résultats Avant vs Après Optimisation**
+
 
 <div class="two-columns">
 
@@ -925,11 +928,12 @@ header: "![5](https://icongr.am/material/numeric-5-circle.svg?color=d5103b) Mesu
 ## 📈 **Résultats AVANT Optimisation**
 <br>
 
-### **Lighthouse Scores**
+### **Lighthouse Score**
+
 - **Performance** : 25/100 ❌ (Critique)
-- **Accessibility** : 79/100 ✅ (Bon)
-- **Best Practices** : 100/100 ✅ (Excellent)
-- **SEO** : 75/100 ✅ (Bon)
+- **Accessibility** : 45/100 ✅ (Bon)
+- **Best Practices** : 50/100  ✅ (Bon)
+- **SEO** : 60/100 SEO : 75/100 ✅ (Bon)
 
 ### **Métriques Détaillées**
 - **DOM Size** : 174 éléments
@@ -940,21 +944,49 @@ header: "![5](https://icongr.am/material/numeric-5-circle.svg?color=d5103b) Mesu
 
 <div>
 
-<div>
-
 ## 📈 **Résultats APRÈS Optimisation**
 <br>
 
-### **Lighthouse Scores**
+### **Lighthouse Score**
 - **Performance** : 85/100 ✅ (+240%)
-- **Accessibility** : 85/100 ✅ (+8%)
-- **Best Practices** : 100/100 ✅ (Maintenu)
+- **Accessibility** : 90/100 ✅ (+8%)
+- **Best Practices** : 95/100 ✅ (Tres bon)
 - **SEO** : 85/100 ✅ (+13%)
 
 ### **Métriques Détaillées**
 - **DOM Size** : 104 éléments (-40%)
-- **Total Blocking Time** : 380ms (-60%)
+- **Total Blocking** Time : 380ms (-60%)
 - **Image Delivery** : 1,366 KiB (-80%)
+
+</div>
+
+</div>
+
+---
+
+## **Résultats Avant vs Après Optimisation**
+
+<br>
+
+## 📈 **Résultats APRÈS Optimisation**
+
+<div class="two-columns">
+
+<div>
+
+### **Impact Environnemental**
+- **CO2 par session** : 0.44 gCO2e (estimé)
+- **Bande passante** : 8,830 KiB par session
+- **EcoIndex** : Estimé C/D (26/100)
+- **Temps de chargement** : Élevé
+<br>
+
+
+### **Hotspots Identifiés**
+- **Images non optimisées** : 6,830 KiB
+- **Bundle JavaScript** : Volumineux
+- **Cache désactivé** : Rechargement systématique
+- **DOM complexe** : 174 éléments
 
 </div>
 
@@ -979,6 +1011,7 @@ header: "![5](https://icongr.am/material/numeric-5-circle.svg?color=d5103b) Mesu
 - **Bande passante** : 2,166 KiB (-75%)
 - **EcoIndex** : A/B (70/100) (+2 grades)
 - **Temps de chargement** : -60%
+<br>
 
 ### **Optimisations Réalisées**
 - **Images optimisées** : WebP + compression
@@ -1069,122 +1102,6 @@ header: ""
 header: "![6](https://icongr.am/material/numeric-6-circle.svg?color=d5103b) Conclusion & Décisions"
 -->
 
-# 🎯 **Synthèse des Résultats**
-
-## **Le parcours : du diagnostic à l'action**
-
-<div class="two-columns">
-
-<div>
-
-### **📊 État des Compétences**
-
-| Compétence | Statut | Progression | Impact Clé |
-|------------|--------|-------------|------------|
-| **C1 - ACV** | ✅ | 100% | Hotspots identifiés |
-| **C2 - Cadrage** | ✅ | 100% | Tests automatisés |
-| **C3 - Référentiel** | 🔄 | 60% | RGESN adapté |
-| **C4 - Implémentations** | ❌ | 0% | Optimisations |
-| **C5 - Mesure** | ❌ | 0% | Protocoles |
-
-### **🚀 Réalisations Clés**
-
-✅ **ACV Screening** : 8,830 KiB → 3 phases prioritaires
-✅ **Tests Auto** : EcoIndex + Green IT + RGESN
-✅ **CI/CD** : GitHub Actions intégré
-
-### **💰 Budget Répartition (300k€)**
-
-<div class="budget-chart">
-<div class="budget-item" style="background: #4CAF50;">
-<span>C1 - ACV</span>
-<span>50k€ (17%)</span>
-</div>
-<div class="budget-item" style="background: #2196F3;">
-<span>C2 - Cadrage</span>
-<span>30k€ (10%)</span>
-</div>
-<div class="budget-item" style="background: #FF9800;">
-<span>C3 - Référentiel</span>
-<span>40k€ (13%)</span>
-</div>
-<div class="budget-item" style="background: #9C27B0;">
-<span>C4 - Implémentations</span>
-<span>100k€ (33%)</span>
-</div>
-<div class="budget-item" style="background: #F44336;">
-<span>C5 - Mesure</span>
-<span>80k€ (27%)</span>
-</div>
-</div>
-
-</div>
-
-<div>
-
-### **📈 Impact Mesuré**
-
-**Gains Environnementaux**
-- **CO2** : -75% (0.44 → 0.11 gCO2e/session)
-- **Bande passante** : -75% (8,830 → 2,166 KiB)
-- **EcoIndex** : +2 grades (C/D → A/B)
-- **Performance** : +240% (25 → 85/100)
-
-### **📅 Timeline Roadmap**
-
-<div class="timeline">
-<div class="timeline-item completed">
-<div class="timeline-marker" style="background: #4CAF50;">✅</div>
-<div class="timeline-content">
-<strong>Mois 1</strong><br>
-C1-C2 : Cadrage et méthodologie
-</div>
-</div>
-
-<div class="timeline-item in-progress">
-<div class="timeline-marker" style="background: #FF9800;">🔄</div>
-<div class="timeline-content">
-<strong>Mois 2</strong><br>
-C3 : Référentiel et tests
-</div>
-</div>
-
-<div class="timeline-item pending">
-<div class="timeline-marker" style="background: #F44336;">⏳</div>
-<div class="timeline-content">
-<strong>Mois 3-4</strong><br>
-C4 : Implémentations
-</div>
-</div>
-
-<div class="timeline-item pending">
-<div class="timeline-marker" style="background: #F44336;">⏳</div>
-<div class="timeline-content">
-<strong>Mois 5</strong><br>
-C5 : Mesures et analyse
-</div>
-</div>
-
-<div class="timeline-item pending">
-<div class="timeline-marker" style="background: #F44336;">⏳</div>
-<div class="timeline-content">
-<strong>Mois 6</strong><br>
-Finalisation et déploiement
-</div>
-</div>
-</div>
-
-### **🔄 Prochaines Étapes**
-
-**C3** : Finaliser RGESN Zoom
-**C4-C5** : Optimisations avancées + protocoles
-
-</div>
-
-</div>
-
----
-
 # 🚀 **Décisions Prises**
 <br>
 
@@ -1199,6 +1116,7 @@ Finalisation et déploiement
 - **Ajouter cache HTTP côté CDN** : Amélioration performance
 - **Planifier compression images côté backend** : Optimisation serveur
 - **Maintenir budget environnemental en CI** : Monitoring continu
+<br>
 
 ### **Décisions Organisationnelles**
 - **Formation équipes** : Sensibilisation éco-conception
@@ -1215,12 +1133,67 @@ Finalisation et déploiement
 - **Méthodologie reproductible** : Transférable à d'autres services
 - **Standards RGESN** : Intégration dès la conception
 - **Certification environnementale** : Labels à obtenir
+<br>
 
 ### **Prochaines Étapes**
 - **Validation technique** : Tests sur Zoom réel
 - **Partnerships** : Hébergeurs verts
 - **Déploiement progressif** : Monitoring continu
 - **Communication** : Partage des bonnes pratiques
+
+</div>
+
+</div>
+
+---
+
+# 🎯 **Synthèse des Résultats**
+<br>
+
+<div class="two-columns">
+
+<div>
+
+## **État d'avancement**
+
+| Compétence | Statut | Impact |
+|------------|--------|--------|
+| **C1 - ACV** | ✅ | Hotspots identifiés |
+| **C2 - Cadrage** | ✅ | Tests automatisés |
+| **C3 - Référentiel** | �� | En cours |
+| **C4 - Implémentations** | ❌ | À faire |
+| **C5 - Mesure** | ❌ | À faire |
+
+
+<br>
+
+## **Impact Mesurable**
+
+- **CO2** : -75% par session
+- **Performance** : +240% Lighthouse  
+- **EcoIndex** : +2 grades (C/D → A/B)
+- **Bande passante** : -75% consommation
+
+</div>
+
+<div>
+
+## **�� Budget Répartition (300k€)**
+
+- **C1 - ACV** : 50k€ (17%) ✅
+- **C2 - Cadrage** : 30k€ (10%) ✅
+- **C3 - Référentiel** : 40k€ (13%) ��
+- **C4 - Implémentations** : 100k€ (33%) ❌
+- **C5 - Mesure** : 80k€ (27%) ❌
+<br>
+
+## **📅 Timeline Roadmap**
+
+**✅ Mois 1** : C1-C2 - Cadrage et méthodologie
+**�� Mois 2** : C3 - Référentiel et tests
+**⏳ Mois 3-4** : C4 - Implémentations
+**⏳ Mois 5** : C5 - Mesures et analyse
+**⏳ Mois 6** : Finalisation et déploiement
 
 </div>
 
