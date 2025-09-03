@@ -95,4 +95,16 @@ app.get('/api/payload', (_, res) => {
   res.json({ data: big, ts: Date.now() })
 })
 
+// --- Serve frontend static files ---
+app.use(express.static(path.join(__dirname, '..', 'dist'), {
+  maxAge: 86400000, // 24 heures de cache
+  etag: true,
+  lastModified: true
+}))
+
+// --- Catch-all route for SPA ---
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'dist', 'index.html'))
+})
+
 app.listen(PORT, () => console.log(`backend on :${PORT}`))
