@@ -28,7 +28,21 @@ app.use((_, res, next) => {
   next()
 })
 
-app.use(helmet({ contentSecurityPolicy: false }))
+app.use(helmet({
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'"],
+      styleSrc: ["'self'", "'unsafe-inline'", "data:", "https:"],
+      scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
+      fontSrc: ["'self'", "data:", "https:"],
+      imgSrc: ["'self'", "data:", "https:"],
+      connectSrc: ["'self'", "https:"],
+      mediaSrc: ["'self'", "data:", "https:"],
+      objectSrc: ["'none'"],
+      upgradeInsecureRequests: []
+    }
+  }
+}))
 app.use(cors())
 app.use(compression({
   level: 6,
@@ -96,7 +110,12 @@ app.get('/api/payload', (_, res) => {
 })
 
 // --- Serve frontend static files ---
-app.use(express.static(path.join(__dirname, '..', 'dist'), {
+const distPath = path.join(__dirname, '..', 'dist')
+console.log('🔍 Dist path:', distPath)
+console.log('🔍 Dist exists:', require('fs').existsSync(distPath))
+console.log('🔍 Dist contents:', require('fs').readdirSync(distPath))
+
+app.use(express.static(distPath, {
   maxAge: 86400000, // 24 heures de cache
   etag: true,
   lastModified: true
@@ -104,7 +123,15 @@ app.use(express.static(path.join(__dirname, '..', 'dist'), {
 
 // --- Catch-all route for SPA ---
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'dist', 'index.html'))
+  const indexPath = path.join(distPath, 'index.html')
+  console.log('🔍 Index path:', indexPath)
+  console.log('🔍 Index exists:', require('fs').existsSync(indexPath))
+  
+  if (require('fs').existsSync(indexPath)) {
+    res.sendFile(indexPath)
+  } else {
+    res.status(404).send('Frontend not found. Check build process.')
+  }
 })
 
 app.listen(PORT, () => console.log(`backend on :${PORT}`))
