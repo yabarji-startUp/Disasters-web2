@@ -9,6 +9,7 @@
     "backend": "NODE_OPTIONS='--max-old-space-size=8192' node backend/server.js",
     "build": "npm run build:frontend && npm run build:backend",
     "build:complete": "npm run build:frontend && npm run build:backend",
+    "build:production": "npm run build:frontend && npm run build:backend",
     "build:frontend": "vite build",
     "build:backend": "echo 'Backend is already built (JavaScript)'",
     "build:docs": "npm run generate:pdf && npm run generate:slides",
