@@ -93,11 +93,11 @@ _color: #fff
 - [8.5 Tests automatisés et validation continue](#85-tests-automatisés-et-validation-continue)
 - [8.6 Résultats des optimisations par mois](#86-résultats-des-optimisations-par-mois)
 
+---
+
 #### **Section 9 - Conclusion**
 - [9.1 Synthèse des réalisations](#91-synthèse-des-réalisations)
 - [9.2 Impact mesurable](#92-impact-mesurable)
-
----
 
 - [9.3 Décisions stratégiques](#93-décisions-stratégiques)
 - [9.4 Prochaines étapes](#94-prochaines-étapes)

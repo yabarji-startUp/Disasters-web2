@@ -410,15 +410,15 @@ header: "![2](https://icongr.am/material/numeric-2-circle.svg?color=d5103b) ACV 
 - **ACV screening** : Focus sur postes d'impact observables
 - **Périmètre** : Réseau/terminal/serveur avec données de fonctionnement
 - **Limite** : Absence données fines matériaux/fabrication
-- **Orientation** : Principe Pareto vers l'usage
+- **Orientation** : Principe Pareto vers l'usage (80/20)
 
 </div>
 
 <div>
 
 ### **Outils Utilisés**
-- **Lighthouse** : Audit performance complet
-- **EcoIndex** : Score environnemental (0-100)
+- **Lighthouse** : Audit performance complet (0-100)
+- **EcoIndex** : Score environnemental (A -G)
 - **Green-IT Analysis** : Bonnes pratiques
 - **Chrome DevTools** : Métriques détaillées
 
@@ -445,7 +445,7 @@ header: "![2](https://icongr.am/material/numeric-2-circle.svg?color=d5103b) ACV 
 <div>
 
 ### **UF (Unité Fonctionnelle)**
-"Afficher une visioconférence Zoom depuis l'interface web avec toutes les fonctionnalités (vidéo, audio, chat, partage d'écran)."
+"participer à une visioconférence Zoom depuis l'interface web avec toutes les fonctionnalités (vidéo, audio, chat, partage d'écran)."
 
 ### **Périmètre**
 - **Frontend** : Interface utilisateur, streaming vidéo
@@ -491,7 +491,7 @@ header: "![2](https://icongr.am/material/numeric-2-circle.svg?color=d5103b) ACV 
 - **Facteurs d'émission** : Base Carbone ADEME
 
 ### **Sources Documentées**
-- **EcoIndex** : Score environnemental (0-100)
+- **EcoIndex** : Score environnemental (A-G)
 - **Green-IT Analysis** : Bonnes pratiques
 - **Lighthouse** : Indicateurs de performance
 - **Chrome DevTools** : Métriques détaillées
@@ -970,23 +970,21 @@ header: "![5](https://icongr.am/material/numeric-5-circle.svg?color=d5103b) Mesu
 
 ---
 
-## **Résultats Avant vs Après Optimisation**
-
-<br>
-
-## 📈 **Résultats APRÈS Optimisation**
+# **Gains obtenus sur disaster-web2**
 
 <div class="two-columns">
 
+
 <div>
+
+## 📈 **Résultats AVANT Optimisation**
+<br>
 
 ### **Impact Environnemental**
 - **CO2 par session** : 0.44 gCO2e (estimé)
 - **Bande passante** : 8,830 KiB par session
 - **EcoIndex** : Estimé C/D (26/100)
 - **Temps de chargement** : Élevé
-<br>
-
 
 ### **Hotspots Identifiés**
 - **Images non optimisées** : 6,830 KiB
@@ -996,20 +994,10 @@ header: "![5](https://icongr.am/material/numeric-5-circle.svg?color=d5103b) Mesu
 
 </div>
 
-
-
-</div>
-
----
-
-# **Gains obtenus sur disaster-web2**
-
-<div class="two-columns">
-
 <div>
 
 
-## 📈 **Résultats AVANT Optimisation**
+## 📈 **Résultats APRÈS Optimisation**
 <br>
 
 ### **Impact Environnemental**
@@ -1024,26 +1012,6 @@ header: "![5](https://icongr.am/material/numeric-5-circle.svg?color=d5103b) Mesu
 - **Cache activé** : Headers appropriés
 - **CSS purgé** : Styles inutilisés supprimés
 - **Bundle optimisé** : Code splitting + tree shaking
-
-</div>
-
-
-<div>
-
-## 📈 **Résultats APRÈS Optimisation**
-<br>
-
-### **Impact Environnemental**
-- **CO2 par session** : 0.44 gCO2e (estimé)
-- **Bande passante** : 8,830 KiB par session
-- **EcoIndex** : Estimé C/D (26/100)
-- **Temps de chargement** : Élevé
-
-### **Hotspots Identifiés**
-- **Images non optimisées** : 6,830 KiB
-- **Bundle JavaScript** : Volumineux
-- **Cache désactivé** : Rechargement systématique
-- **DOM complexe** : 174 éléments
 
 </div>
 
