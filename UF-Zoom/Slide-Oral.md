@@ -848,8 +848,7 @@ header: "![4](https://icongr.am/material/numeric-4-circle.svg?color=d5103b) Réf
 
 ### **Stratégie de Conformité**
 - **Checklist release** : Validation avant déploiement
-- **Monitor CDN** : Surveillance continue
-- **CI build size** : Contrôle taille bundles
+
 - **PR template check** : Validation automatique
 
 ### **Documentation**

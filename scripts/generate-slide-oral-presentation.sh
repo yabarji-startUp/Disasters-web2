@@ -15,7 +15,7 @@ OUTPUT_DIR="UF-Zoom/output"
 OUTPUT_PDF="$OUTPUT_DIR/Slide-Oral.pdf"
 OUTPUT_HTML="$OUTPUT_DIR/Slide-Oral.html"
 OUTPUT_PPTX="$OUTPUT_DIR/Slide-Oral.pptx"
-THEME="resume2-A4"
+THEME="yas-eco"
 PORT=8081
 
 # Couleurs pour l'affichage
@@ -95,7 +95,6 @@ generate_pdf() {
     echo "   - Fichier source : $INPUT_FILE"
     echo "   - Fichier de sortie : $OUTPUT_PDF"
     echo "   - Thème : $THEME"
-    echo "   - Format : A4"
     echo ""
     
     marp "$INPUT_FILE" \
