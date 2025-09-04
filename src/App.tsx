@@ -245,9 +245,18 @@ export default function App() {
           <h1 className="text-4xl font-bold text-red-400 mb-4">
             Plateforme d'entraînement avancée
           </h1>
-          <p className="text-xl text-gray-300">
+          <p className="text-xl text-gray-300 mb-4">
             Optimisation web et éco-conception - C4 Implémentations Avancées
           </p>
+          <div className="flex justify-center">
+            <a 
+              href="/dashboard-c5" 
+              className="inline-flex items-center space-x-2 bg-gradient-to-r from-green-500 to-blue-600 hover:from-green-600 hover:to-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 hover:scale-105 shadow-lg"
+            >
+              <span>🚀</span>
+              <span>Dashboard C5 - Mesure & Analyse</span>
+            </a>
+          </div>
         </header>
         <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-16">
           <Card icon={<Database className="w-8 h-8 text-purple-400" />} title="Poids HTML" value={`${(stats.bundle / 1_024).toFixed(0)} kB`} tone={color(stats.bundle, limits.weight)} tip="transferSize du document" />

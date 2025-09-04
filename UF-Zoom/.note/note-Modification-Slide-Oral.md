@@ -1,6 +1,44 @@
 # 📝 Notes de Modification - Slide Oral
 
-## 🎯 **Tests Automatisés EcoIndex et Green IT - Ajoutés**
+## 🎯 **Refactoring Slide "Synthèse et Résultats" - Optimisation Présentation**
+
+### **📊 Évolution de la Section "Synthèse et Résultats"**
+
+#### **Version Initiale (Trop verbeuse)**
+- **Problème** : Section trop longue avec répétitions
+- **Contenu** : Détails techniques C1-C5 détaillés
+- **Impact** : Difficile à présenter oralement
+
+#### **Version Intermédiaire (Barres de progression)**
+- **Ajout** : Barres de progression colorées pour chaque compétence
+- **Ajout** : Graphique budget avec couleurs distinctes
+- **Ajout** : Timeline roadmap visuelle
+- **Problème** : CSS complexe, maintenance difficile
+
+#### **Version Finale (Tableau + Graphiques simples)**
+- **Retour** : Tableau simple des compétences C1-C5
+- **Conservation** : Graphiques budget et timeline
+- **Conservation** : Barres de progression (CSS simplifié)
+- **Résultat** : Équilibré entre visuel et simplicité
+
+### **🎨 Éléments Visuels Intégrés**
+
+#### **1. Tableau des Compétences**
+- **Format** : 4 colonnes (Compétence | Statut | Progression | Impact Clé)
+- **Codes couleur** : ✅ 🔄 ❌ pour statuts
+- **Pourcentages** : 100%, 60%, 0% selon progression
+
+#### **2. Graphique Budget (Pie Chart)**
+- **5 sections colorées** : C1-C5 avec pourcentages
+- **Couleurs distinctes** : Vert, Bleu, Orange, Violet, Rouge
+- **Montants** : 50k€, 30k€, 40k€, 100k€, 80k€
+
+#### **3. Timeline Roadmap**
+- **5 étapes** avec marqueurs colorés
+- **Statuts** : ✅ (terminé), 🔄 (en cours), ⏳ (en attente)
+- **Contenu** : Mois + activités principales
+
+### **📝 Tests Automatisés EcoIndex et Green IT - Ajoutés**
 
 ### **📊 Scripts de Test Créés**
 
